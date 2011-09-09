@@ -491,19 +491,11 @@
 						<?php
 						include('config.php');
 						
-						// get the JSON response for recent uploads
-						// get the JSON response for recent comments
-						$designRequest = SERVICE_URL.'?section=activity&request=designs&quantity=20';
-						$commentRequest = SERVICE_URL.'?section=activity&request=comments&quantity=20';
-						
+						// swap to request=proposals or request=versions
+						$designRequest = SERVICE_URL.'?section=activity&request=designs&quantity=5';
 						$designJSON = file_get_contents($designRequest,0,null,null);
-						$commentJSON = file_get_contents($commentRequest,0,null,null);
-						
 						$designOutput = json_decode($designJSON, true);
-						$commentOutput = json_decode($commentJSON, true);
-						
 						$designs = $designOutput['designs'];
-						$comments = $commentOutput['comments'];
 						
 						foreach($designs as $design){
 						?>
@@ -527,34 +519,29 @@
 						<?php
 						}
 						
+						$commentRequest = SERVICE_URL.'?section=activity&request=comments&quantity=5';
+						$commentJSON = file_get_contents($commentRequest,0,null,null);
+						$commentOutput = json_decode($commentJSON, true);
+						$comments = $commentOutput['comments'];
+						
 						foreach($comments as $comment){
-							echo "2";
-							//echo $comment;
-							/*
-							
-							<div class='activity'>
-								<a href='/designs/3894'>
-									<img src='http://betaville.net/designthumbs/3894.png' style='background-color: #383838'>
-								</a>
-								<div class='activity-body'>
-									<a href="/designs/3894"><strong>susie</strong>
-										commented on
-										<strong>Shae's tribute to Philip Johnson</strong>:
-										<span class='content'>Hey Shae, love your house...</span>
+							?>
+								<div class='activity'>
+									<a href='/designs/3894'>
+										<img src='http://betaville.net/designthumbs/3894.png' style='background-color: #383838'>
 									</a>
-									<div class='activity-meta'>2 months ago</div>
+									<div class='activity-body'>
+										<a href="/designs/3894"><?php echo'<strong>'.$comment['user'].'</strong>'; ?>
+											commented on
+											<strong>Shae's tribute to Philip Johnson</strong>:
+											<span class='content'><?php $comment['comment'] ?></span>
+										</a>
+										<div class='activity-meta'>2 months ago</div>
+									</div>
 								</div>
-							</div>
+							<?php
 							
-							*/
 						}
-						
-						
-						// put the responses into some sort of list
-						
-						// sort the responses based on date
-						
-						// create divs and display the responses
 						?>
 
 			</div>
