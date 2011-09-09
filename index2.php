@@ -511,7 +511,7 @@
 									echo '<strong>'.$design['name'].'</strong>:';
 								?>
 								<span class='content'><?php echo $design['description'] ?></span>
-								</a><div class='activity-meta'><?php $design['date'] ?></div>
+								</a><div class='activity-meta'><?php echo $design['date'] ?></div>
 							</div>
 						</div>
 						
@@ -534,9 +534,9 @@
 										<a href="/designs/3894"><?php echo'<strong>'.$comment['user'].'</strong>'; ?>
 											commented on
 											<strong>Shae's tribute to Philip Johnson</strong>:
-											<span class='content'><?php $comment['comment'] ?></span>
+											<span class='content'><?php echo $comment['comment'] ?></span>
 										</a>
-										<div class='activity-meta'>2 months ago</div>
+										<div class='activity-meta'><?php echo $comment['date'] ?></div>
 									</div>
 								</div>
 							<?php
