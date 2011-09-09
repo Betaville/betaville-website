@@ -22,9 +22,9 @@
 			<nav>
 			<ul>
 				<li class='logo'>
-				<a href='/'>
-				<img src='images/logo-header.png'>
-				</a>
+					<a href='/'>
+					<img src='images/logo-header.png'>
+					</a>
 				</li>
 				<li><a href='/webstart/betaville.jnlp'>Download</a></li>
 				<li><a class='' href='/what-is-betaville'>Info</a></li>
@@ -40,26 +40,19 @@
 						<span class='icon'>D</span>
 					</div>
 					<div class='tagline-text'>
-					<div class='text-body'>
-					<p class='p1'>
-					A
-					<strong>collaborative online platform</strong>
-					for
-					
-					</p>
-					<br>
-					<p class='p1'>
-					<strong>proposals on urban design</strong>
-					</p>
-					<div class='button-row'>
-					<a class='uberbutton green' href='/webstart/betaville.jnlp'>
-					Download now
-					<span class='icon i-play'>9</span>
-					</a>
-					<a class='text' href='/what-is-betaville'>Get info »</a>
-					<a class='text' href='http://www.youtube.com/watch?v=bZ6lN0Wtlb4&amp;autoplay=1' id='thevideo'>Watch a demo »</a>
-					</div>
-					</div>
+						<div class='text-body'>
+							<p class='p1'>A <strong>collaborative online platform</strong> for</p>
+							<br>
+							<p class='p1'><strong>proposals on urban design</strong></p>
+							<div class='button-row'>
+								<a class='uberbutton green' href='/webstart/betaville.jnlp'>
+								Download now
+								<span class='icon i-play'>9</span>
+								</a>
+								<a class='text' href='/what-is-betaville'>Get info »</a>
+								<a class='text' href='http://www.youtube.com/watch?v=bZ6lN0Wtlb4&amp;autoplay=1' id='thevideo'>Watch a demo »</a>
+							</div>
+						</div>
 					</div>
 					
 					<div class='carousel'>
@@ -70,9 +63,7 @@
 								<br>
 								<span>Futuristic</span>
 							</div>
-							<a class='carousel-learn-more' href='/what-is-betaville'>
-							Learn more »
-							</a>
+							<a class='carousel-learn-more' href='/what-is-betaville'>Learn more »</a>
 							</li>
 							<li class='carousel-opensource'>
 							
@@ -81,9 +72,7 @@
 								<br>
 								<span>Open Source</span>
 							</div>
-							<a class='carousel-learn-more' href='/contribute'>
-							Learn more »
-							</a>
+							<a class='carousel-learn-more' href='/contribute'>Learn more »</a>
 							</li>
 							<li class='carousel-participatory'>
 							<div class='carousel-text'>
@@ -91,9 +80,7 @@
 								<br>
 								<span>Participatory</span>
 							</div>
-							<a class='carousel-learn-more' href='/contribute'>
-							Learn more »
-							</a>
+							<a class='carousel-learn-more' href='/contribute'>Learn more »</a>
 							</li>
 							<li class='carousel-publicart'>
 							<div class='carousel-text'>
@@ -101,9 +88,7 @@
 								<br>
 								<span>Public art</span>
 							</div>
-							<a class='carousel-learn-more' href='/what-is-betaville'>
-							Learn more »
-							</a>
+							<a class='carousel-learn-more' href='/what-is-betaville'>Learn more »</a>
 							</li>
 						</ul>
 						
@@ -501,148 +486,145 @@
 			</div>
 			<aside>
 			<div class='activity-section'>
-			<h2>Latest Activity</h2>
-			<div class='activity'>
-			<a href='/designs/3894'>
-			<img src='http://betaville.net/designthumbs/3894.png' style='background-color: #383838'>
-			</a>
-			<div class='activity-body'>
-			<a href="/designs/3894"><strong>susie</strong>
-			
-			commented on
-			<strong>Shae's tribute to Philip Johnson</strong>:
-			<span class='content'>
-			Hey Shae, love your house...
-			</span>
-			</a><div class='activity-meta'>2 months ago</div>
-			</div>
-			</div>
-			
-			<div class='activity'>
-			<a href='/designs/3830'>
-			<img src='http://betaville.net/designthumbs/3830.png' style='background-color: #3e4b71'>
-			</a>
-			<div class='activity-body'>
-			<a href="/designs/3830"><strong>scandgolden24</strong>
-			
-			uploaded a new version of
-			<strong>Dodger Stadium 1950</strong>
-			</a><div class='activity-meta'>4 months ago</div>
-			</div>
-			</div>
-			
-			<div class='activity'>
-			<a href='/designs/3830'>
-			<img src='http://betaville.net/designthumbs/3830.png' style='background-color: #376206'>
-			</a>
-			<div class='activity-body'>
-			<a href="/designs/3830"><strong>scandgolden24</strong>
-			uploaded a new version of
-			<strong>Dodger Stadium 1950</strong>
-			
-			</a><div class='activity-meta'>4 months ago</div>
-			</div>
-			</div>
-			
-			<div class='activity'>
-			<a href='/designs/3830'>
-			<img src='http://betaville.net/designthumbs/3830.png' style='background-color: #3e4b71'>
-			</a>
-			<div class='activity-body'>
-			<a href="/designs/3830"><strong>scandgolden24</strong>
-			uploaded a new version of
-			<strong>Dodger Stadium 1950</strong>
-			</a><div class='activity-meta'>4 months ago</div>
-			
-			</div>
-			</div>
-			
-			<div class='activity'>
-			<a href='/designs/3828'>
-			<img src='http://betaville.net/designthumbs/3828.png' style='background-color: #376206'>
-			</a>
-			<div class='activity-body'>
-			<a href="/designs/3828"><strong>scandgolden24</strong>
-			uploaded a new version of
-			<strong>Pace Museum</strong>
-			</a><div class='activity-meta'>4 months ago</div>
-			</div>
-			</div>
-			
-			<div class='activity'>
-			<a href='/designs/3522'>
-			<img src='http://betaville.net/designthumbs/3522.png' style='background-color: #72b31e'>
-			</a>
-			<div class='activity-body'>
-			<a href="/designs/3522"><strong>Carl</strong>
-			uploaded a new version of
-			<strong>Ponte Mirabile</strong>
-			</a><div class='activity-meta'>5 months ago</div>
-			</div>
-			</div>
-			
-			<div class='activity'>
-			
-			<a href='/designs/514'>
-			<img src='http://betaville.net/designthumbs/514.png' style='background-color: #383838'>
-			</a>
-			<div class='activity-body'>
-			<a href="/designs/514"><strong>jarredlhumphrey</strong>
-			commented on
-			<strong>Liberty Piers</strong>:
-			<span class='content'>
-			test message
-			</span>
-			</a><div class='activity-meta'>about 1 year ago</div>
-			</div>
-			</div>
-			
-			<div class='activity'>
-			<a href='/designs/503'>
-			<img src='http://betaville.net/designthumbs/503.png' style='background-color: #72b31e'>
-			</a>
-			<div class='activity-body'>
-			<a href="/designs/503"><strong>kday</strong>
-			commented on
-			<strong>Ferry Terminal</strong>:
-			<span class='content'>
-			I am practicing adding comments, just a test.
-			</span>
-			</a><div class='activity-meta'>about 1 year ago</div>
-			</div>
-			</div>
-			
-			<div class='activity'>
-			<a href='/designs/494'>
-			<img src='http://betaville.net/designthumbs/494.png' style='background-color: #376206'>
-			</a>
-			<div class='activity-body'>
-			<a href="/designs/494"><strong>jarredlhumphrey</strong>
-			commented on
-			<strong>Seventeen State </strong>:
-			<span class='content'>
-			another test comment
-			</span>
-			</a><div class='activity-meta'>about 1 year ago</div>
-			</div>
-			
-			</div>
-			
-			<div class='activity'>
-			<a href='/designs/494'>
-			<img src='http://betaville.net/designthumbs/494.png' style='background-color: #e4dbb7'>
-			</a>
-			<div class='activity-body'>
-			<a href="/designs/494"><strong>jarredlhumphrey</strong>
-			commented on
-			<strong>Seventeen State </strong>:
-			<span class='content'>
-			test comment
-			</span>
-			</a><div class='activity-meta'>about 1 year ago</div>
-			
-			</div>
-			</div>
+				<h2>Latest Activity</h2>
+				<div class='activity'>
+					<a href='/designs/3894'>
+					<img src='http://betaville.net/designthumbs/3894.png' style='background-color: #383838'>
+					</a>
+					<div class='activity-body'>
+					<a href="/designs/3894"><strong>susie</strong>
+					
+					commented on
+					<strong>Shae's tribute to Philip Johnson</strong>:
+					<span class='content'>
+					Hey Shae, love your house...
+					</span>
+					</a><div class='activity-meta'>2 months ago</div>
+					</div>
+				</div>
+				
+				<div class='activity'>
+					<a href='/designs/3830'>
+					<img src='http://betaville.net/designthumbs/3830.png' style='background-color: #3e4b71'>
+					</a>
+					<div class='activity-body'>
+					<a href="/designs/3830"><strong>scandgolden24</strong>
+					
+					uploaded a new version of
+					<strong>Dodger Stadium 1950</strong>
+					</a><div class='activity-meta'>4 months ago</div>
+					</div>
+				</div>
+				
+				<div class='activity'>
+					<a href='/designs/3830'>
+					<img src='http://betaville.net/designthumbs/3830.png' style='background-color: #376206'>
+					</a>
+					<div class='activity-body'>
+					<a href="/designs/3830"><strong>scandgolden24</strong>
+					uploaded a new version of
+					<strong>Dodger Stadium 1950</strong>
+					
+					</a><div class='activity-meta'>4 months ago</div>
+					</div>
+				</div>
+				
+				<div class='activity'>
+					<a href='/designs/3830'>
+					<img src='http://betaville.net/designthumbs/3830.png' style='background-color: #3e4b71'>
+					</a>
+					<div class='activity-body'>
+					<a href="/designs/3830"><strong>scandgolden24</strong>
+					uploaded a new version of
+					<strong>Dodger Stadium 1950</strong>
+					</a><div class='activity-meta'>4 months ago</div>
+					
+					</div>
+				</div>
+				
+				<div class='activity'>
+					<a href='/designs/3828'>
+					<img src='http://betaville.net/designthumbs/3828.png' style='background-color: #376206'>
+					</a>
+					<div class='activity-body'>
+					<a href="/designs/3828"><strong>scandgolden24</strong>
+					uploaded a new version of
+					<strong>Pace Museum</strong>
+					</a><div class='activity-meta'>4 months ago</div>
+					</div>
+				</div>
+				
+				<div class='activity'>
+					<a href='/designs/3522'>
+					<img src='http://betaville.net/designthumbs/3522.png' style='background-color: #72b31e'>
+					</a>
+					<div class='activity-body'>
+					<a href="/designs/3522"><strong>Carl</strong>
+					uploaded a new version of
+					<strong>Ponte Mirabile</strong>
+					</a><div class='activity-meta'>5 months ago</div>
+					</div>
+				</div>
+				
+				<div class='activity'>
+					<a href='/designs/514'>
+					<img src='http://betaville.net/designthumbs/514.png' style='background-color: #383838'>
+					</a>
+					<div class='activity-body'>
+					<a href="/designs/514"><strong>jarredlhumphrey</strong>
+					commented on
+					<strong>Liberty Piers</strong>:
+					<span class='content'>
+					test message
+					</span>
+					</a><div class='activity-meta'>about 1 year ago</div>
+					</div>
+				</div>
+				
+				<div class='activity'>
+					<a href='/designs/503'>
+					<img src='http://betaville.net/designthumbs/503.png' style='background-color: #72b31e'>
+					</a>
+					<div class='activity-body'>
+					<a href="/designs/503"><strong>kday</strong>
+					commented on
+					<strong>Ferry Terminal</strong>:
+					<span class='content'>
+					I am practicing adding comments, just a test.
+					</span>
+					</a><div class='activity-meta'>about 1 year ago</div>
+					</div>
+				</div>
+				
+				<div class='activity'>
+					<a href='/designs/494'>
+					<img src='http://betaville.net/designthumbs/494.png' style='background-color: #376206'>
+					</a>
+					<div class='activity-body'>
+					<a href="/designs/494"><strong>jarredlhumphrey</strong>
+					commented on
+					<strong>Seventeen State </strong>:
+					<span class='content'>
+					another test comment
+					</span>
+					</a><div class='activity-meta'>about 1 year ago</div>
+					</div>
+				</div>
+				
+				<div class='activity'>
+					<a href='/designs/494'>
+					<img src='http://betaville.net/designthumbs/494.png' style='background-color: #e4dbb7'>
+					</a>
+					<div class='activity-body'>
+					<a href="/designs/494"><strong>jarredlhumphrey</strong>
+					commented on
+					<strong>Seventeen State </strong>:
+					<span class='content'>
+					test comment
+					</span>
+					</a><div class='activity-meta'>about 1 year ago</div>
+					</div>
+				</div>
 			
 			</div>
 			<div class='activity-section'>
