@@ -518,9 +518,7 @@
 									echo '<a href="/designs/'.$design['designID'].'"><strong>'.$design['user'].'</strong> uploaded ';
 									echo '<strong>'.$design['name'].'</strong>:';
 								?>
-								<span class='content'>
-									<?php echo $design['description'] ?>
-								</span>
+								<span class='content'><?php echo $design['description'] ?></span>
 								</a><div class='activity-meta'><?php $design['date'] ?></div>
 							</div>
 						</div>
@@ -535,20 +533,18 @@
 							/*
 							
 							<div class='activity'>
-					<a href='/designs/3894'>
-						<img src='http://betaville.net/designthumbs/3894.png' style='background-color: #383838'>
-					</a>
-					<div class='activity-body'>
-						<a href="/designs/3894"><strong>susie</strong>
-
-							commented on
-							<strong>Shae's tribute to Philip Johnson</strong>:
-							<span class='content'>
-								Hey Shae, love your house...
-							</span>
-						</a><div class='activity-meta'>2 months ago</div>
-					</div>
-				</div>
+								<a href='/designs/3894'>
+									<img src='http://betaville.net/designthumbs/3894.png' style='background-color: #383838'>
+								</a>
+								<div class='activity-body'>
+									<a href="/designs/3894"><strong>susie</strong>
+										commented on
+										<strong>Shae's tribute to Philip Johnson</strong>:
+										<span class='content'>Hey Shae, love your house...</span>
+									</a>
+									<div class='activity-meta'>2 months ago</div>
+								</div>
+							</div>
 							
 							*/
 						}
