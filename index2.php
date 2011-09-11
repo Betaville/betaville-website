@@ -45,7 +45,7 @@
 						<br>
 						<p class='p1'><strong>proposals on urban design</strong></p>
 						<div class='button-row'>
-							<a class='uberbutton green' href='/webstart/betaville.jnlp'>
+							<a class='uberbutton green' href='http://betaville.net/webstart/betaville.jnlp'>
 								Download now
 								<span class='icon i-play'>9</span>
 							</a>

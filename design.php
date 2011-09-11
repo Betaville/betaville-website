@@ -48,7 +48,7 @@ $comments = $commentOutput['comments'];
 					</a> 
 				</li> 
 				<li> 
-					<a href='/webstart/betaville.jnlp'>Download</a> 
+					<a href='http://betaville.net/webstart/betaville.jnlp'>Download</a> 
 				</li> 
 				<li> 
 					<a class='' href='/what-is-betaville'>Info</a> 
