@@ -502,12 +502,12 @@
 						
 						<div class='activity'>
 							<?php
-								echo "<a href='designs/".$design['designID']."'>\n";
+								echo "<a href='design.php?id=".$design['designID']."'>\n";
 								echo "<img src='".THUMBNAIL_URL.$design['designID'].".png' style='background-color: #383838'></a>";
 							?>
 							<div class='activity-body'>
 								<?php
-									echo '<a href="/designs/'.$design['designID'].'"><strong>'.$design['user'].'</strong> uploaded ';
+									echo '<a href="design.php?id='.$design['designID'].'"><strong>'.$design['user'].'</strong> uploaded ';
 									echo '<strong>'.$design['name'].'</strong>:';
 								?>
 								<span class='content'><?php echo $design['description'] ?></span>
@@ -525,15 +525,23 @@
 						$comments = $commentOutput['comments'];
 						
 						foreach($comments as $comment){
+						
+						$commentDesignRequest = SERVICE_URL.'?section=design&request=findbyid&id='.$comment['designid'];
+						$commentDesignJSON = file_get_contents($commentDesignRequest,0,null,null);
+						$commentDesignOutput = json_decode($commentDesignJSON, true);
+						$commentDesign = $commentDesignOutput['design'];
+						
 							?>
 								<div class='activity'>
-									<a href='/designs/3894'>
+									<?php echo "<a href='design.php?id=".$commentDesign['designID']; ?>
 										<img src='http://betaville.net/designthumbs/3894.png' style='background-color: #383838'>
 									</a>
 									<div class='activity-body'>
-										<a href="/designs/3894"><?php echo'<strong>'.$comment['user'].'</strong>'; ?>
+										<?php
+											echo '<a href="design.php?id='.$design['designID'].'"><strong>'.$comment['user'].'</strong>';
+										?>
 											commented on
-											<strong>Shae's tribute to Philip Johnson</strong>:
+											<strong><?php echo $commentDesign['name'] ?></strong>:
 											<span class='content'><?php echo $comment['comment'] ?></span>
 										</a>
 										<div class='activity-meta'><?php echo $comment['date'] ?></div>
