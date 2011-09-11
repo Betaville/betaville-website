@@ -39,30 +39,7 @@ $comments = $commentOutput['comments'];
 
 ?>
 <div class='master-container'> 
-	<header> 
-		<nav> 
-			<ul> 
-				<li class='logo'> 
-					<a href='/'> 
-						<img src='/images/logo-header.png'> 
-					</a> 
-				</li> 
-				<li> 
-					<a href='http://betaville.net/webstart/betaville.jnlp'>Download</a> 
-				</li> 
-				<li> 
-					<a class='' href='/what-is-betaville'>Info</a> 
-				</li> 
-				<li> 
-					<a class='' href='/proposals'>Explore</a> 
-				</li> 
-				<li> 
-					<a class='' href='/contribute'>Contribute</a> 
-				</li> 
-			</ul> 
-			<div class='clear'></div> 
-		</nav> 
-	</header> 
+	<?php include('header.php'); ?>
 	<div class='page-container'> 
 		<div class='page-body container project' id='project'> 
 			<div class='project-container'> 

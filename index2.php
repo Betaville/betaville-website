@@ -18,22 +18,7 @@
 
 <body>
 	<div class='master-container'>
-		<header>
-			<nav>
-				<ul>
-					<li class='logo'>
-						<a href='/'>
-							<img src='images/logo-header.png'>
-						</a>
-					</li>
-					<li><a href='/webstart/betaville.jnlp'>Download</a></li>
-					<li><a class='' href='/what-is-betaville'>Info</a></li>
-					<li><a class='' href='/proposals'>Explore</a></li>
-					<li><a class='' href='/contribute'>Contribute</a></li>
-				</ul>
-				<div class='clear'></div>
-			</nav>
-		</header>
+		<?php include('header.php'); ?>
 		<div class='tagline'>
 			<div class='tagline-body'>
 				<div class='tagline-close' onclick="$('.tagline').slideUp()">
@@ -533,8 +518,9 @@
 						
 							?>
 								<div class='activity'>
-									<?php echo "<a href='design.php?id=".$commentDesign['designID']; ?>
-										<img src='http://betaville.net/designthumbs/3894.png' style='background-color: #383838'>
+									<?php echo '<a href="design.php?id='.$commentDesign['designID'].'">';
+										echo "<img src='".THUMBNAIL_URL.$commentDesign['designID'].".png' style='background-color: #383838'></a>";
+										?>
 									</a>
 									<div class='activity-body'>
 										<?php
