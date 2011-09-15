@@ -110,11 +110,11 @@
 
 
 
+
+</div> 
 <aside>
 	<?php include('latest-activity.php'); ?>
 </aside> 
-</div> 
-
 <?php include('footer.php'); ?>
 </div> 
 </body> 
