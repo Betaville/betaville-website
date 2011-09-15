@@ -34,7 +34,7 @@
 								Download now
 								<span class='icon i-play'>9</span>
 							</a>
-							<a class='text' href='/what-is-betaville'>Get info »</a>
+							<a class='text' href='what-is-betaville.php'>Get info »</a>
 							<a class='text' href='http://www.youtube.com/watch?v=bZ6lN0Wtlb4&amp;autoplay=1' id='thevideo'>Watch a demo »</a>
 						</div>
 					</div>
