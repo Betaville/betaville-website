@@ -91,425 +91,178 @@
 			<div class='page-body container' id='home'>
 				<div class='project-container'>
 					<h2>Featured Projects</h2>
-					<div class='project-featured'>
+					
+					
+					<?php
+					include('config.php');
+					// get the featured proposals
+					// swap to request=proposals or request=versions
+					$proposalRequest = SERVICE_URL.'?section=proposal&request=getfeatured&quantity=7';
+					$proposalJSON = file_get_contents($proposalRequest,0,null,null);
+					$proposalOutput = json_decode($proposalJSON, true);
+					$proposals = $proposalOutput['designs'];
+					
+					
+					for($i = 0; $i < sizeof($proposals); ++$i){
+						
+						$proposal = $proposals[$i];
+						
+						if($i==0){
+							?>
+							<div class='project-featured'>
 
-						<div class='f-10 project'>
-							<a href='/proposals/238'>
-								<img src='http://betaville.net/designthumbs/2404.png' style='background-color: #3e4b71'>
-							</a>
-							<div class='project-info'>
-								<h3>
-									<a href='/proposals/238'>Jan Bridge<span class='icon'>&nbsp;]</span></a>
-								</h3>
-								<div class='project-meta'>
-									<ul>
-										<li>
-											<strong>Author&nbsp;</strong>
-											Gary38
-											·
-										</li>
+								<div class='f-10 project'>
+									<a href=<?php echo 'design.php?id='.$proposal['designID']; ?>>
+										<img src=<?php echo THUMBNAIL_URL.$proposal['designID'].'.png';?> style='background-color: #3e4b71'>
+									</a>
+									<div class='project-info'>
+										<h3>
+											<a href=<?php echo 'design.php?id='.$proposal['designID']; ?>><?php echo $proposal['name']; ?><span class='icon'>&nbsp;]</span></a>
+										</h3>
+										<div class='project-meta'>
+											<ul>
+												<li>
+													<strong>Author&nbsp;</strong>
+													<?php echo $proposal['user']; ?>
+													·
+												</li>
 
-										<li>
-											<strong>Last&nbsp;Update</strong>
-											7 months ago
-											·
-										</li>
-										<li>
-											<span class='comment'>
-												<a href=''>
-													<span class='count'>
-														0
+												<li>
+													<strong>Last&nbsp;Update</strong>
+													<?php echo $proposal['date']; ?>
+													·
+												</li>
+												<li>
+													<span class='comment'>
+														<a href=''>
+															<span class='count'>
+																0
+															</span>
+															comments,
+															<span class='count'>
+																0
+															</span>
+															likes
+
+														</a>
 													</span>
-													comments,
-													<span class='count'>
-														0
-													</span>
-													likes
+													·
+												</li>
+												<li>
+													<strong>ID:</strong>
+													<?php echo $proposal['designID']; ?>
+												</li>
+											</ul>
+										</div>
+										<div class='project-description'><?php echo $proposal['description']; ?></div>
 
-												</a>
-											</span>
-											·
-										</li>
-										<li>
-											<strong>ID:</strong>
-											2404
-										</li>
-										<li class='dev-hidden'>
-											<input id="proposal_238_featured" name="proposal[238][featured]" size="30" style="width: 15px;" type="text" value="10" />
-										</li>
-									</ul>
-								</div>
-								<div class='project-description'>
-									A concept for a new high line promenade for downtown Brooklyn: above the Tillary Street median from MetroTech plaza to Cadman plaza east, then connecting north to the Brooklyn Bridge boardwalk and west over Cadman Plaza west to Brooklyn Heights.
+									</div>
 								</div>
 
 							</div>
-						</div>
+							<div class='projects'>
+							<?php
+						}
+						else{
+							?>
+							<div class='f-9 project'>
+								<a href=<?php echo 'design.php?id='.$proposal['designID']; ?>>
+									<img src=<?php echo THUMBNAIL_URL.$proposal['designID'].'.png';?> style='background-color: #3e4b71'>
+								</a>
+								<div class='project-info'>
+									<h3>
+										<a href=<?php echo 'design.php?id='.$proposal['designID']; ?>><?php echo $proposal['name']; ?><span class='icon'>&nbsp;]</span></a>
+									</h3>
+									<div class='project-meta'>
+										<ul>
+											<li>
+												<strong>Author&nbsp;</strong>
+												<?php echo $proposal['user']; ?>
+												·
+											</li>
 
+											<li>
+												<strong>Last&nbsp;Update</strong>
+												<?php echo $proposal['date']; ?>
+												·
+											</li>
+											<li>
+												<span class='comment'>
+													<a href=''>
+														<span class='count'>
+															0
+														</span>
+														comments,
+														<span class='count'>
+															0
+														</span>
+														likes
+
+													</a>
+												</span>
+												·
+											</li>
+											<li>
+												<strong>ID:</strong>
+												<?php echo $proposal['designID']; ?>
+											</li>
+										</ul>
+									</div>
+									<div class='project-description'><?php echo $proposal['description']; ?></div>
+								</div>
+							</div>
+							<?php
+						}
+						
+						
+					}
+					
+					?>
 					</div>
-					<div class='projects'>
-						<div class='f-9 project'>
-							<a href='/proposals/57'>
-								<img src='http://betaville.net/designthumbs/835.png' style='background-color: #e4dbb7'>
-							</a>
-							<div class='project-info'>
-								<h3>
-									<a href='/proposals/57'>Bridge Pods V1<span class='icon'>&nbsp;]</span></a>
-								</h3>
-								<div class='project-meta'>
-									<ul>
-
-										<li>
-											<strong>Author&nbsp;</strong>
-											scandgolden24
-											·
-										</li>
-										<li>
-											<strong>Last&nbsp;Update</strong>
-											11 months ago
-											·
-										</li>
-										<li>
-											<span class='comment'>
-												<a href=''>
-													<span class='count'>
-														4
-													</span>
-
-													comments,
-													<span class='count'>
-														3
-													</span>
-													likes
-												</a>
-											</span>
-											·
-										</li>
-										<li>
-											<strong>ID:</strong>
-											835
-										</li>
-										<li class='dev-hidden'>
-											<input id="proposal_57_featured" name="proposal[57][featured]" size="30" style="width: 15px;" type="text" value="9" />
-										</li>
-
-									</ul>
-								</div>
-								<div class='project-description'>
-									Bridge Pods attempt to minimize city congestion by allowing public parking between Manhattan and Jersey City
-								</div>
-							</div>
-						</div>
-
-						<div class='f-9 project'>
-							<a href='/proposals/75'>
-								<img src='http://betaville.net/designthumbs/1170.png' style='background-color: #383838'>
-							</a>
-							<div class='project-info'>
-								<h3>
-									<a href='/proposals/75'>Verde Tower<span class='icon'>&nbsp;]</span></a>
-
-								</h3>
-								<div class='project-meta'>
-									<ul>
-										<li>
-											<strong>Author&nbsp;</strong>
-											gary38
-											·
-										</li>
-										<li>
-											<strong>Last&nbsp;Update</strong>
-											11 months ago
-											·
-										</li>
-										<li>
-											<span class='comment'>
-												<a href=''>
-
-													<span class='count'>
-														2
-													</span>
-													comments,
-													<span class='count'>
-														0
-													</span>
-													likes
-												</a>
-											</span>
-											·
-										</li>
-										<li>
-											<strong>ID:</strong>
-											1170
-										</li>
-
-										<li class='dev-hidden'>
-											<input id="proposal_75_featured" name="proposal[75][featured]" size="30" style="width: 15px;" type="text" value="9" />
-										</li>
-									</ul>
-								</div>
-								<div class='project-description'>
-									First Dynamic Architectural Tower. External Wall Carries all the building's load and becomes a live wall for growing vegetation. The interior structure of the building rotates 360 degree for view of entire water front of lower Manhattan
-								</div>
-							</div>
-						</div>
-
-						<div class='f-9 project'>
-							<a href='/proposals/96'>
-								<img src='http://betaville.net/designthumbs/1384.png' style='background-color: #8e5644'>
-							</a>
-							<div class='project-info'>
-								<h3>
-
-									<a href='/proposals/96'>Aqua Pods<span class='icon'>&nbsp;]</span></a>
-								</h3>
-								<div class='project-meta'>
-									<ul>
-										<li>
-											<strong>Author&nbsp;</strong>
-											scandgolden24
-											·
-										</li>
-										<li>
-											<strong>Last&nbsp;Update</strong>
-											10 months ago
-											·
-										</li>
-
-										<li>
-											<span class='comment'>
-												<a href=''>
-													<span class='count'>
-														0
-													</span>
-													comments,
-													<span class='count'>
-														0
-													</span>
-													likes
-												</a>
-											</span>
-											·
-										</li>
-										<li>
-											<strong>ID:</strong>
-
-											1384
-										</li>
-										<li class='dev-hidden'>
-											<input id="proposal_96_featured" name="proposal[96][featured]" size="30" style="width: 15px;" type="text" value="9" />
-										</li>
-									</ul>
-								</div>
-								<div class='project-description'>
-									Self-supporting mixed use development. Reducing traffic flow into adjacent cities. Cars park underneath the arch strucures leading to the project. Dome structure (TBD) will house residents.
-								</div>
-							</div>
-						</div>
-
-						<div class='f-8 project'>
-							<a href='/proposals/220'>
-								<img src='http://betaville.net/designthumbs/2364.png' style='background-color: #3e4b71'>
-							</a>
-
-							<div class='project-info'>
-								<h3>
-									<a href='/proposals/220'>Cadman Botanical<span class='icon'>&nbsp;]</span></a>
-								</h3>
-								<div class='project-meta'>
-									<ul>
-										<li>
-											<strong>Author&nbsp;</strong>
-											scandgolden24
-											·
-										</li>
-										<li>
-											<strong>Last&nbsp;Update</strong>
-
-											7 months ago
-											·
-										</li>
-										<li>
-											<span class='comment'>
-												<a href=''>
-													<span class='count'>
-														1
-													</span>
-													comments,
-													<span class='count'>
-														0
-													</span>
-													likes
-												</a>
-											</span>
-											·
-										</li>
-
-										<li>
-											<strong>ID:</strong>
-											2364
-										</li>
-										<li class='dev-hidden'>
-											<input id="proposal_220_featured" name="proposal[220][featured]" size="30" style="width: 15px;" type="text" value="8" />
-										</li>
-									</ul>
-								</div>
-								<div class='project-description'>
-
-								</div>
-							</div>
-						</div>
-
-						<div class='f-7 project'>
-
-							<a href='/proposals/257'>
-								<img src='http://betaville.net/designthumbs/2761.png' style='background-color: #383838'>
-							</a>
-							<div class='project-info'>
-								<h3>
-									<a href='/proposals/257'>Cadman Bridge<span class='icon'>&nbsp;]</span></a>
-								</h3>
-								<div class='project-meta'>
-									<ul>
-										<li>
-											<strong>Author&nbsp;</strong>
-											scandgolden24
-											·
-										</li>
-										<li>
-
-											<strong>Last&nbsp;Update</strong>
-											5 months ago
-											·
-										</li>
-										<li>
-											<span class='comment'>
-												<a href=''>
-													<span class='count'>
-														0
-													</span>
-													comments,
-													<span class='count'>
-														0
-													</span>
-													likes
-												</a>
-
-											</span>
-											·
-										</li>
-										<li>
-											<strong>ID:</strong>
-											2761
-										</li>
-										<li class='dev-hidden'>
-											<input id="proposal_257_featured" name="proposal[257][featured]" size="30" style="width: 15px;" type="text" value="7" />
-										</li>
-									</ul>
-								</div>
-								<div class='project-description'>
-
-								</div>
-							</div>
-
-						</div>
-
-						<div class='f-7 project'>
-							<a href='/proposals/26'>
-								<img src='http://betaville.net/designthumbs/533.png' style='background-color: #8e5644'>
-							</a>
-							<div class='project-info'>
-								<h3>
-									<a href='/proposals/26'>Time Landscape<span class='icon'>&nbsp;]</span></a>
-								</h3>
-								<div class='project-meta'>
-									<ul>
-										<li>
-											<strong>Author&nbsp;</strong>
-
-											scandgolden24
-											·
-										</li>
-										<li>
-											<strong>Last&nbsp;Update</strong>
-											about 1 year ago
-											·
-										</li>
-										<li>
-											<span class='comment'>
-												<a href=''>
-													<span class='count'>
-														4
-													</span>
-													comments,
-													<span class='count'>
-														2
-
-													</span>
-													likes
-												</a>
-											</span>
-											·
-										</li>
-										<li>
-											<strong>ID:</strong>
-											533
-										</li>
-										<li class='dev-hidden'>
-											<input id="proposal_26_featured" name="proposal[26][featured]" size="30" style="width: 15px;" type="text" value="7" />
-										</li>
-									</ul>
-								</div>
-								<div class='project-description'>
-
-									By Alan Sonfist: a corner replanted with indiginenous species in the 1970's [documentary research by Diane Ludin]
-								</div>
-							</div>
-						</div>
-
-					</div>
+					
+					
 				</div>
 				<aside>
 					<?php include('latest-activity.php'); ?>
-			<div class='activity-section'>
-				<h2>Twitter</h2>
-				<script src="http://widgets.twimg.com/j/2/widget.js"></script>
-				<script>
-				new TWTR.Widget({
-					version: 2,
-					type: 'profile',
-					rpp: 4,
-					interval: 6000,
-					width: 'auto',
-					height: 300,
-					theme: {
-						shell: {
-							background: '#ffffff',
-							color: '#000000'
-						},
-						tweets: {
-							background: '#ffffff',
-							color: '#7d7b7d',
-							links: '#000000'
-						}
-					},
-					features: {
-						scrollbar: false,
-						loop: false,
-						live: true,
-						hashtags: true,
-						timestamp: true,
-						avatars: false,
-						behavior: 'all'
-					}
-					}).render().setUser('betavillebxmc').start();
-					</script>
+					<div class='activity-section'>
+						<h2>Twitter</h2>
+						<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+						<script>
+						new TWTR.Widget({
+							version: 2,
+							type: 'profile',
+							rpp: 4,
+							interval: 6000,
+							width: 'auto',
+							height: 300,
+							theme: {
+								shell: {
+									background: '#ffffff',
+									color: '#000000'
+								},
+								tweets: {
+									background: '#ffffff',
+									color: '#7d7b7d',
+									links: '#000000'
+								}
+							},
+							features: {
+								scrollbar: false,
+								loop: false,
+								live: true,
+								hashtags: true,
+								timestamp: true,
+								avatars: false,
+								behavior: 'all'
+							}
+							}).render().setUser('betavillebxmc').start();
+							</script>
+						</div>
+					</aside>
 				</div>
-			</aside>
+			</div>
+			<?php include('footer.php'); ?>
 		</div>
-	</div>
-	<?php include('footer.php'); ?>
-</div>
-</body>
-</html>
+	</body>
+	</html>
 
