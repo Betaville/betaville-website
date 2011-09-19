@@ -1,4 +1,3 @@
-
 <!doctype html> 
 <html> 
 <head> 
@@ -68,7 +67,7 @@
 						<a href=''>Hochschule Bremen.</a> 
 					</p> 
 					<h1 id='partners'>Partners</h1> 
-					<p>Partners include the Municipal Art Society of New  York City, the Public Art Fund, the Museum of the Moving Image, and  Poly research faculty in the departments of Civil Engineering, Computer  Science, and Electrical and Computrer Engineering. We're happy to  announce that we also have the support of the Rockefeller Foundation,  through its Cultural Innovation Fund.</p> 
+					<p>Partners include the Municipal Art Society of New  York City, the Public Art Fund, the Museum of the Moving Image, and  Poly research faculty in the departments of Civil Engineering, Computer  Science, and Electrical and Computrer Engineering. We're happy to  announce that we also have the support of the Rockefeller Foundation,  through its Cultural Innovation Fund and also The Urban Studies Program of Columbia University along with Levien & Company, Inc.</p> 
 					<h1 id='team'>The Team</h1> 
 					<ul class='team'> 
 						<li> 
