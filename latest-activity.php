@@ -52,9 +52,9 @@ foreach($comments as $comment){
 </a>
 <div class='activity-body'>
 	<?php
-echo '<a href="design.php?id='.$design['designID'].'"><strong>'.$comment['user'].'</strong>';
+echo '<a href="design.php?id='.$commentDesign['designID'].'"><strong>'.$comment['user'].'</strong>';
 ?>
-commented on
+ commented on
 <strong><?php echo $commentDesign['name'] ?></strong>:
 <span class='content'><?php echo $comment['comment'] ?></span>
 </a>
