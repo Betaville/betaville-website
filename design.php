@@ -85,15 +85,15 @@ $comments = $commentOutput['comments'];
 				<div class='button-row'> 
 					<a class='uberbutton green' href='/betaville.jnlp'> 
 						Launch
-						<span class='icon i-play'>9</span> 
+						<span class='icon i-play'>►</span> 
 					</a> 
 					<a class='uberbutton' href=''> 
 						Like
-						<span class='icon'>k</span> 
+						<span class='icon'>♥</span> 
 					</a> 
 					<a class='uberbutton' href=''> 
 						Share
-						<span class='icon i-share'>G</span> 
+						<span class='icon i-share'>☀</span> 
 					</a> 
 				</div> 
 			</div> 
