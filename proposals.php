@@ -1,4 +1,3 @@
-
 <!doctype html> 
 <html> 
 <head>
@@ -48,7 +47,10 @@
 							</li> 
 							<li> 
 								<strong>Last&nbsp;Update</strong> 
-								<?php echo $design['date']; ?>
+								<?php 	// Calling include_once to prevent undeclared function name error.
+									include_once('betaville-functions.php');
+									$updatedtime = fd($design['date']);
+									timediff($updatedtime); ?>
 								·
 							</li> 
 							<li> 
