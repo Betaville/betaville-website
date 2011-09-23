@@ -44,7 +44,10 @@ $comments = $commentOutput['comments'];
 							<strong> 
 								Last&nbsp;Update
 							</strong> 
-							<?php echo $design['date']; ?>
+							<?php 		// instead of pulling the database field we pass the it to a function that returns a php date format and subtract it from the current time.
+									include('betaville-functions.php');
+									$updatedtime = fd($design['date']);
+									timediff($updatedtime); ?>
 							·
 						</li> 
 						<li> 
