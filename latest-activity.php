@@ -24,7 +24,11 @@ foreach($designs as $design){
 	echo '<strong>'.$design['name'].'</strong>:';
 	?>
 	<span class='content'><?php echo $design['description'] ?></span>
-</a><div class='activity-meta'><?php echo $design['date'] ?></div>
+</a><div class='activity-meta'><?php
+	include_once('betaville-functions.php');
+	$updatedtime = fd($design['date']);
+	timediff($updatedtime);
+?></div>
 </div>
 </div>
 
@@ -58,7 +62,11 @@ echo '<a href="design.php?id='.$commentDesign['designID'].'"><strong>'.$comment[
 <strong><?php echo $commentDesign['name'] ?></strong>:
 <span class='content'><?php echo $comment['comment'] ?></span>
 </a>
-<div class='activity-meta'><?php echo $comment['date'] ?></div>
+<div class='activity-meta'><?php
+	include_once('betaville-functions.php');
+	$updatedtime = fd($comment['date']);
+	timediff($updatedtime);
+?></div>
 </div>
 </div>
 <?php
