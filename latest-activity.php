@@ -2,7 +2,7 @@
 	<h2>Latest Activity</h2>
 
 	<?php
-include('config.php');
+include_once('config.php');
 
 // swap to request=proposals or request=versions
 $designRequest = SERVICE_URL.'?section=activity&request=designs&quantity=5';
@@ -63,7 +63,8 @@ echo '<a href="design.php?id='.$commentDesign['designID'].'"><strong>'.$comment[
 <span class='content'><?php echo $comment['comment'] ?></span>
 </a>
 <div class='activity-meta'><?php
-	include_once('betaville-functions.php');
+	//this is already called above as include_once, cannot call again
+	//include_once('betaville-functions.php');
 	$updatedtime = fd($comment['date']);
 	timediff($updatedtime);
 ?></div>
