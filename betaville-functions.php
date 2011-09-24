@@ -1,4 +1,3 @@
-
 <?php 
 //betaville-functions.php
 
@@ -26,9 +25,8 @@ function fd($value)
 function timediff($a) 
 
 			{
-
-			date_default_timezone_set('America/New_York');
-			$date = date("Y-m-d H:i:s",time()); 
+			//fetching current server time from getServerTime()
+			$date = fd(getServerTime());
 
 			$diff = abs(strtotime($date) - strtotime($a));
 	
