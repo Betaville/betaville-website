@@ -2,6 +2,15 @@
 <?php 
 //betaville-functions.php
 
+function getServerTime(){
+	include_once('config.php');
+	$timeRequest = SERVICE_URL.'?section=time&request=getformatted';
+	$timeJSON = file_get_contents($timeRequest,0,null,null);
+	$timeOutput = json_decode($timeJSON, true);
+	$time = $timeOutput['serverTime'];
+	return $time;
+}
+
 //this function takes a mysql datetime value and returns it in the proper php datetime format.
 function fd($value) 
 			{ 
