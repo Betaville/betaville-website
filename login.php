@@ -1,7 +1,7 @@
 <?php
-//ini_set('display_errors',1); 
-//error_reporting(E_ALL);
-include("../userAction.php");
+ini_set('display_errors',1); 
+error_reporting(E_ALL);
+include("userAction.php");
 if ( $_POST['user'] == "" || $_POST['user'] == NULL ) {
 	echo "Please enter a valid username <br />";
 }
@@ -13,5 +13,6 @@ if ( (!( $_POST['user'] == "" || $_POST['user'] == NULL )) &&  (!( $_POST['pass'
 }
 else {
 	echo "Welcome " . $_POST['user'] . "<br />";
+	echo $userActions->id;	
 }
 ?>
