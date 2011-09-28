@@ -7,12 +7,13 @@ if ( $_POST['user'] == "" || $_POST['user'] == NULL ) {
 }
 if ( $_POST['pass'] == "" || $_POST['pass'] == NULL ) {
 	echo "Please enter a valid password <br />";
+	exit();
 }
-if ( (!( $_POST['user'] == "" || $_POST['user'] == NULL )) &&  (!( $_POST['pass'] == "" || $_POST['pass'] == NULL )) && !($userActions->login($_POST['user'], $_POST['pass'])) && ( $userActions->isUsernameAvailable($_POST['user']) == '1' ) ){
+if ( !($userActions->login($_POST['user'], $_POST['pass'])) && ( $userActions->isUsernameAvailable($_POST['user']) == '1' ) ){
 	echo "Username or password is invalid, Please try again <br />";
+	exit();
 }
-else {
-	echo "Welcome " . $_POST['user'] . "<br />";
-	echo $userActions->id;	
+if ( isset($_SESSION['uid']) ) {
+	echo "Welcome " . $_POST['user'];
 }
 ?>
