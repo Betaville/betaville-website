@@ -87,7 +87,7 @@
 									$commentCount++;
 								}
 								?>
-								<a href=''> 
+								
 									<span class='count'> 
 										<?php echo $commentCount; ?>
 									</span> 
@@ -96,7 +96,7 @@
 										0
 									</span> 
 									likes
-								</a> 
+								
 							</span> 
 							·
 						</li> 
