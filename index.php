@@ -127,7 +127,8 @@
 													<span class='comment'>
 														
 															<span class='count'>
-																
+													<?php 	//Showing number of comments by using the webservice to fetch comments for designs on $proposal['designID'] ^_^
+													$commentCount = displayComments(SERVICE_URL.'?section=comment&request=getforid&id='.$proposal['designID']); ?>		
 															</span>
 															
 															<span class='count'>
@@ -184,7 +185,8 @@
 												<span class='comment'>
 													
 														<span class='count'>
-															
+												<?php 	//Showing number of comments by using the webservice to fetch comments for designs on $proposal['designID'] ^_^
+												$commentCount = displayComments(SERVICE_URL.'?section=comment&request=getforid&id='.$proposal['designID']); ?>
 														</span>
 														
 														<span class='count'>
