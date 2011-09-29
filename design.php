@@ -52,7 +52,7 @@ $comments = $commentOutput['comments'];
 						</li> 
 						<li> 
 							<span class='comment'> 
-								<a href=''> 
+								
 									<span class='count'>
 										<?php
 									// count the number of comments
@@ -68,7 +68,7 @@ $comments = $commentOutput['comments'];
 									0
 								</span> 
 								likes
-							</a> 
+							
 						</span> 
 					</li> 
 				</ul> 
