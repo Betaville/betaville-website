@@ -73,7 +73,7 @@ $comments = $commentOutput['comments'];
 					</li> 
 				</ul> 
 				<div class='button-row'> 
-					<a class='uberbutton green' href='/betaville.jnlp'> 
+					<a class='uberbutton green' href='/webstart/betaville.jnlp'> 
 						Launch
 						<span class='icon i-play'>►</span> 
 					</a> 
