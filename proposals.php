@@ -62,7 +62,7 @@
 							<li> 
 								<strong>Author&nbsp;</strong> 
 								<?php echo $design['user']; ?>
-								Â·
+								·
 							</li> 
 							<li> 
 								<strong>Last&nbsp;Update</strong> 
@@ -70,7 +70,7 @@
 									include_once('betaville-functions.php');
 									$updatedtime = fd($design['date']);
 									timediff($updatedtime); ?>
-								Â·
+								·
 							</li> 
 							<li> 
 								<span class='comment'> 
@@ -98,7 +98,7 @@
 									likes
 								</a> 
 							</span> 
-							Â·
+							·
 						</li> 
 						<li> 
 							<strong>ID:</strong> 
