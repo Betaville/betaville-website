@@ -1,6 +1,36 @@
 <?php 
 //betaville-functions.php
 
+
+//To get the number of comments for the design ID parameter passed
+function displayComments($commentRequest) {
+					
+		$commentJSON = file_get_contents($commentRequest,0,null,null);
+		$commentOutput = json_decode($commentJSON, true);
+		$comments = $commentOutput['comments'];
+		
+		$commentCount=0;
+
+		foreach($comments as $comment) {
+						$commentCount++;
+						}
+
+
+
+		if($commentCount==1) {
+		
+			echo $commentCount." comment 0 likes"; 
+				     }
+
+		else {
+
+			echo $commentCount." comments 0 likes";
+
+		}
+
+
+}
+
 function getServerTime(){
 	include_once('config.php');
 	$timeRequest = SERVICE_URL.'?section=time&request=getformatted';
