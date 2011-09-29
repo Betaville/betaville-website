@@ -125,17 +125,17 @@
 												</li>
 												<li>
 													<span class='comment'>
-														<a href=''>
+														
 															<span class='count'>
-																0
+																
 															</span>
-															comments,
+															
 															<span class='count'>
-																0
+																
 															</span>
-															likes
+															
 
-														</a>
+														
 													</span>
 													·
 												</li>
@@ -182,17 +182,17 @@
 											</li>
 											<li>
 												<span class='comment'>
-													<a href=''>
+													
 														<span class='count'>
-															0
+															
 														</span>
-														comments,
+														
 														<span class='count'>
-															0
+															
 														</span>
-														likes
+														
 
-													</a>
+													
 												</span>
 												·
 											</li>
