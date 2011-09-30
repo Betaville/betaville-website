@@ -38,7 +38,7 @@
 			$pages = $pages + $extrapage;
 			
 			$counter=0;
-			for($i=$currentPage*10-10;$i<=$pcount;$i++){
+			for($i=$currentPage*10-10;$i<=$pcount-1;$i++){
 				$design =  $designs[$i];
 				$counter++;
 				?>
@@ -50,9 +50,6 @@
 				?>
 
 
-
-
-
 				<div class='project-info'> 
 					<h3> 
 						<?php echo '<a href="design.php?id='.$design['designID'].'">'.$design['name'].'<span class=\'icon\'>&nbsp;]</span></a>'; ?>
@@ -62,7 +59,7 @@
 							<li> 
 								<strong>Author&nbsp;</strong> 
 								<?php echo $design['user']; ?>
-								·
+								Â·
 							</li> 
 							<li> 
 								<strong>Last&nbsp;Update</strong> 
@@ -70,7 +67,7 @@
 									include_once('betaville-functions.php');
 									$updatedtime = fd($design['date']);
 									timediff($updatedtime); ?>
-								·
+								Â·
 							</li> 
 							<li> 
 								<span class='comment'> 
@@ -97,8 +94,8 @@
 									</span> 
 									likes
 								
-							</span> 
-							·
+								</span> 
+								Â·
 						</li> 
 						<li> 
 							<strong>ID:</strong> 
@@ -114,7 +111,7 @@
 			</div>
 			<?php
 			
-				if ($counter>=10)				//This logic at the end of the for loop so as to not wait for 
+				if ($counter>=10)				//This logic is at the end of the for loop so as to not wait for 
 					break;					//$counter to increment to 11 and then break out of the loop!
 			}
 			
