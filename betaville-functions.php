@@ -1,6 +1,21 @@
 <?php 
 //betaville-functions.php
 
+//Checking if the image exists on server
+function checkimage($a) {
+
+		if (@GetImageSize($a))	{
+				
+				return $a;
+					}
+
+		else	{
+  				$a = $a.'sorry.gif';
+				return $a;
+				
+			}	
+}
+
 
 //To get the number of comments for the design ID parameter passed
 function displayComments($commentRequest) {
