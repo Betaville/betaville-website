@@ -101,7 +101,10 @@
 
 								<div class='f-10 project'>
 									<a href=<?php echo 'design.php?id='.$proposal['designID']; ?>>
-										<img src=<?php echo THUMBNAIL_URL.$proposal['designID'].'.png';?> style='background-color: #3e4b71'>
+										<?php
+										//Check if image exists on server
+										$image = checkimage(THUMBNAIL_URL.$proposal['designID'].'.png'); ?>
+										<img src=<?php echo $image;?> style='background-color: #3e4b71'>
 									</a>
 									<div class='project-info'>
 										<h3>
@@ -159,7 +162,11 @@
 							?>
 							<div class='f-9 project'>
 								<a href=<?php echo 'design.php?id='.$proposal['designID']; ?>>
-									<img src=<?php echo THUMBNAIL_URL.$proposal['designID'].'.png';?> style='background-color: #3e4b71'>
+								<?php
+																			
+									//Check if image exists
+									$image = checkimage(THUMBNAIL_URL.$proposal['designID'].'.png'); ?>
+									<img src=<?php echo $image;?> style='background-color: #3e4b71'>
 								</a>
 								<div class='project-info'>
 									<h3>
