@@ -1,7 +1,9 @@
 <!doctype html> 
 <html> 
 <head>
-	<?php include('head.php'); ?>
+	<?php include('head.php');
+	      include_once('betaville-functions.php');
+	 ?>
 </head> 
 <body> 
 	<div class='master-container'> 
@@ -13,7 +15,7 @@
 			<div class='projects'>
 
 				<?php
-			include('config.php');
+			include_once('config.php');
 
 			// swap to request=proposals or request=versions
 			$designRequest = SERVICE_URL.'?section=activity&request=proposals';
@@ -44,11 +46,13 @@
 				?>
 
 				<div class='f-1 project'>
-					<?php
-				echo "<a href='design.php?id=".$design['designID']."'>\n";
-				echo "<img src='".THUMBNAIL_URL.$design['designID'].".png' style='background-color: #383838'></a>";
-				?>
-
+				<a href='design.php?id=".$design['designID']."'>
+				<?php
+				//Check if image exists on server
+				$image = checkimage(THUMBNAIL_URL.$design['designID'].'.png');
+				echo "<a href='design.php?id=".$design['designID']."'>\n"; ?>
+				<img src=<?php echo $image;?> style='background-color: #3e4b71'>
+				
 
 				<div class='project-info'> 
 					<h3> 
