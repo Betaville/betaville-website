@@ -36,7 +36,7 @@
 								<br>
 								<span>Futuristic</span>
 							</div>
-							<a class='carousel-learn-more' href='/what-is-betaville'>Learn more »</a>
+							<a class='carousel-learn-more' href='what-is-betaville.php'>Learn more »</a>
 						</li>
 						<li class='carousel-opensource'>
 
@@ -45,7 +45,7 @@
 								<br>
 								<span>Open Source</span>
 							</div>
-							<a class='carousel-learn-more' href='/contribute'>Learn more »</a>
+							<a class='carousel-learn-more' href='contribute.php'>Learn more »</a>
 						</li>
 						<li class='carousel-participatory'>
 							<div class='carousel-text'>
@@ -53,7 +53,7 @@
 								<br>
 								<span>Participatory</span>
 							</div>
-							<a class='carousel-learn-more' href='/contribute'>Learn more »</a>
+							<a class='carousel-learn-more' href='contribute.php'>Learn more »</a>
 						</li>
 						<li class='carousel-publicart'>
 							<div class='carousel-text'>
@@ -61,15 +61,15 @@
 								<br>
 								<span>Public art</span>
 							</div>
-							<a class='carousel-learn-more' href='/what-is-betaville'>Learn more »</a>
+							<a class='carousel-learn-more' href='what-is-betaville.php'>Learn more »</a>
 						</li>
 					</ul>
 
 					<div class='carousel-nav' id='tagline-carousel-nav'>
-						<a href='#'></a>
-						<a href='#'></a>
-						<a href='#'></a>
-						<a href='#'></a>
+						<a href=''></a>
+						<a href=''></a>
+						<a href=''></a>
+						<a href=''></a>
 						<div class='active'></div>
 					</div>
 				</div>
