@@ -56,7 +56,7 @@ foreach($comments as $comment){
 	<?php
 	//Check if image exists on server
 	$image = checkimage(THUMBNAIL_URL.$commentDesign['designID'].'.png'); 
-	echo "<a href='design.php?id=".$design['designID']."'>\n"; ?>
+	echo "<a href='design.php?id=".$commentDesign['designID']."'>\n"; ?>
 	<img src=<?php echo $image;?> style='background-color: #3e4b71'>
 </a>
 <div class='activity-body'>
