@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include("userAction.php");
+	//include("userAction.php");
 	if (!isset($_SESSION['uid'])) {
 ?>
 <script type="text/javascript" >
