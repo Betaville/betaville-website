@@ -121,7 +121,6 @@
 												<li>
 													<strong>Last&nbsp;Update</strong>
 													<?php 	//echo $proposal['date']; Leaving code open if changes dont have to be made
-														include_once('betaville-functions.php');
 														$updatedtime = fd($proposal['date']);
 														timediff($updatedtime); ?>
 													·
@@ -183,7 +182,6 @@
 											<li>
 												<strong>Last&nbsp;Update</strong>
 												<?php 	//echo $proposal['date']; Leaving code open if changes dont want to be made 
-													include_once('betaville-functions.php');
 													$updatedtime = fd($proposal['date']);
 													timediff($updatedtime); ?>
 												·
