@@ -127,7 +127,11 @@ $comments = $commentOutput['comments'];
 	</div> 
 </div> 
 <aside>
-	<?php echo "<img src='".THUMBNAIL_URL.$designID.".png'>" ?>
+	<?php
+	//Check if image exists on server
+				$image = checkimage(THUMBNAIL_URL.$design['designID'].'.png');
+				echo "<a href='design.php?id=".$design['designID']."'>\n"; ?>
+				<img src=<?php echo $image;?> style='background-color: #3e4b71'>
 </aside> 
 </div> 
 
