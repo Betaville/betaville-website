@@ -1,7 +1,24 @@
 <!doctype html> 
 <html> 
-<head>
-	<?php include('head.php'); ?>
+<head> 
+	<title>Betaville</title> 
+	<link href='stylesheets/reset.css' rel='stylesheet'> 
+	<link href='stylesheets/screen.css' rel='stylesheet'>
+    <link href='stylesheets/List.css' rel='stylesheet'>
+	<script src='js/jquery-1.4.2.min.js'></script> 
+	<script src='js/jquery.jcarousel.min.js'></script> 
+	<script src='js/betaville.home.js'></script> 
+	<script src='js/jquery.easing.1.3.js'></script> 
+	<script src='fancybox/jquery.mousewheel-3.0.4.pack.js' type='text/javascript'></script> 
+	<script src='fancybox/jquery.fancybox-1.3.4.pack.js' type='text/javascript'></script> 
+	<link href='fancybox/jquery.fancybox-1.3.4.css' media='screen' rel='stylesheet' type='text/css'> 
+	<meta content='text/html;charset=utf-8' http-equiv='Content-Type'> 
+	<meta name="csrf-param" content="authenticity_token"/> 
+	<meta name="csrf-token" content="kg1Klytrjq1CyeFy3G1cujAERmXA69mxelZXrv9FcFc="/> 
+	
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+	
+	
 </head> 
 <body> 
 	<div class='master-container'>
@@ -55,57 +72,48 @@
 					</p> 
 					<h1 id='partners'>Partners</h1> 
 					<p>Partners include the Municipal Art Society of New  York City, the Public Art Fund, the Museum of the Moving Image, and  Poly research faculty in the departments of Civil Engineering, Computer  Science, and Electrical and Computrer Engineering. We're happy to  announce that we also have the support of the Rockefeller Foundation,  through its Cultural Innovation Fund and also The Urban Studies Program of Columbia University along with Levien & Company, Inc.</p> 
-					<h1 id='team'>The Team</h1> 
-					<ul class='team'> 
-						<li> 
-							<strong>Director</strong> 
-							Carl Skelton
-						</li> 
-						<li> 
-							<strong>Lead Developer</strong> 
-							Skye Book
-						</li> 
-						<li> 
-							<strong>Developer</strong> 
-							Caroline Bouchat
-						</li> 
-						<li> 
-							<strong>Architect</strong> 
-							Levis Reyes
-						</li> 
-						<li> 
-							<strong>UI Design</strong> 
-							Cemre Gungor
-						</li> 
-						<li> 
-							<strong>Website Design</strong> 
-							Cemre Gungor
-						</li> 
-						<li> 
-							<strong>Quality Assurance</strong> 
-							Ibrahim Jumkhawala, Mithilesh Ramaswamy
-						</li> 
-						<li> 
-							<strong>Sound Design</strong> 
-							Joseph Fattorini, Andres Pang
-						</li> 
-						<li> 
-							<strong>3D Modelling</strong> 
-							Ashwin Ramesh, Arunram Kalaiselvan, Sreshta Suresh
-						</li> 
-						<li> 
-							<strong>Comp Sci Researcher in Residence</strong> 
-							Joel Wein
-						</li> 
-						<li> 
-							<strong>3-D Researcher in Residence</strong> 
-							Mark Skwarek
-						</li> 
-						<li> 
-							<strong>Scientist in Residence</strong> 
-							Martin Koplin
-						</li> 
-					</ul> 
+					<h1 id='team'>The Team</h1>
+                    
+                    <ul id="menu">
+                        <li class="folder">
+                        	<a href="#" class="submenu"> Director </a>
+                            <ul>
+                                <li> Carl Skelton </li>
+                            </ul>
+                        </li>		
+                        <li class="folder">			
+                            <a href="#" class="submenu"> Development Team </a>
+                            <ul>
+                                <li> Skye Book (Lead Developer) </li>
+                                <li> Caroline Bouchat (Developer)</li>
+                                <li> Ibrahim Jumkhawala (QA)</li>
+                                <li> Mithilesh Ramaswamy (QA)</li>
+                               
+                            </ul>
+                        </li>
+                        <li class="folder">
+                            <a href="#" class="submenu"> Design Team</a>
+                            <ul>
+                                <li> Cemre Gungor (UI, Website)</li>
+                                <li> Levis Reyes (Architect) </li>
+                                <li> Joseph Fattorini (Sound)</li>
+                                <li> Andres Pang (Sound)</li>
+                                <li> Ashwin Ramesh (3D)</li>
+                                <li> Arunram Kalaiselvan (3D)</li>
+                                <li> Sreshta Suresh (3D)</li>
+                            </ul>
+                        </li>
+                      <li class="folder">
+                            <a href="#" class="submenu"> Research Team</a>
+                            <ul>
+                                <li> Joel Wein (Comp Sci Researcher)</li>
+                                <li> Mark Skwarek (3-D Researcher)</li>
+                                <li> Martin Koplin (Scientist in Residence)</li>
+                            </ul>
+                      </li>
+                      
+                    </ul>
+
 				</div> 
 			</div> 
 		</div> 
