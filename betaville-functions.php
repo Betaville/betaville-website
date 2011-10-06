@@ -10,7 +10,7 @@ function checkimage($a) {
 					}
 
 		else	{
-  				$a = 'sorry.gif';
+  				$a = 'images/sorry.gif';
 				return $a;
 				
 			}	
