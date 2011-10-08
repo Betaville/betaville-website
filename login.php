@@ -16,12 +16,6 @@ if ( ( $userAuth == '1' ) || !($loginAuth)  ){
 	exit();
 }
 else {
-	session_start();
-	$_SESSION['uid'] = sha1();
-		//$_SESSION['uid'] = the database value
-	$_SESSION['username'] = $_POST['user'];
-	$_SESSION['hashpass'] = $_POST['pass'];
-	$_SESSION['logged'] = true;
 	echo "Welcome " . $_POST['user'];
 }
 ?>
