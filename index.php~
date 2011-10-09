@@ -1,6 +1,6 @@
 <?php
-//ini_set('display_errors',2); 
-//error_reporting(E_ALL);
+ini_set('display_errors',2); 
+error_reporting(E_ALL);
 ?>
 <!doctype html>
 <html>
@@ -247,7 +247,7 @@ likes
    											var error3 = error+error1;
    											//alert(mypostrequest.responseText);
    											if ( mypostrequest.responseText != error && mypostrequest.responseText != error3 && mypostrequest.responseText != error2 ){
-													window.location = "http://localhost/betaville-website/profile.php";
+													//window.location = "http://localhost/betaville-website/profile.php";
 												}
 												else 
 													document.getElementById("myDiv").style.display="block";

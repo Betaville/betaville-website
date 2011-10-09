@@ -16,8 +16,8 @@
 			//include("userAction.php");
 			//isset($_COOKIE["user"]) && isset($_COOKIE["pass"]) && $userActions->login($_COOKIE["user"], $_COOKIE["pass"],false)
 			//echo $_COOKIE['user'];
-			if ( isset($_SESSION['uid']) ) {
-			?> -->
+			if ( isset($_SESSION['logged']) && $_SESSION['logged'] == true ) {
+			?>
 			<?php echo $_SESSION['username']; ?><input type="button" id="button" value="Log Out" onclick="location.href='logout.php';">
 			<?php
 			}
