@@ -265,7 +265,7 @@ likes
 									mypostrequest.send(parameters)
 								}
 							</script>
-						<?php	if ( !isset($_SESSION['uid'])) { ?>
+						<?php	if ( !isset($_SESSION['logged'])) { ?>
 						<div class="Login-section" id="form" style="display:block">
 							<h2> Login </h2>
 							<div id="myDiv" style="display:none"><h2></h2></div>
