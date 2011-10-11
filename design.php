@@ -44,12 +44,16 @@ $comments = $commentOutput['comments'];
 							<strong> 
 								Last&nbsp;Update
 							</strong> 
-							<?php echo $design['date']; ?>
+							<?php 	
+									// instead of pulling the database field we pass the it to a function that returns a php date format and subtract it from the current time.
+									$updatedtime = fd($design['date']);
+									timediff($updatedtime);
+							?>
 							·
 						</li> 
 						<li> 
 							<span class='comment'> 
-								<a href=''> 
+								
 									<span class='count'>
 										<?php
 									// count the number of comments
@@ -65,12 +69,12 @@ $comments = $commentOutput['comments'];
 									0
 								</span> 
 								likes
-							</a> 
+							
 						</span> 
 					</li> 
 				</ul> 
 				<div class='button-row'> 
-					<a class='uberbutton green' href='/betaville.jnlp'> 
+					<a class='uberbutton green' href='/webstart/betaville.jnlp'> 
 						Launch
 						<span class='icon i-play'>►</span> 
 					</a> 
@@ -123,7 +127,11 @@ $comments = $commentOutput['comments'];
 	</div> 
 </div> 
 <aside>
-	<?php echo "<img src='".THUMBNAIL_URL.$designID.".png'>" ?>
+	<?php
+	//Check if image exists on server
+				$image = checkimage(THUMBNAIL_URL.$design['designID'].'.png');
+				echo "<a href='design.php?id=".$design['designID']."'>\n"; ?>
+				<img src=<?php echo $image;?> style='background-color: #3e4b71'>
 </aside> 
 </div> 
 

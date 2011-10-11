@@ -1,8 +1,9 @@
-
 <!doctype html> 
 <html> 
 <head>
-	<?php include('head.php'); ?>
+	<?php include('head.php');
+	      include_once('betaville-functions.php');
+	 ?>
 </head> 
 <body> 
 	<div class='master-container'> 
@@ -14,26 +15,44 @@
 			<div class='projects'>
 
 				<?php
-			include('config.php');
+			include_once('config.php');
 
 			// swap to request=proposals or request=versions
-			$designRequest = SERVICE_URL.'?section=activity&request=proposals&quantity=10';
+			$designRequest = SERVICE_URL.'?section=activity&request=proposals';
 			$designJSON = file_get_contents($designRequest,0,null,null);
 			$designOutput = json_decode($designJSON, true);
 			$designs = $designOutput['designs'];
 
-			foreach($designs as $design){
+			/*The idea is to determine a count of the no of proposals($pcount), calc the no of pages($pages), display page numbers 
+			at the bottom(along with their hyperlinks) and display only those 10 proposals of that particular page by passing the PageNo to be loaded.*/
+			
+			if(isset($_GET["page"]))
+				$currentPage = $_GET["page"];
+			else
+				$currentPage=1;
+			
+			/*Determine the proposal count*/
+			$pcount = count($designs);
+			
+			/*Calculates the total number of pages required*/
+			$pages = $pcount/10;
+			$extrapage = $pcount%10>0?1:0;
+			$pages = $pages + $extrapage;
+			
+			$counter=0;
+			for($i=$currentPage*10-10;$i<=$pcount-1;$i++){
+				$design =  $designs[$i];
+				$counter++;
 				?>
 
 				<div class='f-1 project'>
-					<?php
-				echo "<a href='design.php?id=".$design['designID']."'>\n";
-				echo "<img src='".THUMBNAIL_URL.$design['designID'].".png' style='background-color: #383838'></a>";
-				?>
-
-
-
-
+				<a href='design.php?id=".$design['designID']."'>
+				<?php
+				//Check if image exists on server
+				$image = checkimage(THUMBNAIL_URL.$design['designID'].'.png');
+				echo "<a href='design.php?id=".$design['designID']."'>\n"; ?>
+				<img src=<?php echo $image;?> style='background-color: #3e4b71'>
+				
 
 				<div class='project-info'> 
 					<h3> 
@@ -48,7 +67,10 @@
 							</li> 
 							<li> 
 								<strong>Last&nbsp;Update</strong> 
-								<?php echo $design['date']; ?>
+								<?php 	// Calling include_once to prevent undeclared function name error.
+									include_once('betaville-functions.php');
+									$updatedtime = fd($design['date']);
+									timediff($updatedtime); ?>
 								·
 							</li> 
 							<li> 
@@ -66,7 +88,7 @@
 									$commentCount++;
 								}
 								?>
-								<a href=''> 
+								
 									<span class='count'> 
 										<?php echo $commentCount; ?>
 									</span> 
@@ -75,9 +97,9 @@
 										0
 									</span> 
 									likes
-								</a> 
-							</span> 
-							·
+								
+								</span> 
+								·
 						</li> 
 						<li> 
 							<strong>ID:</strong> 
@@ -92,13 +114,24 @@
 			</div> 
 			</div>
 			<?php
-	}
-	?>
-
-
-
-
-</div> 
+			
+				if ($counter>=10)				//This logic is at the end of the for loop so as to not wait for 
+					break;					//$counter to increment to 11 and then break out of the loop!
+			}
+			
+			//Display page numbers. And the current page doesn't bear a hyperlink
+			echo "<div align='center'>";	
+			for($i=1; $i<=$pages; $i++)	
+				if ($currentPage!=$i)
+				{
+				?>
+					<a href='./proposals.php?page=<?php echo $i;?>'><?php echo $i;?></a>
+				<?php
+				}
+				else
+				 	echo $i; ?>
+					</div>
+			</div> 
 <aside>
 	<?php include('latest-activity.php'); ?>
 </aside> 
