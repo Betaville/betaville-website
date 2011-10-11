@@ -1,5 +1,5 @@
 <?php
-ini_set('display_errors',2); 
+//ini_set('display_errors',2); 
 error_reporting(E_ALL);
 ?>
 <!doctype html>
