@@ -12,7 +12,7 @@
 			<li><a class='' href='contribute.php'>Contribute</a></li>
 			<li>
 			<?php 
-			ob_start("ob_gzhandler");
+			ob_start();
 			if ( !isset($_SESSION['logged']))
 				session_start();
 			//include("userAction.php");

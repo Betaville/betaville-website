@@ -5,12 +5,12 @@ error_reporting(E_ALL);
 <!doctype html>
 <html>
 <head>
-<?php include('head.php'); ?>
+<?php ob_start(); include('head.php'); ?>
 </head>
 
 <body>
 <div class='master-container'>
-<?php include('header.php'); ?>
+<?php ob_start(); include('header.php'); ?>
 <div class='tagline'>
 <div class='tagline-body'>
 <div class='tagline-close' onclick="$('.tagline').slideUp()">
