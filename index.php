@@ -1,12 +1,16 @@
+<?php
+//ini_set('display_errors',2); 
+error_reporting(E_ALL);
+?>
 <!doctype html>
 <html>
 <head>
-	<?php include('head.php'); ?>
+<?php ob_start(); include('head.php'); ?>
 </head>
 
 <body>
 	<div class='master-container'>
-		<?php include('header.php'); ?>
+		<?php ob_start(); include('header.php'); ?>
 		<div class='tagline'>
 			<div class='tagline-body'>
 				<div class='tagline-close' onclick="$('.tagline').slideUp()">
@@ -27,7 +31,6 @@
 						</div>
 					</div>
 				</div>
-
 				<div class='carousel'>
 					<ul id='tagline-carousel'>
 						<li class='carousel-futuristic'>
@@ -74,14 +77,11 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class='page-container'>
-			<div class='page-body container' id='home'>
-				<div class='project-container'>
-					<h2>Featured Projects</h2>
-					
-					
-					<?php
+			<div class='page-container'>
+				<div class='page-body container' id='home'>
+					<div class='project-container'>
+						<h2>Featured Projects</h2>
+						<?php
 					include('config.php');
 					// get the featured proposals
 					// swap to request=proposals or request=versions
@@ -89,12 +89,11 @@
 					$proposalJSON = file_get_contents($proposalRequest,0,null,null);
 					$proposalOutput = json_decode($proposalJSON, true);
 					$proposals = $proposalOutput['designs'];
-					
-					
+
 					for($i = 0; $i < sizeof($proposals); ++$i){
-						
+
 						$proposal = $proposals[$i];
-						
+
 						if($i==0){
 							?>
 							<div class='project-featured'>
@@ -121,149 +120,212 @@
 												<li>
 													<strong>Last&nbsp;Update</strong>
 													<?php 	//echo $proposal['date']; Leaving code open if changes dont have to be made
-														$updatedtime = fd($proposal['date']);
-														timediff($updatedtime); ?>
-													·
-												</li>
-												<li>
-													<span class='comment'>
-														
-															<span class='count'>
-													<?php 	//Showing number of comments by using the webservice to fetch comments for designs on $proposal['designID'] ^_^
-													$commentCount = displayComments(SERVICE_URL.'?section=comment&request=getforid&id='.$proposal['designID']); ?>		
-															</span>
-															
-															<span class='count'>
-																
-															</span>
-															
-
-														
-													</span>
-													·
-												</li>
-												<li>
-													<strong>ID:</strong>
-													<?php echo $proposal['designID']; ?>
-												</li>
-											</ul>
-										</div>
-										<div class='project-description'><?php echo $proposal['description']; ?></div>
-
-									</div>
-								</div>
-
-							</div>
-							<div class='projects'>
-							<?php
-						}
-						else{
-							?>
-							<div class='f-9 project'>
-								<a href=<?php echo 'design.php?id='.$proposal['designID']; ?>>
-								<?php
-																			
-									//Check if image exists
-									$image = checkimage(THUMBNAIL_URL.$proposal['designID'].'.png'); ?>
-									<img src=<?php echo $image;?> style='background-color: #3e4b71'>
-								</a>
-								<div class='project-info'>
-									<h3>
-										<a href=<?php echo 'design.php?id='.$proposal['designID']; ?>><?php echo $proposal['name']; ?><span class='icon'>&nbsp;]</span></a>
-									</h3>
-									<div class='project-meta'>
-										<ul>
-											<li>
-												<strong>Author&nbsp;</strong>
-												<?php echo $proposal['user']; ?>
-												·
-											</li>
-
-											<li>
-												<strong>Last&nbsp;Update</strong>
-												<?php 	//echo $proposal['date']; Leaving code open if changes dont want to be made 
-													$updatedtime = fd($proposal['date']);
-													timediff($updatedtime); ?>
+												$updatedtime = fd($proposal['date']);
+												timediff($updatedtime); ?>
 												·
 											</li>
 											<li>
 												<span class='comment'>
-													
-														<span class='count'>
-												<?php 	//Showing number of comments by using the webservice to fetch comments for designs on $proposal['designID'] ^_^
-												$commentCount = displayComments(SERVICE_URL.'?section=comment&request=getforid&id='.$proposal['designID']); ?>
-														</span>
-														
-														<span class='count'>
-															
-														</span>
-														
 
-													
+													<span class='count'>
+														<?php 	//Showing number of comments by using the webservice to fetch comments for designs on $proposal['designID'] ^_^
+													$commentCount = displayComments(SERVICE_URL.'?section=comment&request=getforid&id='.$proposal['designID']); ?>		
 												</span>
-												·
-											</li>
-											<li>
-												<strong>ID:</strong>
-												<?php echo $proposal['designID']; ?>
-											</li>
-										</ul>
-									</div>
-									<div class='project-description'><?php echo $proposal['description']; ?></div>
+
+												<span class='count'>
+
+												</span>
+
+
+
+											</span>
+											·
+										</li>
+										<li>
+											<strong>ID:</strong>
+											<?php echo $proposal['designID']; ?>
+										</li>
+									</ul>
 								</div>
+								<div class='project-description'><?php echo $proposal['description']; ?></div>
+
 							</div>
-							<?php
-						}
-						
-						
-					}
-					
-					?>
-					</div>
-					
-					
-				</div>
-				<aside>
-					<?php include('latest-activity.php'); ?>
-					<div class='activity-section'>
-						<h2>Twitter</h2>
-						<script src="http://widgets.twimg.com/j/2/widget.js"></script>
-						<script>
-						new TWTR.Widget({
-							version: 2,
-							type: 'profile',
-							rpp: 4,
-							interval: 6000,
-							width: 'auto',
-							height: 300,
-							theme: {
-								shell: {
-									background: '#ffffff',
-									color: '#000000'
-								},
-								tweets: {
-									background: '#ffffff',
-									color: '#7d7b7d',
-									links: '#000000'
-								}
-							},
-							features: {
-								scrollbar: false,
-								loop: false,
-								live: true,
-								hashtags: true,
-								timestamp: true,
-								avatars: false,
-								behavior: 'all'
-							}
-							}).render().setUser('betavillebxmc').start();
-							</script>
 						</div>
-					</aside>
+
+					</div>
+					<div class='projects'>
+						<?php
+				}
+				else{
+					?>
+					<div class='f-9 project'>
+						<a href=<?php echo 'design.php?id='.$proposal['designID']; ?>>
+							<?php
+
+							//Check if image exists
+							$image = checkimage(THUMBNAIL_URL.$proposal['designID'].'.png'); ?>
+							<img src=<?php echo $image;?> style='background-color: #3e4b71'>
+						</a>
+						<div class='project-info'>
+							<h3>
+								<a href=<?php echo 'design.php?id='.$proposal['designID']; ?>><?php echo $proposal['name']; ?><span class='icon'>&nbsp;]</span></a>
+							</h3>
+							<div class='project-meta'>
+								<ul>
+									<li>
+										<strong>Author&nbsp;</strong>
+										<?php echo $proposal['user']; ?>
+										·
+									</li>
+
+									<li>
+										<strong>Last&nbsp;Update</strong>
+										<?php 	//echo $proposal['date']; Leaving code open if changes dont want to be made 
+									$updatedtime = fd($proposal['date']);
+									timediff($updatedtime); ?>
+									·
+								</li>
+								<li>
+									<span class='comment'>
+
+										<span class='count'>
+											<?php 	//Showing number of comments by using the webservice to fetch comments for designs on $proposal['designID'] ^_^
+										$commentCount = displayComments(SERVICE_URL.'?section=comment&request=getforid&id='.$proposal['designID']); ?>
+									</span>
+
+									<span class='count'>
+
+									</span>
+
+
+
+								</span>
+								·
+							</li>
+							<li>
+								<strong>ID:</strong>
+								<?php echo $proposal['designID']; ?>
+							</li>
+						</ul>
+					</div>
+					<div class='project-description'><?php echo $proposal['description']; ?></div>
 				</div>
 			</div>
-			<?php include('footer.php'); ?>
+			<?php
+	}
+}
+
+?>
+</div>
+</div>
+<aside>
+	<style type="text/css" >
+	.Login-section { font-size: 10px; } 
+	.inputs { font-size: 10px;
+		font-family: Verdana,Arial,Helvetica,Sans-serif;
+	}
+	</style>
+	<script type="text/javascript">
+	function ajaxRequest() {
+		var activexmodes=["Msxml2.XMLHTTP", "Microsoft.XMLHTTP"] //activeX versions to check for in IE
+		if (window.ActiveXObject){ //Test for support for ActiveXObject in IE first (as XMLHttpRequest in IE7 is broken)
+			for (var i=0; i<activexmodes.length; i++){
+				try{
+					return new ActiveXObject(activexmodes[i])
+				}
+				catch(e){
+					alert("error");
+				}
+			}
+		}
+		else if (window.XMLHttpRequest) // if Mozilla, Safari etc
+		return new XMLHttpRequest()
+		else
+		return false
+	}
+	function submitAjax(){
+		var mypostrequest=new ajaxRequest()
+		mypostrequest.onreadystatechange=function(){
+			if (mypostrequest.readyState==4){
+				if (mypostrequest.status==200 || window.location.href.indexOf("http")==-1){
+					document.getElementById("myDiv").innerHTML=mypostrequest.responseText;
+					var error = "Please enter a valid username <br />";
+					var error1 = "Please enter a valid password <br />";
+					var error2 = "Username or password is invalid, Please try again <br />";
+					var error3 = error+error1;
+					//alert(mypostrequest.responseText);
+					if ( mypostrequest.responseText != error && mypostrequest.responseText != error3 && mypostrequest.responseText != error2 ){
+						window.location = "http://localhost/betaville-website/profile.php";
+					}
+					else 
+					document.getElementById("myDiv").style.display="block";
+				}
+				else{
+					alert("An error has occured making the request");
+				}
+			}
+		}
+		var userName = document.forms["credentials"]["user"].value;
+		var password = document.forms["credentials"]["pass"].value;
+		var parameters="user="+userName+"&pass="+password;
+		mypostrequest.open("POST", "login.php", true)
+		mypostrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+		mypostrequest.send(parameters)
+	}
+	</script>
+	<?php	if ( !isset($_SESSION['logged'])) { ?>
+		<div class="Login-section" id="form" style="display:block">
+			<h2> Login </h2>
+			<div id="myDiv" style="display:none"><h2></h2></div>
+			<form name="credentials" method="post">
+				Username:<input type="text" name="user" size="10" class="inputs">
+				Password:<input type="password" name="pass" size="10" class="inputs">
+				<input type="button" value="Log In" onClick="submitAjax()" class="inputs">
+			</form>
 		</div>
-	</body>
-	</html>
+		<br /><br />
+		<?php } ?>
+		<?php include('latest-activity.php'); ?>
+		<div class='activity-section'>
+			<h2>Twitter</h2>
+			<script src="http://widgets.twimg.com/j/2/widget.js"></script>
+			<script>
+			new TWTR.Widget({
+				version: 2,
+				type: 'profile',
+				rpp: 4,
+				interval: 6000,
+				width: 'auto',
+				height: 300,
+				theme: {
+					shell: {
+						background: '#ffffff',
+						color: '#000000'
+					},
+					tweets: {
+						background: '#ffffff',
+						color: '#7d7b7d',
+						links: '#000000'
+					}
+				},
+				features: {
+					scrollbar: false,
+					loop: false,
+					live: true,
+					hashtags: true,
+					timestamp: true,
+					avatars: false,
+					behavior: 'all'
+				}
+				}).render().setUser('betavillebxmc').start();
+				</script>
+			</div>
+		</aside>
+	</div>
+</div>
+<?php include('footer.php'); ?>
+</div>
+</body>
+</html>
+
 
