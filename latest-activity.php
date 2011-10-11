@@ -2,7 +2,6 @@
 	<h2>Latest Activity</h2>
 
 	<?php
-include('config.php');
 
 // swap to request=proposals or request=versions
 $designRequest = SERVICE_URL.'?section=activity&request=designs&quantity=5';
