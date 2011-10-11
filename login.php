@@ -17,6 +17,7 @@ if ( !($loginAuthOutput['authenticationSuccess'])  ){
 	exit();
 }
 else {
+	ob_start();
 	session_start();
 	$_SESSION['uid'] = session_id();
 	//$_SESSION['uid'] = the database value
