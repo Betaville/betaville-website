@@ -2,6 +2,7 @@
 	<h2>Latest Activity</h2>
 
 	<?php
+include_once('config.php');
 
 // swap to request=proposals or request=versions
 $designRequest = SERVICE_URL.'?section=activity&request=designs&quantity=5';
@@ -13,17 +14,23 @@ foreach($designs as $design){
 	?>
 
 	<div class='activity'>
-		<?php
-	echo "<a href='design.php?id=".$design['designID']."'>\n";
-	echo "<img src='".THUMBNAIL_URL.$design['designID'].".png' style='background-color: #383838'></a>";
-	?>
+		<a href='design.php?id=".$design['designID']."'>
+	<?php
+	//Check if image exists on server
+	$image = checkimage(THUMBNAIL_URL.$design['designID'].'.png');
+	echo "<a href='design.php?id=".$design['designID']."'>\n"; ?>
+	<img src=<?php echo $image;?> style='background-color: #3e4b71'>
 	<div class='activity-body'>
 		<?php
 	echo '<a href="design.php?id='.$design['designID'].'"><strong>'.$design['user'].'</strong> uploaded ';
 	echo '<strong>'.$design['name'].'</strong>:';
 	?>
 	<span class='content'><?php echo $design['description'] ?></span>
-</a><div class='activity-meta'><?php echo $design['date'] ?></div>
+</a><div class='activity-meta'><?php
+	include_once('betaville-functions.php');
+	$updatedtime = fd($design['date']);
+	timediff($updatedtime);
+?></div>
 </div>
 </div>
 
@@ -45,9 +52,13 @@ foreach($comments as $comment){
 
 	?>
 	<div class='activity'>
-		<?php echo '<a href="design.php?id='.$commentDesign['designID'].'">';
-	echo "<img src='".THUMBNAIL_URL.$commentDesign['designID'].".png' style='background-color: #383838'></a>";
-	?>
+	
+	<?php
+	//Check if image exists on server
+	echo "<a href='design.php?id=".$commentDesign['designID']."'>";
+	$image = checkimage(THUMBNAIL_URL.$commentDesign['designID'].'.png'); 
+	echo "<a href='design.php?id=".$commentDesign['designID']."'>\n"; ?>
+	<img src=<?php echo $image;?> style='background-color: #3e4b71'>
 </a>
 <div class='activity-body'>
 	<?php
@@ -57,7 +68,12 @@ echo '<a href="design.php?id='.$commentDesign['designID'].'"><strong>'.$comment[
 <strong><?php echo $commentDesign['name'] ?></strong>:
 <span class='content'><?php echo $comment['comment'] ?></span>
 </a>
-<div class='activity-meta'><?php echo $comment['date'] ?></div>
+<div class='activity-meta'><?php
+	//this is already called above as include_once, cannot call again
+	//include_once('betaville-functions.php');
+	$updatedtime = fd($comment['date']);
+	timediff($updatedtime);
+?></div>
 </div>
 </div>
 <?php
