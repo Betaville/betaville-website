@@ -20,7 +20,7 @@
 			//echo $_COOKIE['user'];
 			if ( isset($_SESSION['logged']) && $_SESSION['logged'] == true ) {
 			?>
-			<?php echo $_SESSION['username']; ?><input type="button" id="button" value="Log Out" onclick="location.href='logout.php';">
+			<a href="profile.php"><?php echo $_SESSION['username']; ?></a><input type="button" id="button" value="Log Out" onclick="location.href='logout.php';">
 			<?php
 			}
 			?>
