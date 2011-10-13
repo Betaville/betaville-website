@@ -22,7 +22,7 @@ else {
 	$_SESSION['uid'] = session_id();
 	//$_SESSION['uid'] = the database value
 	$_SESSION['username'] = $_POST['user'];
-	$_SESSION['pass'] = $_POST['pass'];
+	$_SESSION['token'] = $loginAuthOutput['token'];
 	$_SESSION['logged'] = true;
 }
 ?>
