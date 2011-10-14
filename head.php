@@ -34,12 +34,12 @@
 			//echo $_COOKIE['user'];
 			if ( isset($_SESSION['logged']) && $_SESSION['logged'] == true ) {
 			?>
-			<a href="profile.php"><?php echo $_SESSION['username']; ?></a><input type="button" id="button" value="Log Out" onclick="location.href='logout.php';">
-			<?php
+			<a href="profile.php"><?php echo $_SESSION['username']; ?></a></li>
+			<li>
+			<?php echo "<a href=\"logout.php\">Log Out</a>";
 			}
 			?>
-			</li>
-		</ul>
+			</ul>
 		<div class='clear'></div>
 	</nav>
 </header>
