@@ -8,6 +8,5 @@
 <?php } ?>
 <?php
 	include('head.php');
-   include('header.php');
-	echo "Welcome " . $_SESSION['username'];
+ echo "Welcome " . $_SESSION['username'];
 ?>

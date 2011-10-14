@@ -5,7 +5,6 @@
 </head> 
 <body> 
 	<div class='master-container'>
-		<?php include('header.php'); ?>
 		<div class='page-container' style='margin-top: 20px;'> 
 			<div class='page-body container' id='about'> 
 				<div class='column span-5 append-1 side-nav-container'> 

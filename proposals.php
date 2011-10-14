@@ -7,7 +7,6 @@
 </head> 
 <body> 
 	<div class='master-container'> 
-		<?php include('header.php'); ?>
 		<div class='page-container'> 
 			<h1> 
 				Explore Betaville

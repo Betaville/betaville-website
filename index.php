@@ -10,7 +10,7 @@ error_reporting(E_ALL);
 
 <body>
 	<div class='master-container'>
-		<?php ob_start(); include('header.php'); ?>
+		<?php ob_start();?>
 		<div class='tagline'>
 			<div class='tagline-body'>
 				<div class='tagline-close' onclick="$('.tagline').slideUp()">
@@ -274,12 +274,12 @@ error_reporting(E_ALL);
 	}
 	</script>
 	<?php	if ( !isset($_SESSION['logged'])) { ?>
-		<div class="Login-section" id="form" style="display:block">
+		<div class="Login-section" id="form" style="display:block" >
 			<h2> Login </h2>
 			<div id="myDiv" style="display:none"><h2></h2></div>
-			<form name="credentials" method="post">
-				Username:<input type="text" name="user" size="10" class="inputs">
-				Password:<input type="password" name="pass" size="10" class="inputs">
+			<form id = "formlogin" name="credentials" method="post">
+				Username:<input type="text" name="user" class="inputs">
+				Password:<input type="password" name="pass" class="inputs">
 				<input type="button" value="Log In" onClick="submitAjax()" class="inputs">
 			</form>
 		</div>

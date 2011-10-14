@@ -6,7 +6,6 @@
 </head> 
 <body> 
 	<div class='master-container'> 
-		<?php include('header.php'); ?>
 		<div class='decoration'> 
 			<div class='page-title'> 
 				<h1>Contribute to Betaville</h1> 

@@ -12,3 +12,34 @@
 	<meta name="csrf-param" content="authenticity_token"/> 
 	<meta name="csrf-token" content="kg1Klytrjq1CyeFy3G1cujAERmXA69mxelZXrv9FcFc="/>
 	<?php include("betaville-functions.php"); ?>
+<header>
+	<nav>
+		<ul>
+			<li class='logo'>
+				<a href='./'>
+					<img src='images/logo-header.png'>
+				</a>
+			</li>
+			<li><a href='http://betaville.net/webstart/betaville.jnlp'>Download</a></li>
+			<li><a class='' href='what-is-betaville.php'>Info</a></li>
+			<li><a class='' href='proposals.php'>Explore</a></li>
+			<li><a class='' href='contribute.php'>Contribute</a></li>
+			<li>
+			<?php 
+			ob_start();
+			if ( !isset($_SESSION['logged']))
+				session_start();
+			//include("userAction.php");
+			//isset($_COOKIE["user"]) && isset($_COOKIE["pass"]) && $userActions->login($_COOKIE["user"], $_COOKIE["pass"],false)
+			//echo $_COOKIE['user'];
+			if ( isset($_SESSION['logged']) && $_SESSION['logged'] == true ) {
+			?>
+			<a href="profile.php"><?php echo $_SESSION['username']; ?></a><input type="button" id="button" value="Log Out" onclick="location.href='logout.php';">
+			<?php
+			}
+			?>
+			</li>
+		</ul>
+		<div class='clear'></div>
+	</nav>
+</header>

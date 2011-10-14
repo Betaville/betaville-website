@@ -26,7 +26,6 @@ $comments = $commentOutput['comments'];
 
 ?>
 <div class='master-container'> 
-	<?php include('header.php'); ?>
 	<div class='page-container'> 
 		<div class='page-body container project' id='project'> 
 			<div class='project-container'> 
