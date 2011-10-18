@@ -118,9 +118,19 @@ $comments = $commentOutput['comments'];
 						</div> 
 					</li> 
 					<?php
-			}
-			?>
-
+				}
+				?>
+				<li> 
+					<div class='discussion-meta column span-3'> 
+						<a class='author'>Add Comment</a>
+					</div> 
+					<div class='discussion-body column span-9 last'>
+						<form action="submitcomment.php">
+							<input type="text" name="comment" cols=25 rows=2">
+							</input>
+						</form>
+					</div> 
+				</li> 
 
 		</ul> 
 	</div> 
