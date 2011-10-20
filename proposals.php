@@ -22,7 +22,7 @@
 			$designOutput = json_decode($designJSON, true);
 			$designs = $designOutput['designs'];
 
-			/*The idea is to determine a count of the no of proposals($pcount), calc the no of pages($pages), display page numbers 
+			/*For pagination, the idea is to determine the count of no of proposals($pcount), calc the no of pages($pages), display page numbers 
 			at the bottom(along with their hyperlinks) and display only those 10 proposals of that particular page by passing the PageNo to be loaded.*/
 			
 			if(isset($_GET["page"]))
@@ -33,10 +33,15 @@
 			/*Determine the proposal count*/
 			$pcount = count($designs);
 			
-			/*Calculates the total number of pages required*/
-			$pages = $pcount/10;
-			$extrapage = $pcount%10>0?1:0;
-			$pages = $pages + $extrapage;
+			/*Calculate the total number of pages required*/
+			$pages=1;
+			if($pcount>10)
+			{	
+				$pages = $pcount/10;
+				settype($pages, "integer");
+				$extrapage = $pcount%10>0?1:0;
+				$pages = $pages + $extrapage;
+			}
 			
 			$counter=0;
 			for($i=$currentPage*10-10;$i<=$pcount-1;$i++){
@@ -45,8 +50,8 @@
 				?>
 
 				<div class='f-1 project'>
-				<a href='design.php?id=".$design['designID']."'>
 				<?php
+				echo "<a href='design.php?id=".$design['designID']."'>\n";
 				//Check if image exists on server
 				$image = checkimage(THUMBNAIL_URL.$design['designID'].'.png');
 				echo "<a href='design.php?id=".$design['designID']."'>\n"; ?>
@@ -62,7 +67,7 @@
 							<li> 
 								<strong>Author&nbsp;</strong> 
 								<?php echo $design['user']; ?>
-								Â·
+								·
 							</li> 
 							<li> 
 								<strong>Last&nbsp;Update</strong> 
@@ -70,7 +75,7 @@
 									include_once('betaville-functions.php');
 									$updatedtime = fd($design['date']);
 									timediff($updatedtime); ?>
-								Â·
+								·
 							</li> 
 							<li> 
 								<span class='comment'> 
@@ -98,7 +103,7 @@
 									likes
 								
 								</span> 
-								Â·
+								·
 						</li> 
 						<li> 
 							<strong>ID:</strong> 
@@ -115,26 +120,31 @@
 			<?php
 			
 				if ($counter>=10)				//This logic is at the end of the for loop so as to not wait for 
-					break;					//$counter to increment to 11 and then break out of the loop!
+					break;						//$counter to increment to 11 and then break out of the loop!
 			}
 			
-			//Display page numbers. And the current page doesn't bear a hyperlink
+			//Display page numbers except for if there's only 1 page. The current page doesn't bear a hyperlink!
 			echo "<div align='center'>";	
-			for($i=1; $i<=$pages; $i++)	
-				if ($currentPage!=$i)
-				{
-				?>
-					<a href='./proposals.php?page=<?php echo $i;?>'><?php echo $i;?></a>
-				<?php
-				}
-				else
-				 	echo $i; ?>
+			if($pages>1)
+			{
+				for($i=1; $i<=$pages; $i++)	
+					if ($currentPage!=$i)
+					{
+					?>
+						<a href='./proposals.php?page=<?php echo $i;?>'><?php echo $i;?></a>
+					<?php
+					}
+					else
+					 	echo $i; 
+			}		?>
 					</div>
 			</div> 
 <aside>
-	<?php include('latest-activity.php'); ?>
+	<?php 
+	$_GET['requestingPage']='proposal';
+	include('latest-activity.php'); ?>
 </aside> 
 <?php include('footer.php'); ?>
 </div> 
 </body> 
-</html> 
+</html>

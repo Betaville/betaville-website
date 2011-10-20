@@ -255,7 +255,8 @@ error_reporting(E_ALL);
 					var error3 = error+error1;
 					//alert(mypostrequest.responseText);
 					if ( mypostrequest.responseText != error && mypostrequest.responseText != error3 && mypostrequest.responseText != error2 ){
-						window.location = "http://localhost/betaville-website/profile.php";
+						//window.location = "http://localhost/betaville-website/profile.php";
+						window.location = "profile.php";
 					}
 					else 
 					document.getElementById("myDiv").style.display="block";
@@ -272,6 +273,7 @@ error_reporting(E_ALL);
 		mypostrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
 		mypostrequest.send(parameters)
 	}
+	
 	</script>
 	<?php	if ( !isset($_SESSION['logged'])) { ?>
 		<div class="Login-section" id="form" style="display:block" >
@@ -285,7 +287,10 @@ error_reporting(E_ALL);
 		</div>
 		<br /><br />
 		<?php } ?>
-		<?php include('latest-activity.php'); ?>
+		<?php 
+		$_GET['requestingPage']='index';
+		include('latest-activity.php'); 
+		?>
 		<div class='activity-section'>
 			<h2>Twitter</h2>
 			<script src="http://widgets.twimg.com/j/2/widget.js"></script>
@@ -323,7 +328,8 @@ error_reporting(E_ALL);
 		</aside>
 	</div>
 </div>
-<?php include('footer.php'); ?>
+<?php 
+include('footer.php'); ?>
 </div>
 </body>
 </html>
