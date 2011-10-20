@@ -17,10 +17,9 @@ if ( $_POST['email'] == "" || $_POST['email'] == NULL ) {
 }
 if ( $count > 0 ) exit();
 $confirm_code = md5(uniqid(rand()));
-$temp = SERVICE_URL.'?section=user&request=add&username='.$_POST['user']."&password=".$_POST['pass']."&email=".$_POST['email']."&code=".$confirm_code;
+$temp = SERVICE_URL.'?section=user&request=add&username='.$_POST['user']."&password=".$_POST['pass']."&email=".$_POST['email'];
 $temp1 = file_get_contents($temp,0,null,null);
 $userAdded = json_decode($temp1, true);
-//$userAdded = substr($userAdded, -2 );
 if ( $userAdded['userAdded'] == "This email address is already in use" ) {
 	echo "Sorry but the email is already in use <br />";
 	exit();
