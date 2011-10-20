@@ -110,6 +110,7 @@ error_reporting(E_ALL);
 							var error9 = "This is not a valid username <br />";
 							if ( mypostrequest.responseText != error && mypostrequest.responseText != error1 && mypostrequest.responseText != error2 && mypostrequest.responseText != error3 && mypostrequest.responseText !=error4 && mypostrequest.responseText !=error5 && mypostrequest.responseText !=error6 && mypostrequest.responseText !=error7 && mypostrequest.responseText !=error8 && mypostrequest.responseText !=error9){
 								//window.location = "http://localhost/betaville-website/index.php";
+								document.getElementById("form").style.display="none";
 								document.getElementById("myDiv").style.display="block";
 							}
 							else 
@@ -131,8 +132,8 @@ error_reporting(E_ALL);
 			}
 			</script>
 			<center><h2>Registration Form</h2></center>
-			<div class="register-section" id="form" style="display:block">
 			<center><div id="myDiv" style="display:none"><h2></h2></div></center>
+			<div class="register-section" id="form" style="display:block">
 			<form name="credentials" method="post">
 				<center> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Username:<input type="text" name="user" size="10"></center>
 				<center> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Password:<input type="password" name="pass" size="10"></center>
