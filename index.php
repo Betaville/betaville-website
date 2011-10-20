@@ -4,11 +4,9 @@ error_reporting(E_ALL);
 ?>
 <!doctype html>
 <html>
-<head>
-<?php ob_start(); include('head.php'); ?>
-</head>
 
-<body>
+<?php ob_start(); include('head.php'); ?>
+
 	<div class='master-container'>
 		<?php ob_start();?>
 		<div class='tagline'>
