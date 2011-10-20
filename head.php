@@ -1,3 +1,4 @@
+<head>
 <title>Betaville</title> 
 	<link href='stylesheets/reset.css' rel='stylesheet'> 
 	<link href='stylesheets/screen.css' rel='stylesheet'> 
@@ -12,6 +13,8 @@
 	<meta name="csrf-param" content="authenticity_token"/> 
 	<meta name="csrf-token" content="kg1Klytrjq1CyeFy3G1cujAERmXA69mxelZXrv9FcFc="/>
 	<?php include("betaville-functions.php"); ?>
+<head>
+</body>
 <header>
 	<nav>
 		<ul>
