@@ -15,8 +15,7 @@ if ( $count > 0 ) exit();
 $temp = SERVICE_URL. '?section=user&request=activated&username='.$_POST['user'];
 $temp1 = file_get_contents($temp,0,null,null);
 $userActivated  = json_decode($temp1, true);
-$userActivated = substr($userActivated, -1 );
-if ($userActivated == 0 ){
+if (!$userActivated){
 	echo "Please activate your account before signing in <br />";
 	exit();
 } 
@@ -28,12 +27,10 @@ if ( !($loginAuthOutput['authenticationSuccess'])  ){
 	exit();
 }
 else {
-	ob_start();
 	session_start();
 	$_SESSION['uid'] = session_id();
-	//$_SESSION['uid'] = the database value
 	$_SESSION['username'] = $_POST['user'];
-	$_SESSION['pass'] = $_POST['pass'];
+	$_SESSION['token'] = $loginAuthOutput['token'];
 	$_SESSION['logged'] = true;
 }
 ?>
