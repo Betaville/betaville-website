@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php
+ob_start();
+session_start();
+?>
 <head>
 <title>Betaville</title> 
 	<link href='stylesheets/reset.css' rel='stylesheet'> 
@@ -30,7 +33,7 @@
 			<li><a class='' href='contribute.php'>Contribute</a></li>
 			<li>
 			<?php 
-			ob_start();
+			//ob_start();
 			//include("userAction.php");
 			//isset($_COOKIE["user"]) && isset($_COOKIE["pass"]) && $userActions->login($_COOKIE["user"], $_COOKIE["pass"],false)
 			//echo $_COOKIE['user'];

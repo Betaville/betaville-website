@@ -4,9 +4,7 @@ error_reporting(E_ALL);
 ?>
 <!doctype html>
 <html>
-<head>
 <?php include('head.php'); ?>
-</head>
 	<body>
 		<div class='master-container'>
 		<div class='tagline'>

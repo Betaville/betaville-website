@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 <!doctype html>
 <html>
 
-<?php ob_start(); include('head.php'); ?>
+<?php include('head.php'); ?>
 
 	<div class='master-container'>
 		<?php ob_start();?>
