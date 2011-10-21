@@ -17,8 +17,7 @@ session_start();
 	<meta name="csrf-param" content="authenticity_token"/> 
 	<meta name="csrf-token" content="kg1Klytrjq1CyeFy3G1cujAERmXA69mxelZXrv9FcFc="/>
 	<?php include("betaville-functions.php"); ?>
-<head>
-</body>
+</head>
 <header>
 	<nav>
 		<ul>
