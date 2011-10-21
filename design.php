@@ -1,10 +1,7 @@
 <!doctype html> 
-<html> 
-<head>
+<html>
 	<?php include('head.php'); ?>
-</head> 
 <body> 
-
 
 <?php
 // setup the basics
@@ -25,8 +22,9 @@ $commentOutput = json_decode($commentJSON, true);
 $comments = $commentOutput['comments'];
 
 ?>
-<div class='master-container'> 
+<div class='master-container'>
 	<div class='page-container'> 
+	
 		<div class='page-body container project' id='project'> 
 			<div class='project-container'> 
 				<h1><?php echo $design['name']; ?></h1> 
@@ -89,6 +87,9 @@ $comments = $commentOutput['comments'];
 			</div> 
 			<div class='project-description'>
 				<?php echo $design['description']; ?>
+				<br />
+				<br />
+				<?php //include('map.php'); ?>
 			</div> 
 			<div class='discussion'> 
 				<h2> 
@@ -137,10 +138,10 @@ $comments = $commentOutput['comments'];
 </div> 
 <aside>
 	<?php
-	//Check if image exists on server
-				$image = checkimage(THUMBNAIL_URL.$design['designID'].'.png');
-				echo "<a href='design.php?id=".$design['designID']."'>\n"; ?>
-				<img src=<?php echo $image;?> style='background-color: #3e4b71'>
+			//Check if image exists on server
+			$image = checkimage(THUMBNAIL_URL.$design['designID'].'.png');
+			echo "<a href='design.php?id=".$design['designID']."'>\n"; ?>
+			<img src=<?php echo $image;?> style='background-color: #3e4b71'>
 </aside> 
 </div> 
 
