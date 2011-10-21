@@ -278,9 +278,9 @@ error_reporting(E_ALL);
 			<h2> Login </h2>
 			<div id="myDiv" style="display:none"><h2></h2></div>
 			<form name="credentials" method="post">
-				Username:<input type="text" name="user" size="10" class="inputs">
-				Password:<input type="password" name="pass" size="10" class="inputs">
-				<input type="button" value="Log In" onClick="submitAjax()" class="inputs"> or <a href="register.php" > Register Now </a>
+				Username:<input type="text" name="user" size="10" class="inputs" onkeydown="if (event.keyCode == 13) document.getElementById('submit').click()">
+				Password:<input type="password" name="pass" size="10" class="inputs" onkeydown="if (event.keyCode == 13) document.getElementById('submit').click()">
+				<input type="button" id="submit" value="Log In" onClick="submitAjax()" class="inputs"> or <a href="register.php" > Register Now </a>
 			</form>
 		</div>
 		<br /><br />

@@ -11,11 +11,19 @@ if ( $_POST['pass'] == "" || $_POST['pass'] == NULL ) {
 	echo "Please enter a valid password <br />";
 	$count = $count + 1;
 }
+if ( $_POST['cPass'] == "" || $_POST['cPass'] == NULL ) {
+	echo "Please confirm your password <br />";
+	$count = $count + 1;
+}
 if ( $_POST['email'] == "" || $_POST['email'] == NULL ) {
 	echo "Please enter a valid email <br />";
 	$count = $count + 1;
 }
 if ( $count > 0 ) exit();
+if ( $_POST['pass'] != $_POST['cPass'] ) {
+	echo "Please make sure that your confirm password matches your password <br />";
+	exit();
+}
 
 $temp = SERVICE_URL.'?section=user&request=add&username='.$_POST['user']."&password=".$_POST['pass']."&email=".$_POST['email'];
 $temp1 = file_get_contents($temp,0,null,null);

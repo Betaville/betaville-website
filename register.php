@@ -97,20 +97,23 @@
 							var error = "Please enter a valid username <br />";
 							var error1 = "Please enter a valid password <br />";
 							var error2 = "Please enter a valid email <br />";
-							var error3 = error + error1 + error2;
+							var error10 = "Please confirm your password <br />";
+							var error3 = error + error1 + error10 + error2;
 							var error4 = "Sorry but the user name is already in use <br />";
 							var error5 = "Sorry but the email address is already in use <br />";
 							var error6 = "Sorry but an error occurred adding the user <br />";
 							var error7 = "Sorry but we were unable to send the activation email to the email provided <br />";
 							var error8 = "This is not a valid email address <br />";
 							var error9 = "This is not a valid username <br />";
-							if ( mypostrequest.responseText != error && mypostrequest.responseText != error1 && mypostrequest.responseText != error2 && mypostrequest.responseText != error3 && mypostrequest.responseText !=error4 && mypostrequest.responseText !=error5 && mypostrequest.responseText !=error6 && mypostrequest.responseText !=error7 && mypostrequest.responseText !=error8 && mypostrequest.responseText !=error9){
+							var error11 = "Please make sure that your confirm password matches your password <br />";
+							if ( mypostrequest.responseText == error && mypostrequest.responseText == error1 && mypostrequest.responseText == error2 && mypostrequest.responseText == error3 && mypostrequest.responseText ==error4 && mypostrequest.responseText ==error5 && mypostrequest.responseText ==error6 && mypostrequest.responseText ==error7 && mypostrequest.responseText ==error8 && mypostrequest.responseText ==error9 && mypostrequest.responseText ==error10 && mypostrequest.responseText ==error11){
 								//window.location = "http://localhost/betaville-website/index.php";
+								document.getElementById("myDiv").style.display="block";
+							}
+							else {
 								document.getElementById("form").style.display="none";
 								document.getElementById("myDiv").style.display="block";
 							}
-							else 
-								document.getElementById("myDiv").style.display="block";
 						}
 						else{
 							alert("An error has occured making the request");
@@ -120,8 +123,9 @@
 				}
 				var userName = document.forms["credentials"]["user"].value;
 				var password = document.forms["credentials"]["pass"].value;
+				var cPass = document.forms["credentials"]["cPass"].value;
 				var email = document.forms["credentials"]["email"].value;
-				var parameters="user="+userName+"&pass="+password+"&email="+email;
+				var parameters="user="+userName+"&pass="+password+"&cPass="+cPass+"&email="+email;
 				mypostrequest.open("POST", "register-ajax.php", true);
 				mypostrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 				mypostrequest.send(parameters)
@@ -131,10 +135,11 @@
 			<center><div id="myDiv" style="display:none"><h2></h2></div></center>
 			<div class="register-section" id="form" style="display:block">
 			<form name="credentials" method="post">
-				<center> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Username:<input type="text" name="user" size="10"></center>
-				<center> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Password:<input type="password" name="pass" size="10"></center>
-				<center>E-mail Address:<input type="text" name="email" size="10" class="inputs"></center>
-				<center><input type="button" value="Register" onClick="submitAjax()"></center>
+				<center> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Username:<input type="text" name="user" size="10" onkeydown="if (event.keyCode == 13) document.getElementById('submit').click()"></center>
+				<center> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Password:<input type="password" name="pass" size="10" onkeydown="if (event.keyCode == 13) document.getElementById('submit').click()"></center>
+				<center>Confirm Password:<input type="password" name="cPass" size="10" onkeydown="if (event.keyCode == 13) document.getElementById('submit').click()">&nbsp;&nbsp;&nbsp;&nbsp;</center>
+				<center>E-mail Address:<input type="text" name="email" size="10" class="inputs" onkeydown="if (event.keyCode == 13) document.getElementById('submit').click()"></center>
+				<center><input type="button" id="submit" value="Register" onClick="submitAjax()"></center>
 			</form>
 		</div>
 		<center><?php include('footer.php'); ?></center>
