@@ -4,15 +4,3 @@
  *
  */
  
- // from OpenLayers project: http://openlayers.org/dev/examples/style.css
-.smallmap {
-    width: 512px;
-    height: 256px;
-    border: 1px solid #ccc;
-}
-
-#smallmapdiv{
-	width: 50%;
-	max-width: 320px;
-    max-height: 240px;
-}

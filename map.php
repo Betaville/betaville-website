@@ -3,10 +3,13 @@
 
 // <link rel       = "stylesheet" href="stylesheets/maps.css" type="text/css">
 // <div id         = "smallmapdiv" style="smallmap"></div>
+
+// <div id         = "smallmapdiv" style="width: 75%; height: 250px; background-repat: no-repeat;"></div>
 ?>
 
 
 <div id         = "smallmapdiv" style="width: 75%; height: 250px; background-repat: no-repeat;"></div>
+
 <script src     = "http://www.openlayers.org/api/OpenLayers.js"></script>
 <script>
 map            = new OpenLayers.Map("smallmapdiv");

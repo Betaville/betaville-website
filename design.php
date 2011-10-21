@@ -23,8 +23,7 @@ $comments = $commentOutput['comments'];
 
 ?>
 <div class='master-container'>
-	<div class='page-container'> 
-	
+	<div class='page-container'>
 		<div class='page-body container project' id='project'> 
 			<div class='project-container'> 
 				<h1><?php echo $design['name']; ?></h1> 
@@ -89,7 +88,7 @@ $comments = $commentOutput['comments'];
 				<?php echo $design['description']; ?>
 				<br />
 				<br />
-				<?php //include('map.php'); ?>
+				<?php include('map.php'); ?>
 			</div> 
 			<div class='discussion'> 
 				<h2> 
