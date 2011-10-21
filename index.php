@@ -253,12 +253,11 @@ error_reporting(E_ALL);
 					var error2 = "Username or password is invalid, Please try again <br />";
 					var error4 = "Please activate your account before signing in <br />";
 					//alert(mypostrequest.status);
-					if ( mypostrequest.responseText != error && mypostrequest.responseText != error1 && mypostrequest.responseText != error3 && mypostrequest.responseText != error2 && mypostrequest.responseText !=error4){
-					//	window.location = "http://localhost/betaville-website/profile.php";
-					document.getElementById("myDiv").style.display="block";
+					if ( mypostrequest.responseText == error && mypostrequest.responseText == error1 && mypostrequest.responseText == error3 && mypostrequest.responseText == error2 && mypostrequest.responseText ==error4){
+						document.getElementById("myDiv").style.display="block";
 					}
 					else 
-					document.getElementById("myDiv").style.display="block";
+						window.location = "http://localhost/betaville-website/index.php";
 				}
 				else{
 					alert("An error has occured making the request");
