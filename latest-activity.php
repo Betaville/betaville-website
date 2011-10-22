@@ -5,7 +5,7 @@
 include_once('config.php');
 
 // swap to request=proposals or request=versions
-$designRequest = SERVICE_URL.'?section=activity&request=designs&quantity=5';
+$designRequest = SERVICE_URL.'?section=activity&request=designs&quantity=5&excludeempty=true';
 $designJSON = file_get_contents($designRequest,0,null,null);
 $designOutput = json_decode($designJSON, true);
 $designs = $designOutput['designs'];
