@@ -32,5 +32,11 @@ else {
 	$_SESSION['username'] = $_POST['user'];
 	$_SESSION['token'] = $loginAuthOutput['token'];
 	$_SESSION['logged'] = true;
+	
+	// grab the user's type
+	$userRequest = SERVICE_URL.'?section=user&request=getlevel&username='.$_SESSION['username'];
+	$userJSON = file_get_contents($userRequest,0,null,null);
+	$userOutput = json_decode($userJSON, true);
+	$_SESSION['userType'] = $userOutput['userType'];
 }
 ?>
