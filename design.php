@@ -89,6 +89,13 @@ $comments = $commentOutput['comments'];
 				<br />
 				<br />
 				<?php include('map.php'); ?>
+				<script type="text/javascript">
+					$(document.getElementById('smallmapdiv')).ready(function() {
+						var lat = <?php echo $design['coordinate']['lat']; ?>;
+						var lon = <?php echo $design['coordinate']['lon']; ?>;
+						projectMap(lat, lon);
+					});
+				</script>
 			</div> 
 			<div class='discussion'> 
 				<h2> 

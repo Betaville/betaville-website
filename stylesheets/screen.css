@@ -1526,7 +1526,7 @@ aside {
 }
 #project img {
     width: 430px;
-    min-height: 287px;
+    /*min-height: 287px;*/
 }
 #project .project-container {
     display: inline;
