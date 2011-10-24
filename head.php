@@ -44,7 +44,7 @@ session_start();
 			
 			// if the user is a moderator or administrator, show the admin link
 				if($_SESSION['userType']=='moderator' || $_SESSION['userType']=='administrator'){
-					echo "<li><a href=\"admin/admin.php\">Admin</a></li>";
+					echo "<li><a href=\"admin.php\">Admin</a></li>";
 				}
 			}
 			?>

@@ -127,18 +127,22 @@ $comments = $commentOutput['comments'];
 					<?php
 				}
 				?>
-				<li> 
+				<?php if(isset($_SESSION['username'])){ ?>
+				<li>
 					<div class='discussion-meta column span-3'> 
 						<a class='author'>Add Comment</a>
 					</div> 
 					<div class='discussion-body column span-9 last'>
-						<form action="submitcomment.php">
-							<input type="text" name="comment" cols=25 rows=2">
-							</input>
+						<form action="interact/submit-comment.php" method="post">
+   							<p>
+   								<textarea name="commentText" rows="20" cols="25"></textarea>
+   								<input type="hidden" name="designID" value=<?php echo $design['designID']?>>
+  								<input type="submit" value="Send">
+  							 </p>
 						</form>
 					</div> 
-				</li> 
-
+				</li>
+				<?php } ?>
 		</ul> 
 	</div> 
 </div> 
