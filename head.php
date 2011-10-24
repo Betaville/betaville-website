@@ -16,7 +16,10 @@ session_start();
 	<meta content='text/html;charset=utf-8' http-equiv='Content-Type'> 
 	<meta name="csrf-param" content="authenticity_token"/> 
 	<meta name="csrf-token" content="kg1Klytrjq1CyeFy3G1cujAERmXA69mxelZXrv9FcFc="/>
-	<?php include("betaville-functions.php"); ?>
+	<?php
+		include("betaville-functions.php");
+		include("interact/curl.php");
+	 ?>
 </head>
 <header>
 	<nav>
