@@ -31,11 +31,7 @@ session_start();
 			<li><a class='' href='./proposals.php'>Explore</a></li>
 			<li><a class='' href='./contribute.php'>Contribute</a></li>
 			
-			<?php 
-			//ob_start();
-			//include("userAction.php");
-			//isset($_COOKIE["user"]) && isset($_COOKIE["pass"]) && $userActions->login($_COOKIE["user"], $_COOKIE["pass"],false)
-			//echo $_COOKIE['user'];
+			<?php
 			if ( isset($_SESSION['logged']) && $_SESSION['logged'] == true ) {
 			?>
 			<li><a href="profile.php"><?php echo $_SESSION['username']; ?></a></li>
