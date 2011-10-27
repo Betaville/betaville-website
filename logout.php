@@ -6,5 +6,5 @@
 	//echo "You have successfully logged out";
 ?>
 <script type="text/javascript" >
-	window.location=<?php echo WEB_URL; ?>;
+	window.location=<?php echo "\"".WEB_URL."\""; ?>;
 </script>

@@ -254,7 +254,7 @@
 						document.getElementById("myDiv").style.display="block";
 					}
 					else 
-						window.location = <?php echo WEB_URL; ?>;
+						window.location = <?php echo "\"".WEB_URL."\""; ?>;
 				}
 				else{
 					alert("An error has occured making the request");
