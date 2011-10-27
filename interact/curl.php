@@ -21,7 +21,7 @@ if(!isset($_SESSION['curl'])){
 
 if(!isset($_SESSION['curlcookie'])){
 	
-	echo "creating";
+	//echo "creating";
 	
 	$ckfile = tempnam ("/tmp", "CURLCOOKIE");
 	$_SESSION['curlcookie'] = $ckfile;
