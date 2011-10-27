@@ -11,10 +11,14 @@ if(isset($_POST['commentText']) && isset($_POST['designID'])){
 	$designID = $_POST['designID'];
 	
 	include('../config.php');
-	$addRequest = SERVICE_URL.'?section=comment&request=add&designID='.$designID.'&comment='.$commentText.'&token='.$_SESSION['token'];
-	$addJSON = curl_exec(curl_init($addRequest));
+	$addRequest = SERVICE_URL.'?section=comment&request=add&designID='.$designID.'&token='.$_SESSION['token'].'&comment='.urlencode($commentText);
+	$addJSON = file_get_contents($addRequest, 0, null, null);
 	$addOutput = json_decode($addJSON, true);
-	if($addOutput['addcomment']){
+	//var_dump($addOutput);
+	
+	header('Location: ../design.php?id='.$designID);
+	/*
+	if($addOutput['addcomment']=='true'){
 		header('Location: ../design.php?id='.$designID);
 	}
 	else{
@@ -22,6 +26,7 @@ if(isset($_POST['commentText']) && isset($_POST['designID'])){
 		echo "request was ".$addRequest;
 		echo $addOutput['addcomment'];
 	}
+	*/
 }
 
 ?>
