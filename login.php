@@ -24,7 +24,7 @@ include("interact/curl.php");
 
 // setup CURL cookies when first logging in
 $loginAuth = SERVICE_URL.'?section=user&request=auth&username='.$_POST['user'].'&password='.$_POST['pass'];
-$temp = download($loginAuth);
+$temp = bv_download($loginAuth);
 
 
 $loginAuthOutput = json_decode($temp, true);
