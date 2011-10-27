@@ -1,10 +1,7 @@
-<!doctype html> 
-<html> 
-<head>
-	<?php include('head.php');
-	      include_once('betaville-functions.php');
-	 ?>
-</head> 
+<?php
+	include('head.php');
+	include_once('betaville-functions.php');
+?>
 <body> 
 	<div class='master-container'> 
 		<div class='page-container'> 

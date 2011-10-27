@@ -1,7 +1,9 @@
 <?php
-ob_start();
 session_start();
+ob_start();
 ?>
+<!doctype html>
+<html>
 <head>
 <title>Betaville</title> 
 	<link href='./stylesheets/reset.css' rel='stylesheet'> 

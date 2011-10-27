@@ -2,9 +2,6 @@
 //ini_set('display_errors',2); 
 //error_reporting(E_ALL);
 ?>
-<!doctype html>
-<html>
-
 <?php include('head.php'); ?>
 
 	<div class='master-container'>
