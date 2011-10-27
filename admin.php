@@ -1,7 +1,11 @@
+<!doctype html> 
+<html>
+<head>
+	<?php include('head.php'); ?> 
+</head> 
+<body>
+
 <?php
-
-session_start();
-
 /*
  * Conditions where the user will be denied:
  * - Not logged in
@@ -22,12 +26,7 @@ session_start();
  //http://localhost/service/service.php?section=user&request=getlevel&username=sbook
 	
 ?>
-<!doctype html> 
-<html>
-<head>
-	<?php include('head.php'); ?> 
-</head> 
-<body> 
+
 	<div class='master-container'> 
 		<div class='decoration'> 
 			<div class='page-title'> 
