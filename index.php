@@ -254,7 +254,7 @@
 						document.getElementById("myDiv").style.display="block";
 					}
 					else 
-						window.location = "http://localhost/betaville-website/index.php";
+						window.location = 
 				}
 				else{
 					alert("An error has occured making the request");
