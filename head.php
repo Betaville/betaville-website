@@ -1,9 +1,7 @@
 <?php
-session_start();
 ob_start();
+session_start();
 ?>
-<!doctype html>
-<html>
 <head>
 <title>Betaville</title> 
 	<link href='./stylesheets/reset.css' rel='stylesheet'> 
@@ -35,7 +33,25 @@ ob_start();
 			<li><a class='' href='./what-is-betaville.php'>Info</a></li>
 			<li><a class='' href='./proposals.php'>Explore</a></li>
 			<li><a class='' href='./contribute.php'>Contribute</a></li>
-			
+			<?php
+				if ( isset($_COOKIE['token'])) {
+					include("config.php");
+					$check = SERVICE_URL.'?token='.$_COOKIE['token'].'section=authcheck&request=';
+					if ( $check != false ){
+						session_start();
+						$_SESSION['uid'] = session_id();
+						$_SESSION['username'] = $check;
+						$_SESSION['token'] = $_COOKIE['token'];
+						$_SESSION['logged'] = true;
+						// this next line is for debugging only and should be removed
+						$_SESSION['size'] = sizeof($_SESSION);
+						$userRequest = SERVICE_URL.'?section=user&request=getlevel&username='.$check;
+						$userJSON = file_get_contents($userRequest,0,null,null);//download($userRequest);
+						$userOutput = json_decode($userJSON, true);
+						$_SESSION['userType'] = $userOutput['userType'];
+					}
+				}
+			?>
 			<?php
 			if ( isset($_SESSION['logged']) && $_SESSION['logged'] == true ) {
 			?>

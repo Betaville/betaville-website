@@ -1,7 +1,10 @@
 <?php
 //ini_set('display_errors',2); 
-//error_reporting(E_ALL);
+error_reporting(E_ALL);
 ?>
+<!doctype html>
+<html>
+
 <?php include('head.php'); ?>
 
 	<div class='master-container'>
@@ -249,12 +252,12 @@
 					var error3 = error + error1;
 					var error2 = "Username or password is invalid, Please try again <br />";
 					var error4 = "Please activate your account before signing in <br />";
-					//alert(mypostrequest.status);
-					if ( mypostrequest.responseText == error && mypostrequest.responseText == error1 && mypostrequest.responseText == error3 && mypostrequest.responseText == error2 && mypostrequest.responseText ==error4){
+					//alert(mypostrequest.responseText);
+					if ( mypostrequest.responseText == error || mypostrequest.responseText == error1 || mypostrequest.responseText == error3 || mypostrequest.responseText == error2 || mypostrequest.responseText ==error4){
 						document.getElementById("myDiv").style.display="block";
 					}
 					else 
-						window.location = <?php echo "\"".WEB_URL."\""; ?>;
+						window.location = "http://localhost/betaville-website/index.php";
 				}
 				else{
 					alert("An error has occured making the request");
@@ -263,7 +266,8 @@
 		}
 		var userName = document.forms["credentials"]["user"].value;
 		var password = document.forms["credentials"]["pass"].value;
-		var parameters="user="+userName+"&pass="+password;
+		var rememberMe = document.forms["credentials"]["rememberMe"].value;
+		var parameters="user="+userName+"&pass="+password+"&rememberMe="+rememberMe;
 		mypostrequest.open("POST", "login.php", true)
 		mypostrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
 		mypostrequest.send(parameters)
@@ -276,6 +280,7 @@
 			<form name="credentials" method="post">
 				Username:<input type="text" name="user" size="10" class="inputs" onkeydown="if (event.keyCode == 13) document.getElementById('submit').click()">
 				Password:<input type="password" name="pass" size="10" class="inputs" onkeydown="if (event.keyCode == 13) document.getElementById('submit').click()">
+				<input type="checkbox" name="rememberMe" > Remember Me <br /><br />
 				<input type="button" id="submit" value="Log In" onClick="submitAjax()" class="inputs"> or <a href="register.php" > Register Now </a>
 			</form>
 		</div>
