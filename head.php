@@ -1,7 +1,9 @@
 <?php
-ob_start();
 session_start();
+ob_start();
 ?>
+<!doctype html>
+<html>
 <head>
 <title>Betaville</title> 
 	<link href='./stylesheets/reset.css' rel='stylesheet'> 
@@ -38,7 +40,6 @@ session_start();
 					include("config.php");
 					$check = SERVICE_URL.'?token='.$_COOKIE['token'].'section=authcheck&request=';
 					if ( $check != false ){
-						session_start();
 						$_SESSION['uid'] = session_id();
 						$_SESSION['username'] = $check;
 						$_SESSION['token'] = $_COOKIE['token'];
