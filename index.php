@@ -2,7 +2,10 @@
 //ini_set('display_errors',2); 
 //error_reporting(E_ALL);
 ?>
-<?php include('head.php'); ?>
+<?php
+include('head.php');
+include('config.php');
+?>
 
 	<div class='master-container'>
 		<?php ob_start();?>
@@ -77,7 +80,6 @@
 					<div class='project-container'>
 						<h2>Featured Projects</h2>
 						<?php
-					include('config.php');
 					// get the featured proposals
 					// swap to request=proposals or request=versions
 					$proposalRequest = SERVICE_URL.'?section=proposal&request=getfeatured&quantity=7';
@@ -254,7 +256,7 @@
 						document.getElementById("myDiv").style.display="block";
 					}
 					else 
-						window.location = 
+						window.location = <?php echo "\"".WEB_URL."\""; ?>;
 				}
 				else{
 					alert("An error has occured making the request");

@@ -38,10 +38,11 @@ ob_start();
 			<?php
 				if ( isset($_COOKIE['token'])) {
 					include("config.php");
-					$check = SERVICE_URL.'?token='.$_COOKIE['token'].'section=authcheck&request=';
+					$check = SERVICE_URL.'?section=authcheck&request=authcheck&token='.$_COOKIE['token'];
 					if ( $check != false ){
 						$_SESSION['uid'] = session_id();
-						$_SESSION['username'] = $check;
+						$_SESSION['username'] = file_get_contents($check, 0, null, null);
+						echo "username is " . $_SESSION['username'];
 						$_SESSION['token'] = $_COOKIE['token'];
 						$_SESSION['logged'] = true;
 						// this next line is for debugging only and should be removed
