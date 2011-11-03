@@ -1,10 +1,5 @@
-<!doctype html> 
-<html> 
-<head>
-	<?php include('head.php'); ?>
-</head> 
+<?php include('head.php'); ?>
 <body> 
-
 
 <?php
 // setup the basics
@@ -25,8 +20,8 @@ $commentOutput = json_decode($commentJSON, true);
 $comments = $commentOutput['comments'];
 
 ?>
-<div class='master-container'> 
-	<div class='page-container'> 
+<div class='master-container'>
+	<div class='page-container'>
 		<div class='page-body container project' id='project'> 
 			<div class='project-container'> 
 				<h1><?php echo $design['name']; ?></h1> 
@@ -36,8 +31,8 @@ $comments = $commentOutput['comments'];
 							<strong> 
 								Author&nbsp;
 							</strong> 
-							<?php echo $design['user']; ?>
-							Â·
+                            <a href='profile.php?uName=<?php echo $design['user']; ?>'><?php echo $design['user']; ?></a>
+							·
 						</li> 
 						<li> 
 							<strong> 
@@ -48,7 +43,7 @@ $comments = $commentOutput['comments'];
 									$updatedtime = fd($design['date']);
 									timediff($updatedtime);
 							?>
-							Â·
+							·
 						</li> 
 						<li> 
 							<span class='comment'> 
@@ -89,6 +84,16 @@ $comments = $commentOutput['comments'];
 			</div> 
 			<div class='project-description'>
 				<?php echo $design['description']; ?>
+				<br />
+				<br />
+				<?php include('map.php'); ?>
+				<script type="text/javascript">
+					$(document.getElementById('smallmapdiv')).ready(function() {
+						var lat = <?php echo $design['coordinate']['lat']; ?>;
+						var lon = <?php echo $design['coordinate']['lon']; ?>;
+						projectMap(lat, lon);
+					});
+				</script>
 			</div> 
 			<div class='discussion'> 
 				<h2> 
@@ -120,27 +125,31 @@ $comments = $commentOutput['comments'];
 					<?php
 				}
 				?>
-				<li> 
+				<?php if(isset($_SESSION['username'])){ ?>
+				<li>
 					<div class='discussion-meta column span-3'> 
 						<a class='author'>Add Comment</a>
 					</div> 
 					<div class='discussion-body column span-9 last'>
-						<form action="submitcomment.php">
-							<input type="text" name="comment" cols=25 rows=2">
-							</input>
+						<form action="interact/submit-comment.php" method="post">
+   							<p>
+   								<textarea name="commentText" rows="20" cols="25"></textarea>
+   								<input type="hidden" name="designID" value=<?php echo $design['designID']?>>
+  								<input type="submit" value="Send">
+  							 </p>
 						</form>
 					</div> 
-				</li> 
-
+				</li>
+				<?php } ?>
 		</ul> 
 	</div> 
 </div> 
 <aside>
 	<?php
-	//Check if image exists on server
-				$image = checkimage(THUMBNAIL_URL.$design['designID'].'.png');
-				echo "<a href='design.php?id=".$design['designID']."'>\n"; ?>
-				<img src=<?php echo $image;?> style='background-color: #3e4b71'>
+			//Check if image exists on server
+			$image = checkimage(THUMBNAIL_URL.$design['designID'].'.png');
+			echo "<a href='design.php?id=".$design['designID']."'>\n"; ?>
+			<img src=<?php echo $image;?> style='background-color: #3e4b71'>
 </aside> 
 </div> 
 

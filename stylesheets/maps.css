@@ -1,0 +1,9 @@
+/**
+ * CSS style for OpenLayers map
+ *
+ */
+.map img{
+	height: 10px;
+	width: auto;
+	min-height: 10px;
+}

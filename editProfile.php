@@ -9,7 +9,7 @@
 		//$userName = 'scandgolden24';
 		$userName = $_SESSION['username'];
 		
-		include('config.php');
+		//include('config.php');
 		
 		// get user information
 	//	$userRequest = SERVICE_URL.'?section=user&request=getpublicinfo&username='.$userName;
@@ -25,10 +25,11 @@
 			<div class='projects'>
 				<div  class='project-description'>
 				
-				<form name='editProfile' action='updateProfile.php' method='get'>
+				<form name='editProfile' id='editProfile' action='updateProfile.php' method='post' enctype="multipart/form-data">
                 <input type="hidden" name="username" value="<?php echo $userName ?>">
                 <table border="0">
-				<tr><td><img src='images\sorry.gif' height='100' width='100' style='background-color: #383838'></td><td><input type="file" name="profilePicture" value="Upload Picture"></td></tr>
+				<tr><td><img src='images\sorry.gif' height='100' width='100' style='background-color: #383838'></td>
+				<td><input type='file' name="profilePicture" id="profilePicture" value="Upload Picture"></td></tr>
                 <tr><td><label>Name: </label></td><td><input type="text" name="displayName" value="<?php echo $user['displayName']; ?>" /></td></tr>
 				<tr><td><label>About me: </label></td><td><input type="text" name="bio" value="<?php echo $user['bio']; ?>" /></td></tr>
 				<tr><td><label>Website: </label></td><td><input type="text" name="website" value="<?php echo $user['website']; ?>" /></td></tr>

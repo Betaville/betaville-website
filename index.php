@@ -1,14 +1,20 @@
 <?php
 //ini_set('display_errors',2); 
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 ?>
 <!doctype html>
 <html>
 
-<?php include('head.php'); ?>
+<head>
+<?php 
+ob_start(); 
+include('head.php'); 
+include('config.php');
+?>
+</head>
 
+<body>
 	<div class='master-container'>
-		<?php ob_start();?>
 		<div class='tagline'>
 			<div class='tagline-body'>
 				<div class='tagline-close' onclick="$('.tagline').slideUp()">
@@ -79,9 +85,8 @@ error_reporting(E_ALL);
 				<div class='page-body container' id='home'>
 					<div class='project-container'>
 						<h2>Featured Projects</h2>
-						<?php
 						
-					include('config.php');
+						<?php
 					// get the featured proposals
 					// swap to request=proposals or request=versions
 					$proposalRequest = SERVICE_URL.'?section=proposal&request=getfeatured&quantity=7';
@@ -112,8 +117,8 @@ error_reporting(E_ALL);
 											<ul>
 												<li>
 													<strong>Author&nbsp;</strong>
-													<?php echo $proposal['user']; ?>
-													Â·
+                                                    <a href='profile.php?uName=<?php echo $proposal['user']; ?>'><?php echo $proposal['user']; ?></a>
+													·
 												</li>
 
 												<li>
@@ -121,7 +126,7 @@ error_reporting(E_ALL);
 													<?php 	//echo $proposal['date']; Leaving code open if changes dont have to be made
 												$updatedtime = fd($proposal['date']);
 												timediff($updatedtime); ?>
-												Â·
+												·
 											</li>
 											<li>
 												<span class='comment'>
@@ -138,7 +143,7 @@ error_reporting(E_ALL);
 
 
 											</span>
-											Â·
+											·
 										</li>
 										<li>
 											<strong>ID:</strong>
@@ -173,8 +178,8 @@ error_reporting(E_ALL);
 								<ul>
 									<li>
 										<strong>Author&nbsp;</strong>
-										<?php echo $proposal['user']; ?>
-										Â·
+                                        <a href='profile.php?uName=<?php echo $proposal['user']; ?>'><?php echo $proposal['user']; ?></a>
+										·
 									</li>
 
 									<li>
@@ -182,7 +187,7 @@ error_reporting(E_ALL);
 										<?php 	//echo $proposal['date']; Leaving code open if changes dont want to be made 
 									$updatedtime = fd($proposal['date']);
 									timediff($updatedtime); ?>
-									Â·
+									·
 								</li>
 								<li>
 									<span class='comment'>
@@ -199,7 +204,7 @@ error_reporting(E_ALL);
 
 
 								</span>
-								Â·
+								·
 							</li>
 							<li>
 								<strong>ID:</strong>
@@ -254,13 +259,12 @@ error_reporting(E_ALL);
 					var error2 = "Username or password is invalid, Please try again <br />";
 					var error3 = error+error1;
 					var error4 = "Please activate your account before signing in <br />";
-					//alert(mypostrequest.status);
-					if ( mypostrequest.responseText != error && mypostrequest.responseText != error1 && mypostrequest.responseText != error3 && mypostrequest.responseText != error2 && mypostrequest.responseText !=error4){
-					//	window.location = "http://localhost/betaville-website/profile.php";
-					document.getElementById("myDiv").style.display="block";
+					//alert(mypostrequest.responseText);
+					if ( mypostrequest.responseText == error || mypostrequest.responseText == error1 || mypostrequest.responseText == error3 || mypostrequest.responseText == error2 || mypostrequest.responseText ==error4){
+						document.getElementById("myDiv").style.display="block";
 					}
 					else 
-					document.getElementById("myDiv").style.display="block";
+						window.location = <?php echo "\"".WEB_URL."\""; ?>;
 				}
 				else{
 					alert("An error has occured making the request");
@@ -269,7 +273,8 @@ error_reporting(E_ALL);
 		}
 		var userName = document.forms["credentials"]["user"].value;
 		var password = document.forms["credentials"]["pass"].value;
-		var parameters="user="+userName+"&pass="+password;
+		var rememberMe = document.forms["credentials"]["rememberMe"].value;
+		var parameters="user="+userName+"&pass="+password+"&rememberMe="+rememberMe;
 		mypostrequest.open("POST", "login.php", true)
 		mypostrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
 		mypostrequest.send(parameters)
@@ -281,9 +286,10 @@ error_reporting(E_ALL);
 			<h2> Login </h2>
 			<div id="myDiv" style="display:none"><h2></h2></div>
 			<form name="credentials" method="post">
-				Username:<input type="text" name="user" size="10" class="inputs">
-				Password:<input type="password" name="pass" size="10" class="inputs">
-				<input type="button" value="Log In" onClick="submitAjax()" class="inputs"> or <a href="register.php" > Register Now </a>
+				Username:<input type="text" name="user" size="10" class="inputs" onkeydown="if (event.keyCode == 13) document.getElementById('submit').click()">
+				Password:<input type="password" name="pass" size="10" class="inputs" onkeydown="if (event.keyCode == 13) document.getElementById('submit').click()">
+				<input type="checkbox" name="rememberMe" > Remember Me <br /><br />
+				<input type="button" id="submit" value="Log In" onClick="submitAjax()" class="inputs"> or <a href="register.php" > Register Now </a>
 			</form>
 		</div>
 		<br /><br />

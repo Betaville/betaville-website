@@ -2,9 +2,16 @@
 	
 	<?php
 include_once('config.php');
+
 $page = $_GET['requestingPage'];		//change
+
+if(isset($_GET['uName']))
+	$userName = $_GET['uName'];
+else
+	$userName = $_SESSION['username'];
+			
 //$userName = $_SESSION['username'];
- $userName = 'scandgolden24';
+ //$userName = 'scandgolden24';
 
 if ($page=='profile')
 	echo "<h2>My Latest Activities</h2>";
@@ -12,7 +19,7 @@ elseif($page=='proposal' || $page=='index')
 	echo "<h2>Latest Activity</h2>";
 
 // swap to request=proposals or request=versions
-$designRequest = SERVICE_URL.'?section=activity&request=designs&quantity=200';
+$designRequest = SERVICE_URL.'?section=activity&request=designs&quantity=5&excludeempty=true';
 $designJSON = file_get_contents($designRequest,0,null,null);
 $designOutput = json_decode($designJSON, true);
 $designs = $designOutput['designs'];
@@ -28,10 +35,6 @@ foreach($designs as $design){
 		$image = checkimage(THUMBNAIL_URL.$design['designID'].'.png');
 		echo "<a href='design.php?id=".$design['designID']."'>\n"; ?>
 		<img src=<?php echo $image;?> style='background-color: #3e4b71'>
-	<!--
-		echo "<img src='".THUMBNAIL_URL.$design['designID'].".png' style='background-color: #383838'></a>";
-	?>
-	-->
 	
 	<div class='activity-body'>
 	<?php
@@ -80,11 +83,7 @@ foreach($comments as $comment){
 		//Check if image exists on server
 		$image = checkimage(THUMBNAIL_URL.$commentDesign['designID'].'.png');
 		echo "<a href='design.php?id=".$design['designID']."'>\n"; ?>
-		<img src=<?php echo $image;?> style='background-color: #3e4b71'>
-	<!--	
-		echo "<img src='".THUMBNAIL_URL.$commentDesign['designID'].".png' style='background-color: #383838'></a>";
-	?>
-	-->
+		<img src=<?php echo $image;?> style='background-color: #3e4b71'> </a>
 	
 	<div class='activity-body'>
 	<?php
@@ -96,7 +95,8 @@ foreach($comments as $comment){
 		</a>
 	<div class='activity-meta'>
 	<?php
-		include_once('betaville-functions.php');
+		//this is already called above as include_once, cannot call again
+		// include_once('betaville-functions.php');
 		$updatedtime = fd($comment['date']);
 		timediff($updatedtime);
 	?>

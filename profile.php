@@ -1,18 +1,3 @@
-<!--<?php
-	/*session_start();
-	if (!isset($_SESSION['logged']) && !$_SESSION['logged'] == true ) {*/
-?>
-<script type="text/javascript" >
-	window.location="http://localhost/betaville-website";
-</script>
-<?php /*} 
-	include('head.php');
- echo "Welcome " . $_SESSION['username'];*/
-?>
--->
-
-<!-- The code for profile.php starts from here on ! Above stuff is kept only for back-up, which needs to be cleared off before check-in ! -->
-
 <!doctype html> 
 <html> 
 <head>
@@ -44,9 +29,9 @@
 		include('config.php');
 		
 		// Get user's information
-	//	$userRequest = SERVICE_URL.'?section=user&request=getpublicinfo&username='.$userName;
-	//	$userJSON = file_get_contents($userRequest,0,null,null);
-		$userJSON = file_get_contents("userScandgolden24.txt");
+		$userRequest = SERVICE_URL.'?section=user&request=getpublicinfo&username='.$userName;
+		$userJSON = file_get_contents($userRequest,0,null,null);
+	//	$userJSON = file_get_contents("userScandgolden24.txt");
 		$userOutput = json_decode($userJSON, true);
 		$user = $userOutput['userInfo'];
 		
@@ -55,10 +40,8 @@
 			<div class='project-container'>							<!--change-->
 				<h1> Hello <?php echo $userName; ?>! </h1>
 			<div class='projects'>
-				<!--<div  class='project-description'>-->
-				<!--!!!!!!!!!!!!!!!!! Display user info that they have provided during registration !!!!!!!!!!!!-->
-
-
+				
+				<!--!!!!!!!!!!!! Display user info !!!!!!!!!!-->
 
 				<form name='userInfo' >
 				
@@ -72,27 +55,26 @@
                 <?php */?>
                 
                 
-                    <img src='images\IMG_0261.JPG' height='100' width='100' style='background-color: #383838'> <br /><br />
-                    <label>Name: </label> <div style=" display:inline; margin-left: 2px"><?php echo $user['displayName']?></div><br /><br />
-                    <label>About Me: </label><div style=" display:inline; margin-left: 2px"><?php echo $user['bio']?></div><br /><br />
-                    <label>Website: </label><div style=" display:inline; margin-left: 2px"><?php echo $user['website']?></div><br /><br />
-                    <label>Profile: </label><div style="display:inline; margin-left: 2px"><?php echo $user['type']?></div><br /><br />
+                <img src='images\IMG_0261.JPG' height='100' width='100' style='background-color: #383838'> <br /><br />
+                <label>Name: </label> <div style=" display:inline; margin-left: 2px"><?php echo $user['displayName']?></div><br /><br />
+                <label>About Me: </label><div style=" display:inline; margin-left: 2px"><?php echo $user['bio']?></div><br /><br />
+                <label>Website: </label><div style=" display:inline; margin-left: 2px"><?php echo $user['website']?></div><br /><br />
+                <label>Profile: </label><div style="display:inline; margin-left: 2px"><?php echo $user['type']?></div><br /><br />
                      
-                  
-            
-                
-                
-                
-                 
 				</form>
-	 			
-					<form name='profileForm' action='editProfile.php' method="get">
-					<input type="submit" name="submit" value="Edit Profile" />
-					</form>
+	 	
+	 		<?php 
+	 		//if(isset($_SESSION['username']))
+	 		if($userName==$_SESSION['username'])
+	 		{?>
+	 			<form name='profileForm' action='editProfile.php' method="get">
+				<input type="submit" name="submit" value="Edit Profile" />
+				</form>
+	 		<?php 
+	 		}?>
 				
 				<br />
-				<!--</div>-->
-			
+				
 		
 		<?php
 			// swap to request=proposals or request=versions
@@ -233,6 +215,7 @@
 			<aside> 
 				<?php 
 				$_GET['requestingPage']='profile';
+				$_GET['uName']=$userName;
 				include('latest-activity.php'); ?> <!-- Check if includes can pass arguments in the url. 
 				In that case we will be able to identify where the request is coming from--> 
 			</aside>

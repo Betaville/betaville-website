@@ -1,9 +1,4 @@
-
-<!doctype html> 
-<html>
-<head>
-	<?php include('head.php'); ?> 
-</head> 
+<?php include('head.php'); ?> 
 <body> 
 	<div class='master-container'> 
 		<div class='decoration'> 
