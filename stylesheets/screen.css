@@ -794,6 +794,11 @@ textarea {
     width: 390px;
     height: 250px;
 }
+textarea.comment {
+    width: 330px;
+    height: 250px;
+}
+
 .box {
     padding: 1.5em;
     margin-bottom: 1.5em;

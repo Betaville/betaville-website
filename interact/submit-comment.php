@@ -7,11 +7,11 @@ if(!isset($_SESSION['username'])){
 }
 
 if(isset($_POST['commentText']) && isset($_POST['designID'])){
-	$commentText = $_POST['commentText'];
+	$commentText = urlencode($_POST['commentText']);
 	$designID = $_POST['designID'];
 	
 	include('../config.php');
-	$addRequest = SERVICE_URL.'?section=comment&request=add&designID='.$designID.'&token='.$_SESSION['token'].'&comment='.urlencode($commentText);
+	$addRequest = SERVICE_URL.'?section=comment&request=add&designID='.$designID.'&token='.$_SESSION['token'].'&comment='.$commentText;
 	$addJSON = file_get_contents($addRequest, 0, null, null);
 	$addOutput = json_decode($addJSON, true);
 	//var_dump($addOutput);
