@@ -132,11 +132,11 @@ $comments = $commentOutput['comments'];
 					</div> 
 					<div class='discussion-body column span-9 last'>
 						<form action="interact/submit-comment.php" method="post">
-   							<p>
-   								<textarea name="commentText" rows="20" cols="25"></textarea>
+   							
+   								<textarea class="comment" name="commentText" cols="15" rows="2"></textarea>
    								<input type="hidden" name="designID" value=<?php echo $design['designID']?>>
   								<input type="submit" value="Send">
-  							 </p>
+  							
 						</form>
 					</div> 
 				</li>
