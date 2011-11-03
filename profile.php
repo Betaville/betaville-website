@@ -36,17 +36,12 @@
 <body> 
 <div class='master-container'> 
 		<?php  
-		//$userName = 'scandgolden24';
-		$userName = $_SESSION['username'];
+		if(isset($_GET['uName']))
+			$userName = $_GET['uName'];
+		else
+			$userName = $_SESSION['username'];
 		
 		include('config.php');
-		
-		//serves as the form request servent
-		if(isset($_GET['displayname']) && isset($_GET['bio']) && isset($_GET['website']))
-		{
-			$updateUser = SERVICE_URL.'?section=user&request=editProfile&username='.$userName.'&displayname='.$_GET['displayname'].'&bio='.$_GET['bio'].'&website='.$_GET['website'];
-			echo "Web srevice call initiated";
-		}
 		
 		// Get user's information
 	//	$userRequest = SERVICE_URL.'?section=user&request=getpublicinfo&username='.$userName;
@@ -61,19 +56,8 @@
 				<h1> Hello <?php echo $userName; ?>! </h1>
 			<div class='projects'>
 				<!--<div  class='project-description'>-->
-				<!--
-				!!!!!!!!!!!!!!!!!!!!! Display user info that they have provided during registration !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
-				-->
+				<!--!!!!!!!!!!!!!!!!! Display user info that they have provided during registration !!!!!!!!!!!!-->
 
-				<?php
-				/*
-				echo "Name: ".$user['displayName']."\n<br />";
-				echo "About me: ".$user['bio']."\n<br />";
-				echo "Website: ".$user['website']."\n<br />";
-				echo "Profile: ".$user['type']."\n<br />";
-			//	echo "<img src='".THUMBNAIL_URL.$designID.".png'>";
-				echo "<img src='images\Mike.jpg' height='100' width='100' style='background-color: #383838'>";
-			*/	?>
 
 
 				<form name='userInfo' >
@@ -87,8 +71,7 @@
 				</table> -->      
                 <?php */?>
                 
-                <!--<div style="float:left; display:block">-->
-                    <!--<div style="float:left; margin-right:15px">-->
+                
                     <img src='images\IMG_0261.JPG' height='100' width='100' style='background-color: #383838'> <br /><br />
                     <label>Name: </label> <div style=" display:inline; margin-left: 2px"><?php echo $user['displayName']?></div><br /><br />
                     <label>About Me: </label><div style=" display:inline; margin-left: 2px"><?php echo $user['bio']?></div><br /><br />
@@ -96,7 +79,7 @@
                     <label>Profile: </label><div style="display:inline; margin-left: 2px"><?php echo $user['type']?></div><br /><br />
                      
                   
-                <!--</div>-->
+            
                 
                 
                 
@@ -134,7 +117,6 @@
 			foreach($designs as $design)
 				if($userName==$design['user'])
 					$pcount++;
-		//	echo "Count=".$pcount;
 			
 			/*Calculate the total number of pages required*/
 			$pages=1;

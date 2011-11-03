@@ -1,3 +1,8 @@
+<?php
+ob_start();
+session_start();
+?>
+<head>
 <title>Betaville</title> 
 	<link href='stylesheets/reset.css' rel='stylesheet'> 
 	<link href='stylesheets/screen.css' rel='stylesheet'> 
@@ -12,6 +17,8 @@
 	<meta name="csrf-param" content="authenticity_token"/> 
 	<meta name="csrf-token" content="kg1Klytrjq1CyeFy3G1cujAERmXA69mxelZXrv9FcFc="/>
 	<?php include("betaville-functions.php"); ?>
+<head>
+</body>
 <header>
 	<nav>
 		<ul>
@@ -26,9 +33,7 @@
 			<li><a class='' href='contribute.php'>Contribute</a></li>
 			<li>
 			<?php 
-			ob_start();
-			if ( !isset($_SESSION['logged']))
-				session_start();
+			//ob_start();
 			//include("userAction.php");
 			//isset($_COOKIE["user"]) && isset($_COOKIE["pass"]) && $userActions->login($_COOKIE["user"], $_COOKIE["pass"],false)
 			//echo $_COOKIE['user'];

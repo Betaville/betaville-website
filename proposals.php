@@ -66,7 +66,7 @@
 						<ul> 
 							<li> 
 								<strong>Author&nbsp;</strong> 
-								<?php echo $design['user']; ?>
+								<a href='profile.php?uName=<?php echo $design['user']; ?>'><?php echo $design['user']; ?></a>
 								·
 							</li> 
 							<li> 

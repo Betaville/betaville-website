@@ -4,11 +4,9 @@ error_reporting(E_ALL);
 ?>
 <!doctype html>
 <html>
-<head>
-<?php ob_start(); include('head.php'); ?>
-</head>
 
-<body>
+<?php include('head.php'); ?>
+
 	<div class='master-container'>
 		<?php ob_start();?>
 		<div class='tagline'>
@@ -82,6 +80,7 @@ error_reporting(E_ALL);
 					<div class='project-container'>
 						<h2>Featured Projects</h2>
 						<?php
+						
 					include('config.php');
 					// get the featured proposals
 					// swap to request=proposals or request=versions
@@ -227,11 +226,11 @@ error_reporting(E_ALL);
 	</style>
 	<script type="text/javascript">
 	function ajaxRequest() {
-		var activexmodes=["Msxml2.XMLHTTP", "Microsoft.XMLHTTP"] //activeX versions to check for in IE
+		var activexmodes=["Msxml2.XMLHTTP", "Microsoft.XMLHTTP"]; //activeX versions to check for in IE
 		if (window.ActiveXObject){ //Test for support for ActiveXObject in IE first (as XMLHttpRequest in IE7 is broken)
 			for (var i=0; i<activexmodes.length; i++){
 				try{
-					return new ActiveXObject(activexmodes[i])
+					return new ActiveXObject(activexmodes[i]);
 				}
 				catch(e){
 					alert("error");
@@ -239,9 +238,9 @@ error_reporting(E_ALL);
 			}
 		}
 		else if (window.XMLHttpRequest) // if Mozilla, Safari etc
-		return new XMLHttpRequest()
+			return new XMLHttpRequest();
 		else
-		return false
+			return false;
 	}
 	function submitAjax(){
 		var mypostrequest=new ajaxRequest()
@@ -251,12 +250,14 @@ error_reporting(E_ALL);
 					document.getElementById("myDiv").innerHTML=mypostrequest.responseText;
 					var error = "Please enter a valid username <br />";
 					var error1 = "Please enter a valid password <br />";
+					var error3 = error + error1;
 					var error2 = "Username or password is invalid, Please try again <br />";
 					var error3 = error+error1;
-					//alert(mypostrequest.responseText);
-					if ( mypostrequest.responseText != error && mypostrequest.responseText != error3 && mypostrequest.responseText != error2 ){
-						//window.location = "http://localhost/betaville-website/profile.php";
-						window.location = "profile.php";
+					var error4 = "Please activate your account before signing in <br />";
+					//alert(mypostrequest.status);
+					if ( mypostrequest.responseText != error && mypostrequest.responseText != error1 && mypostrequest.responseText != error3 && mypostrequest.responseText != error2 && mypostrequest.responseText !=error4){
+					//	window.location = "http://localhost/betaville-website/profile.php";
+					document.getElementById("myDiv").style.display="block";
 					}
 					else 
 					document.getElementById("myDiv").style.display="block";
@@ -276,13 +277,13 @@ error_reporting(E_ALL);
 	
 	</script>
 	<?php	if ( !isset($_SESSION['logged'])) { ?>
-		<div class="Login-section" id="form" style="display:block" >
+		<div class="Login-section" id="form" style="display:block">
 			<h2> Login </h2>
 			<div id="myDiv" style="display:none"><h2></h2></div>
-			<form id = "formlogin" name="credentials" method="post">
-				Username:<input type="text" name="user" class="inputs">
-				Password:<input type="password" name="pass" class="inputs">
-				<input type="button" value="Log In" onClick="submitAjax()" class="inputs">
+			<form name="credentials" method="post">
+				Username:<input type="text" name="user" size="10" class="inputs">
+				Password:<input type="password" name="pass" size="10" class="inputs">
+				<input type="button" value="Log In" onClick="submitAjax()" class="inputs"> or <a href="register.php" > Register Now </a>
 			</form>
 		</div>
 		<br /><br />
