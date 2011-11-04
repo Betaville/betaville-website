@@ -1,17 +1,8 @@
-<?php
-//ini_set('display_errors',2); 
-//error_reporting(E_ALL);
-?>
-<!doctype html>
-<html>
-
-<head>
 <?php 
 ob_start(); 
 include('head.php'); 
 include('config.php');
 ?>
-</head>
 
 <body>
 	<div class='master-container'>
