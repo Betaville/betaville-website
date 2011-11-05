@@ -19,8 +19,8 @@
 			$designOutput = json_decode($designJSON, true);
 			$designs = $designOutput['designs'];
 
-			/*For pagination, the idea is to determine the count of no of proposals($pcount), calc the no of pages($pages), display page numbers 
-			at the bottom(along with their hyperlinks) and display only those 10 proposals of that particular page by passing the PageNo to be loaded.*/
+			/*For pagination, the idea is to determine the count of proposals($pcount), calc the no of pages($pages) required, display page numbers 
+			at the bottom and display only those 10 proposals of that particular page by passing the PageNo to be loaded next.*/
 			
 			if(isset($_GET["page"]))
 				$currentPage = $_GET["page"];

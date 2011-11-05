@@ -31,7 +31,7 @@ $comments = $commentOutput['comments'];
 							<strong> 
 								Author&nbsp;
 							</strong> 
-                            <a href='profile.php?uName=<?php echo $design['user']; ?>'><?php echo $design['user']; ?></a>
+                            <a href="profile.php?uName=<?php echo $design['user']; ?>"><?php echo $design['user']; ?></a>
 							·
 						</li> 
 						<li> 
@@ -113,7 +113,7 @@ $comments = $commentOutput['comments'];
 					?>
 					<li> 
 						<div class='discussion-meta column span-3'> 
-							<a class='author'><?php echo $comment['user']; ?></a> 
+							<a href='profile.php?uName=<?php echo $comment['user']; ?> class='author'><?php echo $comment['user']; ?></a> 
 							<div class='timestamp'>
 								<?php echo $comment['date'] ?>
 							</div> 

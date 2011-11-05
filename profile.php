@@ -10,7 +10,8 @@
 	</script>
 	<?php 
 		} 
-		include('head.php'); 
+		include('head.php');
+		include_once('betaville-functions.php'); 
 	?>
     <style>
 	.userInfo{
@@ -41,30 +42,33 @@
 				<h1> Hello <?php echo $userName; ?>! </h1>
 			<div class='projects'>
 				
-				<!--!!!!!!!!!!!! Display user info !!!!!!!!!!-->
+			<!--!!!!!!!!!!!! Display user info !!!!!!!!!!-->
 
-				<form name='userInfo' >
+			<form name='userInfo' >
 				
-				<?php /*?><!--<table border="0">
-				<tr><td><img src='images\Mike.jpg' height='100' width='100' style='background-color: #383838'></td></tr>
-				<tr class="userInfo"><td><label>Name: </label></td><td><?php echo $user['displayName']?></td></tr>
-            	<tr class="userInfo"><td><label>About Me: </label></td><td><?php echo $user['bio']?></td></tr>
-	            <tr class="userInfo"><td><label>Website: </label></td><td><?php echo $user['website']?></td></tr>
-    	        <tr class="userInfo"><td><label>Profile: </label></td><td><?php echo $user['type']?></td></tr>
-				</table> -->      
-                <?php */?>
+			<?php /*?><!--<table border="0">
+			<tr><td><img src='images\Mike.jpg' height='100' width='100' style='background-color: #383838'></td></tr>
+			<tr class="userInfo"><td><label>Name: </label></td><td><?php echo $user['displayName']?></td></tr>
+			<tr class="userInfo"><td><label>About Me: </label></td><td><?php echo $user['bio']?></td></tr>
+			<tr class="userInfo"><td><label>Website: </label></td><td><?php echo $user['website']?></td></tr>
+			<tr class="userInfo"><td><label>Profile: </label></td><td><?php echo $user['type']?></td></tr>
+			</table> -->      
+			<?php */
                 
-                
-                <img src='images\IMG_0261.JPG' height='100' width='100' style='background-color: #383838'> <br /><br />
-                <label>Name: </label> <div style=" display:inline; margin-left: 2px"><?php echo $user['displayName']?></div><br /><br />
-                <label>About Me: </label><div style=" display:inline; margin-left: 2px"><?php echo $user['bio']?></div><br /><br />
-                <label>Website: </label><div style=" display:inline; margin-left: 2px"><?php echo $user['website']?></div><br /><br />
-                <label>Profile: </label><div style="display:inline; margin-left: 2px"><?php echo $user['type']?></div><br /><br />
-                     
-				</form>
+
+			//Check if image exists on server
+			$image = checkimage(THUMBNAIL_URL.'/avatars'.$userName.'.png');
+			?>
+			<img src=<?php echo $image;?> height='100' width='100' style='background-color: #383838'><br /><br />
+			<img src='images\IMG_0261.JPG' height='100' width='100' style='background-color: #383838'> <br /><br />
+			<label>Name: </label> <div style=" display:inline; margin-left: 2px"><?php echo $user['displayName']?></div><br /><br />
+			<label>About Me: </label><div style=" display:inline; margin-left: 2px"><?php echo $user['bio']?></div><br /><br />
+			<label>Website: </label><div style=" display:inline; margin-left: 2px"><?php echo $user['website']?></div><br /><br />
+			<label>Profile: </label><div style="display:inline; margin-left: 2px"><?php echo $user['type']?></div><br /><br />
+			
+			</form>
 	 	
-	 		<?php 
-	 		//if(isset($_SESSION['username']))
+	 		<?php
 	 		if($userName==$_SESSION['username'])
 	 		{?>
 	 			<form name='profileForm' action='editProfile.php' method="get">
@@ -216,8 +220,7 @@
 				<?php 
 				$_GET['requestingPage']='profile';
 				$_GET['uName']=$userName;
-				include('latest-activity.php'); ?> <!-- Check if includes can pass arguments in the url. 
-				In that case we will be able to identify where the request is coming from--> 
+				include('latest-activity.php'); ?>  
 			</aside>
 		
 		</div>
