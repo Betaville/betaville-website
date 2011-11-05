@@ -285,8 +285,7 @@ include('config.php');
 		</div>
 		<br /><br />
 		<?php } ?>
-		<?php 
-		$_GET['requestingPage']='index';
+		<?php
 		include('latest-activity.php'); 
 		?>
 		<div class='activity-section'>
