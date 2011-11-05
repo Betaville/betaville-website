@@ -137,9 +137,7 @@
 					</div>
 			</div> 
 <aside>
-	<?php 
-	$_GET['requestingPage']='proposal';
-	include('latest-activity.php'); ?>
+	<?php include('latest-activity.php'); ?>
 </aside> 
 <?php include('footer.php'); ?>
 </div> 

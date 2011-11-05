@@ -21,10 +21,8 @@
 <body> 
 <div class='master-container'> 
 		<?php  
-		if(isset($_GET['uName']))
-			$userName = $_GET['uName'];
-		else
-			$userName = $_SESSION['username'];
+		
+		$userName = $_SESSION['username'];
 		
 		include('config.php');
 		
@@ -63,8 +61,8 @@
                      
 				</form>
 	 	
-	 		<?php 
-	 		//if(isset($_SESSION['username']))
+	 		<?php
+	 		//echo $userName;
 	 		if($userName==$_SESSION['username'])
 	 		{?>
 	 			<form name='profileForm' action='editProfile.php' method="get">
@@ -78,9 +76,8 @@
 		
 		<?php
 			// swap to request=proposals or request=versions
-			$designRequest = SERVICE_URL.'?section=design&request=findbyuser&user='.$userName;
+			$designRequest = SERVICE_URL.'?section=design&request=findbyuser&excludeempty=1&user='.$userName;
 			$designJSON = file_get_contents($designRequest,0,null,null);
-		//	$designJSON = file_get_contents("E:\Betaville\Source Code\proposalAll.txt");
 			$designOutput = json_decode($designJSON, true);
 			$designs = $designOutput['designs'];
 
@@ -216,7 +213,7 @@
 				<?php 
 				$_GET['requestingPage']='profile';
 				$_GET['uName']=$userName;
-				include('latest-activity.php'); ?> <!-- Check if includes can pass arguments in the url. 
+				include('latest-user-activity.php'); ?> <!-- Check if includes can pass arguments in the url. 
 				In that case we will be able to identify where the request is coming from--> 
 			</aside>
 		
