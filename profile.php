@@ -1,35 +1,33 @@
-<!doctype html> 
-<html> 
-<head>
+<?php
+include('config.php');
+include('head.php'); 
+?>
 	<?php
 		session_start();
 		if (!isset($_SESSION['logged']) && !$_SESSION['logged'] == true ) {
 	?>
 	<script type="text/javascript" >
-		window.location="http://localhost/betaville-website_LocalCopy";
+		window.location=<?php echo '"'.$WEB_URL.'"';?>;
 	</script>
 	<?php 
-		} 
-		include('head.php'); 
+		}
 	?>
     <style>
 	.userInfo{
 		background-color:
 	}
 	</style>
-</head> 
 <body> 
 <div class='master-container'> 
 		<?php  
 		
 		$userName = $_SESSION['username'];
 		
-		include('config.php');
+		
 		
 		// Get user's information
 		$userRequest = SERVICE_URL.'?section=user&request=getpublicinfo&username='.$userName;
 		$userJSON = file_get_contents($userRequest,0,null,null);
-	//	$userJSON = file_get_contents("userScandgolden24.txt");
 		$userOutput = json_decode($userJSON, true);
 		$user = $userOutput['userInfo'];
 		
