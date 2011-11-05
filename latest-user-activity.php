@@ -1,27 +1,47 @@
 <div class='activity-section'>
 	
 <?php
+$page='profile';
 include_once('config.php');
 
 if(isset($_GET['uName']))
 	$userName = $_GET['uName'];
 else
 	$userName = $_SESSION['username'];
-	
-echo "<h2>My Latest Activities</h2>";
+
+echo "<h2>My Latest Activities</h2><br>";
 
 // swap to request=proposals or request=versions
-$designRequest = SERVICE_URL.'?section=activity&request=designs&quantity=5&excludeempty=1';
+// Fetching designs now findbyuser, keep in mind, a huge number of users will be returned with an empty array if you not uploaded anything
+$designRequest = SERVICE_URL.'?section=design&request=findbyuser&user='.$userName.'&excludeempty=1';
 $designJSON = file_get_contents($designRequest,0,null,null);
 $designOutput = json_decode($designJSON, true);
 $designs = $designOutput['designs'];
 
+//This is to echo the total number of models uploaded by the user
+$count = 0;
+//This is to break the loop after 5 designs
+$counter = 0;
+
+foreach($designs as $design1) {
+	$count++;
+	}
+	$display = $count.' Models loaded by you';	
+	if($count>0) {
+		echo '<strong>'.$display.'</strong><br><br>';
+		}
+	else {
+		$display = 'No Models uploaded by you';
+		echo '<strong>'.$display.'</strong><br><br>';
+		}
 foreach($designs as $design){
-	//change
-	if(($page=='profile' && $design['user']==$userName))
-	{ ?>
+	/* Im not sure if this check is to be done, it is a separate file now
+	change
+	if(($page=='profile' && $design['user']==$userName))*/
+	?>
 	<div class='activity'>
 	<?php
+		$counter++;		
 		echo "<a href='design.php?id=".$design['designID']."'>\n";
 		//Check if image exists on server
 		$image = checkimage(THUMBNAIL_URL.$design['designID'].'.png');
@@ -47,13 +67,18 @@ foreach($designs as $design){
 
 
 <?php
+	//Break loop here after showing 5 designs	
+	if($counter>=5)
+	break;	
 	}
-}
-// retrieving comments
+
+
+
+// retrieving comments by passing $userName in section activity request myactivity and user = $userName
 if($page=='profile')
 	$commentRequest = SERVICE_URL.'?section=activity&request=myactivity&user='.$userName;
-else
-	$commentRequest = SERVICE_URL.'?section=activity&request=comments&quantity=5';
+//else
+//	$commentRequest = SERVICE_URL.'?section=activity&request=comments&quantity=5';
 $commentJSON = file_get_contents($commentRequest,0,null,null);
 $commentOutput = json_decode($commentJSON, true);
 $comments = $commentOutput['comments'];
@@ -74,12 +99,12 @@ foreach($comments as $comment){
 		echo '<a href="design.php?id='.$commentDesign['designID'].'">';
 		//Check if image exists on server
 		$image = checkimage(THUMBNAIL_URL.$commentDesign['designID'].'.png');
-		echo "<a href='design.php?id=".$design['designID']."'>\n"; ?>
+		echo "<a href='design.php?id=".$comment['designid']."'>\n"; ?>
 		<img src=<?php echo $image;?> style='background-color: #3e4b71'> </a>
 	
 	<div class='activity-body'>
 	<?php
-		echo '<a href="design.php?id='.$commentDesign['designID'].'"><strong>'.$comment['user'].'</strong>';
+		echo '<a href="design.php?id='.$commentDesign['designID'].'"><strong>'.$userName.'</strong>';
 	?>
 		commented on
 		<strong><?php echo $commentDesign['name'] ?></strong>:
