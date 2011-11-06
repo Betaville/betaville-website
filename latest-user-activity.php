@@ -84,30 +84,34 @@ $commentOutput = json_decode($commentJSON, true);
 $comments = $commentOutput['comments'];
 
 $counter = 0;
+foreach($comments as $c1) {
+echo $c1['commentid'].'&nbsp&nbsp';
+
+}
 foreach($comments as $comment){
 	
 	$counter++;
 //	echo $counter;
-	$commentDesignRequest = SERVICE_URL.'?section=design&request=findbyid&id='.$comment['designid'];
+	/**$commentDesignRequest = SERVICE_URL.'?section=design&request=findbyid&id='.$comment['designid'];
 	$commentDesignJSON = file_get_contents($commentDesignRequest,0,null,null);
 	$commentDesignOutput = json_decode($commentDesignJSON, true);
-	$commentDesign = $commentDesignOutput['design'];
+	$commentDesign = $commentDesignOutput['design'];*/
 
 	?>
 	<div class='activity'>
 	<?php 
-		echo '<a href="design.php?id='.$commentDesign['designID'].'">';
+		echo '<a href="design.php?id='.$comment['designid'].'">';
 		//Check if image exists on server
-		$image = checkimage(THUMBNAIL_URL.$commentDesign['designID'].'.png');
+		$image = checkimage(THUMBNAIL_URL.$comment['designid'].'.png');
 		echo "<a href='design.php?id=".$comment['designid']."'>\n"; ?>
 		<img src=<?php echo $image;?> style='background-color: #3e4b71'> </a>
 	
 	<div class='activity-body'>
 	<?php
-		echo '<a href="design.php?id='.$commentDesign['designID'].'"><strong>'.$userName.'</strong>';
+		echo '<a href="design.php?id='.$comment['designid'].'"><strong>'.$userName.'</strong>';
 	?>
 		commented on
-		<strong><?php echo $commentDesign['name'] ?></strong>:
+		<strong><?php echo $comment['name'] ?></strong>:
 		<span class='content'><?php echo $comment['comment'] ?></span>
 		</a>
 	<div class='activity-meta'>
