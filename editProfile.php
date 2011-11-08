@@ -8,9 +8,9 @@
 		//include('config.php');
 		
 		// get user information
-	//	$userRequest = SERVICE_URL.'?section=user&request=getpublicinfo&username='.$userName;
+		$userRequest = SERVICE_URL.'?section=user&request=getpublicinfo&username='.$userName;
 	//	$userJSON = file_get_contents($userRequest,0,null,null);
-		$userJSON = file_get_contents("userScandgolden24.txt");
+		//$userJSON = file_get_contents("userScandgolden24.txt");
 		$userOutput = json_decode($userJSON, true);
 		$user = $userOutput['userInfo'];
 		
