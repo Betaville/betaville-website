@@ -38,16 +38,6 @@ include('head.php');
 
 			<form name='userInfo' >
 				
-			<?php /*?><!--<table border="0">
-			<tr><td><img src='images\Mike.jpg' height='100' width='100' style='background-color: #383838'></td></tr>
-			<tr class="userInfo"><td><label>Name: </label></td><td><?php echo $user['displayName']?></td></tr>
-			<tr class="userInfo"><td><label>About Me: </label></td><td><?php echo $user['bio']?></td></tr>
-			<tr class="userInfo"><td><label>Website: </label></td><td><?php echo $user['website']?></td></tr>
-			<tr class="userInfo"><td><label>Profile: </label></td><td><?php echo $user['type']?></td></tr>
-			</table> -->      
-			<?php */
-                
-
 			//Check if image exists on server
 			$image = checkimage(THUMBNAIL_URL.'/avatars'.$userName.'.png');
 			?>
@@ -59,14 +49,17 @@ include('head.php');
 			<label>Profile: </label><div style="display:inline; margin-left: 2px"><?php echo $user['type']?></div><br /><br />
 			
 			</form>
+
 	 	
 	 		<?php
 	 		//echo $userName;
 	 		if($userName==$_SESSION['username'])
 	 		{?>
+	 			<!--
 	 			<form name='profileForm' action='editProfile.php' method="get">
 				<input type="submit" name="submit" value="Edit Profile" />
 				</form>
+				-->
 	 		<?php 
 	 		}?>
 				
@@ -131,7 +124,7 @@ include('head.php');
 							<li> 
 								<strong>Author&nbsp;</strong> 
 								<?php echo $design['user']; ?>
-								·
+								
 							</li> 
 							<li> 
 								<strong>Last&nbsp;Update</strong> 
@@ -139,7 +132,7 @@ include('head.php');
 									include_once('betaville-functions.php');
 									$updatedtime = fd($design['date']);
 									timediff($updatedtime); ?>
-								·
+								
 							</li> 
 							<li> 
 								<span class='comment'> 
@@ -167,7 +160,7 @@ include('head.php');
 									likes
 								</a> 
 								</span> 
-								·
+								
 							</li> 
 							<li> 
 								<strong>ID:</strong> 

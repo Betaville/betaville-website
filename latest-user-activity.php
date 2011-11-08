@@ -3,6 +3,7 @@
 <?php
 $page='profile';
 include_once('config.php');
+include_once('betaville-functions.php');
 
 if(isset($_GET['uName']))
 	$userName = $_GET['uName'];
@@ -23,17 +24,18 @@ $count = 0;
 //This is to break the loop after 5 designs
 $counter = 0;
 
-foreach($designs as $design1) {
+foreach($designs as $design) {
 	$count++;
-	}
-	$display = $count.' Models loaded by you';	
-	if($count>0) {
-		echo '<strong>'.$display.'</strong><br><br>';
-		}
-	else {
-		$display = 'No Models uploaded by you';
-		echo '<strong>'.$display.'</strong><br><br>';
-		}
+}
+$display = $count.' Models loaded by you';	
+if($count>0) {
+	echo '<strong>'.$display.'</strong><br><br>';
+}
+else {
+	$display = 'No Models uploaded by you';
+	echo '<strong>'.$display.'</strong><br><br>';
+}
+
 foreach($designs as $design){
 	/* Im not sure if this check is to be done, it is a separate file now
 	change
@@ -57,7 +59,6 @@ foreach($designs as $design){
 		</a>
 	<div class='activity-meta'>
 	<?php
-		include_once('betaville-functions.php');
 		$updatedtime = fd($design['date']);
 		timediff($updatedtime);
 	?>
@@ -69,16 +70,11 @@ foreach($designs as $design){
 <?php
 	//Break loop here after showing 5 designs	
 	if($counter>=5)
-	break;	
-	}
-
-
+	break;
+}
 
 // retrieving comments by passing $userName in section activity request myactivity and user = $userName
-if($page=='profile')
-	$commentRequest = SERVICE_URL.'?section=activity&request=myactivity&user='.$userName;
-//else
-//	$commentRequest = SERVICE_URL.'?section=activity&request=comments&quantity=5';
+$commentRequest = SERVICE_URL.'?section=activity&request=myactivity&user='.$userName;
 $commentJSON = file_get_contents($commentRequest,0,null,null);
 $commentOutput = json_decode($commentJSON, true);
 $comments = $commentOutput['comments'];
@@ -87,7 +83,6 @@ $counter = 0;
 foreach($comments as $comment){
 	
 	$counter++;
-//	echo $counter;
 	$commentDesignRequest = SERVICE_URL.'?section=design&request=findbyid&id='.$comment['designid'];
 	$commentDesignJSON = file_get_contents($commentDesignRequest,0,null,null);
 	$commentDesignOutput = json_decode($commentDesignJSON, true);
@@ -99,12 +94,12 @@ foreach($comments as $comment){
 		echo '<a href="design.php?id='.$commentDesign['designID'].'">';
 		//Check if image exists on server
 		$image = checkimage(THUMBNAIL_URL.$commentDesign['designID'].'.png');
-		echo "<a href='design.php?id=".$comment['designid']."'>\n"; ?>
+		echo "<a href='design.php?id=".$commentDesign['designID']."'>\n"; ?>
 		<img src=<?php echo $image;?> style='background-color: #3e4b71'> </a>
 	
 	<div class='activity-body'>
 	<?php
-		echo '<a href="design.php?id='.$commentDesign['designID'].'"><strong>'.$userName.'</strong>';
+		echo '<a href="design.php?id='.$commentDesign['designID'].'"><strong>'.$comment['user'].'</strong>';
 	?>
 		commented on
 		<strong><?php echo $commentDesign['name'] ?></strong>:
@@ -112,8 +107,6 @@ foreach($comments as $comment){
 		</a>
 	<div class='activity-meta'>
 	<?php
-		//this is already called above as include_once, cannot call again
-		// include_once('betaville-functions.php');
 		$updatedtime = fd($comment['date']);
 		timediff($updatedtime);
 	?>
