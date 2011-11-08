@@ -1,17 +1,8 @@
-<?php
-//ini_set('display_errors',2); 
-//error_reporting(E_ALL);
-?>
-<!doctype html>
-<html>
-
-<head>
 <?php 
 ob_start(); 
 include('head.php'); 
 include('config.php');
 ?>
-</head>
 
 <body>
 	<div class='master-container'>
@@ -28,7 +19,7 @@ include('config.php');
 						<div class='button-row'>
 							<a class='uberbutton green' href='http://betaville.net/webstart/betaville.jnlp'>
 								Download now
-								<span class='icon i-play'>â–º</span>
+								<span class='icon i-play'></span>
 							</a>
 							<a class='text' href='what-is-betaville.php'>Get info Â»</a>
 							<a class='text' href='http://www.youtube.com/watch?v=bZ6lN0Wtlb4&amp;autoplay=1' id='thevideo'>Watch a demo Â»</a>
@@ -43,7 +34,7 @@ include('config.php');
 								<br>
 								<span>Futuristic</span>
 							</div>
-							<a class='carousel-learn-more' href='what-is-betaville.php'>Learn more Â»</a>
+							<a class='carousel-learn-more' href='what-is-betaville.php'>Learn more »</a>
 						</li>
 						<li class='carousel-opensource'>
 
@@ -52,7 +43,7 @@ include('config.php');
 								<br>
 								<span>Open Source</span>
 							</div>
-							<a class='carousel-learn-more' href='contribute.php'>Learn more Â»</a>
+							<a class='carousel-learn-more' href='contribute.php'>Learn more »</a>
 						</li>
 						<li class='carousel-participatory'>
 							<div class='carousel-text'>
@@ -60,7 +51,7 @@ include('config.php');
 								<br>
 								<span>Participatory</span>
 							</div>
-							<a class='carousel-learn-more' href='contribute.php'>Learn more Â»</a>
+							<a class='carousel-learn-more' href='contribute.php'>Learn more »</a>
 						</li>
 						<li class='carousel-publicart'>
 							<div class='carousel-text'>
@@ -68,7 +59,7 @@ include('config.php');
 								<br>
 								<span>Public art</span>
 							</div>
-							<a class='carousel-learn-more' href='what-is-betaville.php'>Learn more Â»</a>
+							<a class='carousel-learn-more' href='what-is-betaville.php'>Learn more »</a>
 						</li>
 					</ul>
 
@@ -118,7 +109,7 @@ include('config.php');
 												<li>
 													<strong>Author&nbsp;</strong>
                                                     <a href='profile.php?uName=<?php echo $proposal['user']; ?>'><?php echo $proposal['user']; ?></a>
-													·
+													
 												</li>
 
 												<li>
@@ -126,7 +117,7 @@ include('config.php');
 													<?php 	//echo $proposal['date']; Leaving code open if changes dont have to be made
 												$updatedtime = fd($proposal['date']);
 												timediff($updatedtime); ?>
-												·
+												
 											</li>
 											<li>
 												<span class='comment'>
@@ -143,7 +134,7 @@ include('config.php');
 
 
 											</span>
-											·
+											
 										</li>
 										<li>
 											<strong>ID:</strong>
@@ -179,7 +170,7 @@ include('config.php');
 									<li>
 										<strong>Author&nbsp;</strong>
                                         <a href='profile.php?uName=<?php echo $proposal['user']; ?>'><?php echo $proposal['user']; ?></a>
-										·
+										
 									</li>
 
 									<li>
@@ -187,7 +178,7 @@ include('config.php');
 										<?php 	//echo $proposal['date']; Leaving code open if changes dont want to be made 
 									$updatedtime = fd($proposal['date']);
 									timediff($updatedtime); ?>
-									·
+									
 								</li>
 								<li>
 									<span class='comment'>
@@ -204,7 +195,7 @@ include('config.php');
 
 
 								</span>
-								·
+								
 							</li>
 							<li>
 								<strong>ID:</strong>
@@ -294,8 +285,7 @@ include('config.php');
 		</div>
 		<br /><br />
 		<?php } ?>
-		<?php 
-		$_GET['requestingPage']='index';
+		<?php
 		include('latest-activity.php'); 
 		?>
 		<div class='activity-section'>

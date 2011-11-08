@@ -1,10 +1,10 @@
 <?php
-
 	session_start();
+	include("config.php");
 	if (!isset($_SESSION['logged']) && !$_SESSION['logged'] == true ) {
 ?>
 	<script type="text/javascript" >
-		window.location="http://localhost/betaville-website_LocalCopy";
+		window.location=<?php echo '"'.$WEB_URL.'"';?>;
 	</script>
 <?php 
 	}
@@ -13,23 +13,22 @@
 
 
 
-<?php 
-	include("config.php");
-
+<?php
 		if(isset($_POST['displayName']))
 		{
-			$updateUser = SERVICE_URL.'?section=user&request=changedisplayName&username='.$userName.'&displayName='.$_POST['displayName'];
-			echo "Web srevice call initiated for displayname\n";
+			$updateUser = SERVICE_URL.'?section=user&request=changedisplayName&token='.$_SESSION['token'].'&username='.$userName.'&displayName='.$_POST['displayName'];
+			echo "Web service call initiated for displayname </ br>";
 		}
 		if(isset($_POST['bio']))
 		{
-			$updateUser = SERVICE_URL.'?section=user&request=changebio&username='.$userName.'&bio='.$_POST['bio'];
-			echo "Web srevice call initiate for bio\r";
+			$updateUser = SERVICE_URL.'?section=user&request=changebio&token='.$_SESSION['token'].'&username='.$userName.'&bio='.$_POST['bio'];
+			echo "Web service call initiate for bio </ br>";
 		}
 		if(isset($_POST['website']))
 		{
-			$updateUser = SERVICE_URL.'?section=user&request=changewebsite&username='.$userName.'&website='.$_POST['website'];
-			echo "Web srevice call initiated for website </ br>";
+			echo $_POST['website'];
+			$updateUser = SERVICE_URL.'?section=user&request=changewebsite&token='.$_SESSION['token'].'&username='.$userName.'&website='.$_POST['website'];
+			echo "Web service call initiated for website </ br>";
 		}
 		if(isset($_FILES['profilePicture']['name']))
 		{

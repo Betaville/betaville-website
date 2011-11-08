@@ -1,38 +1,30 @@
-<!doctype html> 
-<html> 
-<head>
+<?php
+include('config.php');
+include('head.php'); 
+?>
 	<?php
-		session_start();
 		if (!isset($_SESSION['logged']) && !$_SESSION['logged'] == true ) {
 	?>
 	<script type="text/javascript" >
-		window.location="http://localhost/betaville-website_LocalCopy";
+		window.location=<?php echo '"'.$WEB_URL.'"';?>;
 	</script>
 	<?php 
-		} 
-		include('head.php');
-		include_once('betaville-functions.php'); 
+		}
 	?>
     <style>
 	.userInfo{
 		background-color:
 	}
 	</style>
-</head> 
 <body> 
 <div class='master-container'> 
 		<?php  
-		if(isset($_GET['uName']))
-			$userName = $_GET['uName'];
-		else
-			$userName = $_SESSION['username'];
 		
-		include('config.php');
+		$userName = $_SESSION['username'];
 		
 		// Get user's information
 		$userRequest = SERVICE_URL.'?section=user&request=getpublicinfo&username='.$userName;
 		$userJSON = file_get_contents($userRequest,0,null,null);
-	//	$userJSON = file_get_contents("userScandgolden24.txt");
 		$userOutput = json_decode($userJSON, true);
 		$user = $userOutput['userInfo'];
 		
@@ -69,6 +61,7 @@
 			</form>
 	 	
 	 		<?php
+	 		//echo $userName;
 	 		if($userName==$_SESSION['username'])
 	 		{?>
 	 			<form name='profileForm' action='editProfile.php' method="get">
@@ -82,9 +75,8 @@
 		
 		<?php
 			// swap to request=proposals or request=versions
-			$designRequest = SERVICE_URL.'?section=design&request=findbyuser&user='.$userName;
+			$designRequest = SERVICE_URL.'?section=design&request=findbyuser&excludeempty=1&user='.$userName;
 			$designJSON = file_get_contents($designRequest,0,null,null);
-		//	$designJSON = file_get_contents("E:\Betaville\Source Code\proposalAll.txt");
 			$designOutput = json_decode($designJSON, true);
 			$designs = $designOutput['designs'];
 
@@ -220,7 +212,8 @@
 				<?php 
 				$_GET['requestingPage']='profile';
 				$_GET['uName']=$userName;
-				include('latest-activity.php'); ?>  
+				include('latest-user-activity.php'); ?> <!-- Check if includes can pass arguments in the url. 
+				In that case we will be able to identify where the request is coming from--> 
 			</aside>
 		
 		</div>

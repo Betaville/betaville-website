@@ -43,7 +43,7 @@ $comments = $commentOutput['comments'];
 									$updatedtime = fd($design['date']);
 									timediff($updatedtime);
 							?>
-							·
+							
 						</li> 
 						<li> 
 							<span class='comment'> 
@@ -104,11 +104,7 @@ $comments = $commentOutput['comments'];
 				</p> 
 				<ul> 
 
-
-
 					<?php
-
-
 				foreach($comments as $comment){
 					?>
 					<li> 

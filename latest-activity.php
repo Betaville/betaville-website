@@ -1,33 +1,16 @@
 <div class='activity-section'>
 	
-	<?php
+<?php
 include_once('config.php');
-
-$page = $_GET['requestingPage'];		//change
-
-if(isset($_GET['uName']))
-	$userName = $_GET['uName'];
-else
-	$userName = $_SESSION['username'];
-			
-//$userName = $_SESSION['username'];
- //$userName = 'scandgolden24';
-
-if ($page=='profile')
-	echo "<h2>My Latest Activities</h2>";
-elseif($page=='proposal' || $page=='index')
-	echo "<h2>Latest Activity</h2>";
+echo "<h2>Latest Activity</h2>";
 
 // swap to request=proposals or request=versions
-$designRequest = SERVICE_URL.'?section=activity&request=designs&quantity=5&excludeempty=true';
+$designRequest = SERVICE_URL.'?section=activity&request=designs&quantity=5&excludeempty=1';
 $designJSON = file_get_contents($designRequest,0,null,null);
 $designOutput = json_decode($designJSON, true);
 $designs = $designOutput['designs'];
 
-foreach($designs as $design){
-	//change
-	if(($page=='profile' && $design['user']==$userName) || $page=='proposal')
-	{ ?>
+foreach($designs as $design){?>
 	<div class='activity'>
 	<?php
 		echo "<a href='design.php?id=".$design['designID']."'>\n";
@@ -55,13 +38,9 @@ foreach($designs as $design){
 
 
 <?php
-	}
 }
 // retrieving comments
-if($page=='profile')
-	$commentRequest = SERVICE_URL.'?section=activity&request=myactivity&user='.$userName;
-else
-	$commentRequest = SERVICE_URL.'?section=activity&request=comments&quantity=5';
+$commentRequest = SERVICE_URL.'?section=activity&request=comments&quantity=5';
 $commentJSON = file_get_contents($commentRequest,0,null,null);
 $commentOutput = json_decode($commentJSON, true);
 $comments = $commentOutput['comments'];
