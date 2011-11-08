@@ -67,9 +67,9 @@ function fd($value)
 			} 
 
 //this function takes one php datetime value and subtracts it from the current time in New York
-function timediff($a) 
-
+function timediff($a)
 			{
+			
 			//fetching current server time from getServerTime()
 			$date = fd(getServerTime());
 
