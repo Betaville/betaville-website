@@ -1,6 +1,7 @@
 <div class='activity-section'>
 	
 <?php
+//error_reporting (E_ALL ^ E_NOTICE); 
 $page='profile';
 include_once('config.php');
 include_once('betaville-functions.php');
@@ -72,12 +73,22 @@ foreach($designs as $design){
 	if($counter>=5)
 	break;
 }
-
+?>
+<br><br>
+<?php
 // retrieving comments by passing $userName in section activity request myactivity and user = $userName
 $commentRequest = SERVICE_URL.'?section=activity&request=myactivity&user='.$userName;
 $commentJSON = file_get_contents($commentRequest,0,null,null);
 $commentOutput = json_decode($commentJSON, true);
 $comments = $commentOutput['comments'];
+$commentcount = 0;
+foreach($comments as $comment) {
+	$commentcount++;
+}
+if($commentcount==0) {
+	$display = 'No comments by you';
+	echo '<strong>'.$display.'</strong><br><br>';
+}
 
 $counter = 0;
 foreach($comments as $comment){
