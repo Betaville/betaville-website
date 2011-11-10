@@ -1,6 +1,6 @@
 <?php
+include('head.php');
 include('config.php');
-include('head.php'); 
 ?>
 	<?php
 		if (!isset($_SESSION['logged']) && !$_SESSION['logged'] == true ) {
@@ -20,7 +20,10 @@ include('head.php');
 <div class='master-container'> 
 		<?php  
 		
-		$userName = $_SESSION['username'];
+		if(isset($_GET['uName']))
+			$userName = $_GET['uName'];
+		else
+			$userName = $_SESSION['username'];
 		
 		// Get user's information
 		$userRequest = SERVICE_URL.'?section=user&request=getpublicinfo&username='.$userName;
@@ -37,19 +40,17 @@ include('head.php');
 			<!--!!!!!!!!!!!! Display user info !!!!!!!!!!-->
 
 			<form name='userInfo' >
-				
+			<?php
 			//Check if image exists on server
-			$image = checkimage(THUMBNAIL_URL.'/avatars'.$userName.'.png');
+			$image = checkimage(AVATAR_URL.$userName.'.jpg');
 			?>
 			<img src=<?php echo $image;?> height='100' width='100' style='background-color: #383838'><br /><br />
-			<img src='images\IMG_0261.JPG' height='100' width='100' style='background-color: #383838'> <br /><br />
 			<label>Name: </label> <div style=" display:inline; margin-left: 2px"><?php echo $user['displayName']?></div><br /><br />
 			<label>About Me: </label><div style=" display:inline; margin-left: 2px"><?php echo $user['bio']?></div><br /><br />
 			<label>Website: </label><div style=" display:inline; margin-left: 2px"><?php echo $user['website']?></div><br /><br />
 			<label>Profile: </label><div style="display:inline; margin-left: 2px"><?php echo $user['type']?></div><br /><br />
 			
 			</form>
-
 	 	
 	 		<?php
 	 		//echo $userName;
@@ -60,7 +61,7 @@ include('head.php');
 				<input type="submit" name="submit" value="Edit Profile" />
 				</form>
 				-->
-	 		<?php 
+	 			<?php 
 	 		}?>
 				
 				<br />
@@ -203,10 +204,9 @@ include('head.php');
 	
 			<aside> 
 				<?php 
-				$_GET['requestingPage']='profile';
-				$_GET['uName']=$userName;
-				include('latest-user-activity.php'); ?> <!-- Check if includes can pass arguments in the url. 
-				In that case we will be able to identify where the request is coming from--> 
+//				$_GET['requestingPage']='profile';							//need to remove this 
+				$_GET['uName'] = $userName;
+				include('latest-user-activity.php'); ?>
 			</aside>
 		
 		</div>
