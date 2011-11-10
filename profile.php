@@ -45,10 +45,10 @@ include('config.php');
 			$image = checkimage(AVATAR_URL.$userName.'.jpg');
 			?>
 			<img src=<?php echo $image;?> height='100' width='100' style='background-color: #383838'><br /><br />
-			<label>Name: </label> <div style=" display:inline; margin-left: 2px"><?php echo $user['displayName']?></div><br /><br />
-			<label>About Me: </label><div style=" display:inline; margin-left: 2px"><?php echo $user['bio']?></div><br /><br />
-			<label>Website: </label><div style=" display:inline; margin-left: 2px"><?php echo $user['website']?></div><br /><br />
-			<label>Profile: </label><div style="display:inline; margin-left: 2px"><?php echo $user['type']?></div><br /><br />
+			<label>Name: </label> <div style=" display:inline; margin-left: 2px"><?php if($user['userName']==null) echo '  --- '; else echo $user['userName'];?></div><br /><br />
+			<label>About Me: </label><div style=" display:inline; margin-left: 2px"><?php if($user['bio']==null) echo '  --- '; else echo $user['bio'];?></div><br /><br />
+			<label>Website: </label><div style=" display:inline; margin-left: 2px"><?php if($user['website']==null) echo '  --- '; else echo $user['website'];?></div><br /><br />
+			<label>Profile: </label><div style="display:inline; margin-left: 2px"><?php if($user['type']==null) echo '  --- '; else echo $user['type'];?></div><br /><br />
 			
 			</form>
 	 	
@@ -73,7 +73,6 @@ include('config.php');
 			$designJSON = file_get_contents($designRequest,0,null,null);
 			$designOutput = json_decode($designJSON, true);
 			$designs = $designOutput['designs'];
-
 			/*For pagination, the idea is to determine a count of the no of proposals($pcount), calc the no of pages($pages), display page numbers 
 			at the bottom(along with their hyperlinks) and display only those 10 proposals of that particular page by passing the PageNo to be loaded.*/
 			
@@ -101,6 +100,18 @@ include('config.php');
 			}
 			
 			echo "<h2>My Proposals</h2>";
+			$designcount = 0;
+			foreach($designs as $design) {
+			$designcount++;
+			}
+			$display = $designcount.' Proposals loaded by you';	
+			if($designcount>0) {
+			echo '<strong>'.$display.'</strong><br><br>';
+			}
+			else {
+			$display = 'No Proposals by you';
+			echo '<strong>'.$display.'</strong><br><br>';
+			}
 			$counter=0;
 			for($i=$currentPage*10-10;$i<=$tpcount-1;$i++){
 				$design =  $designs[$i];
@@ -113,9 +124,11 @@ include('config.php');
 				<div class='f-1 project'>
 				<?php
 				echo "<a href='design.php?id=".$design['designID']."'>\n";
-				echo "<img src='".THUMBNAIL_URL.$design['designID'].".png' style='background-color: #383838'></a>";
-				?>
-
+				//Check if image exists on server
+				$image = checkimage(THUMBNAIL_URL.$design['designID'].'.png');
+				echo "<a href='design.php?id=".$design['designID']."'>\n"; ?>
+				<img src=<?php echo $image;?> style='background-color: #3e4b71'>
+			
 				<div class='project-info'> 
 					<h3> 
 						<?php echo '<a href="design.php?id='.$design['designID'].'">'.$design['name'].'<span class=\'icon\'>&nbsp;]</span></a>'; ?>
