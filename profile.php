@@ -8,7 +8,7 @@ include('config.php');
 	<script type="text/javascript" >
 		window.location=<?php echo '"'.$WEB_URL.'"';?>;
 	</script>
-	<?php 
+	<?php
 		}
 	?>
     <style>
@@ -18,7 +18,7 @@ include('config.php');
 	</style>
 <body> 
 <div class='master-container'> 
-		<?php  
+		<?php
 		
 		if(isset($_GET['uName']))
 			$userName = $_GET['uName'];
@@ -61,7 +61,7 @@ include('config.php');
 				<input type="submit" name="submit" value="Edit Profile" />
 				</form>
 				-->
-	 			<?php 
+	 			<?php
 	 		}?>
 				
 				<br />
@@ -204,7 +204,6 @@ include('config.php');
 	
 			<aside> 
 				<?php 
-//				$_GET['requestingPage']='profile';							//need to remove this 
 				$_GET['uName'] = $userName;
 				include('latest-user-activity.php'); ?>
 			</aside>

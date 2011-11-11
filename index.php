@@ -34,7 +34,7 @@ include('config.php');
 								<br>
 								<span>Futuristic</span>
 							</div>
-							<a class='carousel-learn-more' href='what-is-betaville.php'>Learn more »</a>
+							<a class='carousel-learn-more' href='what-is-betaville.php'>Learn more Â»</a>
 						</li>
 						<li class='carousel-opensource'>
 
@@ -43,7 +43,7 @@ include('config.php');
 								<br>
 								<span>Open Source</span>
 							</div>
-							<a class='carousel-learn-more' href='contribute.php'>Learn more »</a>
+							<a class='carousel-learn-more' href='contribute.php'>Learn more Â»</a>
 						</li>
 						<li class='carousel-participatory'>
 							<div class='carousel-text'>
@@ -51,7 +51,7 @@ include('config.php');
 								<br>
 								<span>Participatory</span>
 							</div>
-							<a class='carousel-learn-more' href='contribute.php'>Learn more »</a>
+							<a class='carousel-learn-more' href='contribute.php'>Learn more Â»</a>
 						</li>
 						<li class='carousel-publicart'>
 							<div class='carousel-text'>
@@ -59,7 +59,7 @@ include('config.php');
 								<br>
 								<span>Public art</span>
 							</div>
-							<a class='carousel-learn-more' href='what-is-betaville.php'>Learn more »</a>
+							<a class='carousel-learn-more' href='what-is-betaville.php'>Learn more Â»</a>
 						</li>
 					</ul>
 
