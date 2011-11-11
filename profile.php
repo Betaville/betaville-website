@@ -19,7 +19,7 @@ include('config.php');
 <body> 
 <div class='master-container'> 
 		<?php  
-		
+		//Check if you retrieve uName or username
 		if(isset($_GET['uName']))
 			$userName = $_GET['uName'];
 		else
@@ -34,7 +34,7 @@ include('config.php');
 		?>
 		<div class='page-container'> 
 			<div class='project-container'>							<!--change-->
-				<h1> Hello <?php echo $userName; ?>! </h1>
+				<br><br>
 			<div class='projects'>
 				
 			<!--!!!!!!!!!!!! Display user info !!!!!!!!!!-->
@@ -98,20 +98,26 @@ include('config.php');
 				$extrapage = $pcount%10>0?1:0;
 				$pages = $pages + $extrapage;
 			}
-			
-			echo "<h2>My Proposals</h2>";
+			//Check if you retrieve uName or username
+			if(isset($_GET['uName']))echo "<h2>Proposals</h2>";
+			else echo "<h2>My Proposals</h2>";
 			$designcount = 0;
+
 			foreach($designs as $design) {
 			$designcount++;
 			}
-			$display = $designcount.' Proposals loaded by you';	
+			//Check if you retrieve uName or username
+			if(isset($_GET['uName']))$display = $designcount.' Proposals loaded ';
+			else $display = $designcount.' Proposals loaded by '.$userName;
 			if($designcount>0) {
 			echo '<strong>'.$display.'</strong><br><br>';
 			}
 			else {
-			$display = 'No Proposals by you';
+			if(isset($_GET['uName']))$display = 'No Proposals loaded ';
+			else $display = 'No Proposals by you';
 			echo '<strong>'.$display.'</strong><br><br>';
 			}
+
 			$counter=0;
 			for($i=$currentPage*10-10;$i<=$tpcount-1;$i++){
 				$design =  $designs[$i];
@@ -217,8 +223,8 @@ include('config.php');
 	
 			<aside> 
 				<?php 
-//				$_GET['requestingPage']='profile';							//need to remove this 
-				$_GET['uName'] = $userName;
+				//Check if you retrieve uName or username
+				if(isset($_GET['uName']))$_GET['uName'] = $userName;
 				include('latest-user-activity.php'); ?>
 			</aside>
 		
