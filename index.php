@@ -108,7 +108,7 @@ include('config.php');
 											<ul>
 												<li>
 													<strong>Author&nbsp;</strong>
-                                                    <a href='profile.php?uName=<?php echo $proposal['user']; ?>'><?php echo $proposal['user']; ?></a>
+                                                    <!-- <a href='profile.php?uName=<?php echo $proposal['user']; ?>'>--><?php echo $proposal['user']; ?><!--</a>-->
 													
 												</li>
 
@@ -169,7 +169,7 @@ include('config.php');
 								<ul>
 									<li>
 										<strong>Author&nbsp;</strong>
-                                        <a href='profile.php?uName=<?php echo $proposal['user']; ?>'><?php echo $proposal['user']; ?></a>
+                                       <!-- <a href='profile.php?uName=<?php echo $proposal['user']; ?>'>--><?php echo $proposal['user']; ?><!--</a>-->
 										
 									</li>
 
