@@ -214,12 +214,6 @@ include('config.php');
 </div>
 </div>
 <aside>
-	<style type="text/css" >
-	.Login-section { font-size: 10px; } 
-	.inputs { font-size: 10px;
-		font-family: Verdana,Arial,Helvetica,Sans-serif;
-	}
-	</style>
 	<script type="text/javascript">
 	function ajaxRequest() {
 		var activexmodes=["Msxml2.XMLHTTP", "Microsoft.XMLHTTP"]; //activeX versions to check for in IE
@@ -277,10 +271,10 @@ include('config.php');
 			<h2> Login </h2>
 			<div id="myDiv" style="display:none"><h2></h2></div>
 			<form name="credentials" method="post">
-				Username:<input type="text" name="user" size="10" class="inputs" onkeydown="if (event.keyCode == 13) document.getElementById('submit').click()">
-				Password:<input type="password" name="pass" size="10" class="inputs" onkeydown="if (event.keyCode == 13) document.getElementById('submit').click()">
+				Username:<br><input type="text" name="user" size="29" class="inputs" onkeydown="if (event.keyCode == 13) document.getElementById('submit').click()"><br>
+				Password:<br><input type="password" name="pass" size="29" class="inputs" onkeydown="if (event.keyCode == 13) document.getElementById('submit').click()"><br>
 				<input type="checkbox" name="rememberMe" > Remember Me <br /><br />
-				<input type="button" id="submit" value="Log In" onClick="submitAjax()" class="inputs"> or <a href="register.php" > Register Now </a>
+				<input type="button" id="submit" value="Log In" onClick="submitAjax()"> or <a href="register.php" > Register Now </a>
 			</form>
 		</div>
 		<br /><br />

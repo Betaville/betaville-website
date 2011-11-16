@@ -4,7 +4,7 @@
     padding: 0;
     border: 0;
 }
-.bp-reset-element, body, h1, h2, h3, h4, h5, h6, article, aside, dialog, figure, footer, header, hgroup, nav, section, blockquote, q, th, td, caption, table, div, span, object, iframe, p, pre, a, abbr, acronym, address, code, del, dfn, em, img, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption, tbody, tfoot, thead, tr {
+bp-reset-element, body, h1, h2, h3, h4, h5, h6, article,aside, dialog, figure, footer, header, hgroup, nav, section, blockquote, q, th, td, caption, table, div, span, object, iframe, p, pre, a, abbr, acronym, address, code, del, dfn, em, img, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption, tbody, tfoot, thead, tr {
     margin: 0;
     padding: 0;
     border: 0;
@@ -786,9 +786,6 @@ select {
     background-color: #fff;
     border-width: 1px;
     border-style: solid;
-}
-input.text, input.title, input[type=email], input[type=text], input[type=password] {
-    width: 300px;
 }
 textarea {
     width: 390px;
@@ -1740,6 +1737,13 @@ aside {
 }
 .activity-section {
     margin-bottom: 40px;
+}
+.Login-section{
+	overflow: hidden;
+	margin-right: 1px;
+	font-size: 10px;
+	display: inline;
+	width: 300px;
 }
 .activity {
     overflow: hidden;
