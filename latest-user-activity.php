@@ -1,6 +1,7 @@
 <div class='activity-section'>
 	
 <?php
+//error_reporting (E_ALL ^ E_NOTICE); 
 $page='profile';
 include_once('config.php');
 include_once('betaville-functions.php');
@@ -10,8 +11,12 @@ if(isset($_GET['uName']))
 else
 	$userName = $_SESSION['username'];
 
-echo "<h2>My Latest Activities</h2><br>";
 
+//Check if you retrieve uName or username
+if(isset($_GET['uName']))
+echo "<h2>Latest Activities</h2><br>";
+else
+echo "<h2>My Latest Activities</h2><br>";
 // swap to request=proposals or request=versions
 // Fetching designs now findbyuser, keep in mind, a huge number of users will be returned with an empty array if you not uploaded anything
 $designRequest = SERVICE_URL.'?section=design&request=findbyuser&user='.$userName.'&excludeempty=1';
@@ -27,12 +32,15 @@ $counter = 0;
 foreach($designs as $design) {
 	$count++;
 }
-$display = $count.' Models loaded by you';	
+	//Check if you retrieve uName or username
+if(isset($_GET['uName']))$display = $count.' Models loaded by '.$userName;
+			else $display = $count.' Models loaded by you';	
 if($count>0) {
 	echo '<strong>'.$display.'</strong><br><br>';
 }
 else {
-	$display = 'No Models uploaded by you';
+	//Check if you retrieve uName or username
+	if(isset($_GET['uName'])) $display = 'No Models uploaded by '.$userName;
 	echo '<strong>'.$display.'</strong><br><br>';
 }
 
@@ -66,19 +74,37 @@ foreach($designs as $design){
 	</div>
 	</div>
 
-
 <?php
 	//Break loop here after showing 5 designs	
 	if($counter>=5)
 	break;
 }
-
+?>
+<br><br>
+<?php
 // retrieving comments by passing $userName in section activity request myactivity and user = $userName
+//Check if you retrieve uName or username
+if(isset($_GET['uName'])) {
+$commentRequest = SERVICE_URL.'?section=activity&request=peruseractivity&user='.$userName;
+}
+else{
 $commentRequest = SERVICE_URL.'?section=activity&request=myactivity&user='.$userName;
+}
 $commentJSON = file_get_contents($commentRequest,0,null,null);
 $commentOutput = json_decode($commentJSON, true);
 $comments = $commentOutput['comments'];
-
+$commentcount = 0;
+//Check if you retrieve uName or username
+if(isset($_GET['uName'])) {}
+else {
+foreach($comments as $comment) {
+	$commentcount++;
+}
+if($commentcount==0) {
+	$display = 'No comments by you';
+	echo '<strong>'.$display.'</strong><br><br>';
+}
+}
 $counter = 0;
 foreach($comments as $comment){
 	

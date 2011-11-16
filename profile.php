@@ -41,10 +41,13 @@ include('config.php');
 
 			<form name='userInfo' >
 			<?php
-			//Check if image exists on server
-			$image = checkimage(AVATAR_URL.$userName.'.jpg');
+		
+			$gravatarImage = $user['avatar'];
+		//	$gravatarImage = str_replace("\/", "/", $gravatarImage);
+		//	echo $gravatarImage;
+		
 			?>
-			<img src=<?php echo $image;?> height='100' width='100' style='background-color: #383838'><br /><br />
+			<img src=<?php echo $gravatarImage;?> height='100' width='100' style='background-color: #383838'><br /><br />
 			<label>Name: </label> <div style=" display:inline; margin-left: 2px"><?php echo $user['displayName']?></div><br /><br />
 			<label>About Me: </label><div style=" display:inline; margin-left: 2px"><?php echo $user['bio']?></div><br /><br />
 			<label>Website: </label><div style=" display:inline; margin-left: 2px"><?php echo $user['website']?></div><br /><br />
@@ -56,11 +59,11 @@ include('config.php');
 	 		//echo $userName;
 	 		if($userName==$_SESSION['username'])
 	 		{?>
-	 			<!--
+	 			
 	 			<form name='profileForm' action='editProfile.php' method="get">
 				<input type="submit" name="submit" value="Edit Profile" />
 				</form>
-				-->
+				
 	 			<?php
 	 		}?>
 				
