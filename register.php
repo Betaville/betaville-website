@@ -133,10 +133,10 @@
 			<center><div id="myDiv" style="display:none"><h2></h2></div></center>
 			<div class="register-section" id="form" style="display:block">
 			<form name="credentials" method="post">
-				<center> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Username:<input type="text" name="user" size="10" onkeydown="if (event.keyCode == 13) document.getElementById('submit').click()"></center>
-				<center> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Password:<input type="password" name="pass" size="10" onkeydown="if (event.keyCode == 13) document.getElementById('submit').click()"></center>
-				<center>Confirm Password:<input type="password" name="cPass" size="10" onkeydown="if (event.keyCode == 13) document.getElementById('submit').click()">&nbsp;&nbsp;&nbsp;&nbsp;</center>
-				<center>E-mail Address:<input type="text" name="email" size="10" class="inputs" onkeydown="if (event.keyCode == 13) document.getElementById('submit').click()"></center>
+				<center> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Username:<input type="text" name="user" size="29" onkeydown="if (event.keyCode == 13) document.getElementById('submit').click()"></center>
+				<center> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Password:<input type="password" name="pass" size="29" onkeydown="if (event.keyCode == 13) document.getElementById('submit').click()"></center>
+				<center>Confirm Password:<input type="password" name="cPass" size="29" onkeydown="if (event.keyCode == 13) document.getElementById('submit').click()">&nbsp;&nbsp;&nbsp;&nbsp;</center>
+				<center>E-mail Address:<input type="text" name="email" size="29" class="inputs" onkeydown="if (event.keyCode == 13) document.getElementById('submit').click()"></center>
 				<center><input type="button" id="submit" value="Register" onClick="submitAjax()"></center>
 			</form>
 		</div>
