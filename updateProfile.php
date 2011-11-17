@@ -11,58 +11,44 @@
 	$userName = $_SESSION['username'];
 ?>
 
-
-
 <?php
 		if(isset($_POST['displayName']))
 		{
+			echo "inside displayName";
 			$updateUser = SERVICE_URL.'?section=user&request=changedisplayName&token='.$_SESSION['token'].'&username='.$userName.'&displayName='.$_POST['displayName'];
-			echo "Web service call initiated for displayname </ br>";
+			$temp1 = file_get_contents($updateUser,0,null,null);
+			$dNameChanged = json_decode($temp1, true);
+			if ($dNameChanged['dNameChanged'])
+				echo "Web service call initiated for displayName <br />";
+			else
+				echo $dNameChanged['dNameChanged']; // make sure that the web service has the same name when u code it.
 		}
 		if(isset($_POST['bio']))
 		{
+			echo "inside bio";
 			$updateUser = SERVICE_URL.'?section=user&request=changebio&token='.$_SESSION['token'].'&username='.$userName.'&bio='.$_POST['bio'];
-			echo "Web service call initiate for bio </ br>";
+			$temp1 = file_get_contents($updateUser,0,null,null);
+			$bioChanged = json_decode($temp1, true);
+			if ($bioChanged['bioChanged'])
+				echo "Web service call initiated for bio <br />";
+			else
+				echo $bioChanged['bioChanged'];
 		}
 		if(isset($_POST['website']))
 		{
+			echo "inside website";
 			echo $_POST['website'];
 			$updateUser = SERVICE_URL.'?section=user&request=changewebsite&token='.$_SESSION['token'].'&username='.$userName.'&website='.$_POST['website'];
-			echo "Web service call initiated for website </ br>";
-		}
-		if(isset($_FILES['profilePicture']['name']))
-		{
-			echo "inside isset";
-			$type= strtolower($_FILES['profilePicture']['type']);
-			echo $_FILES['profilePicture']['type'];
-			echo $type;
-			
-			$size= $_FILES['profilePicture']['size'];
-			echo $size;
-			
-			if(($type == "image/gif") || ($type == "image/jpeg") || ($type == "image/pjpeg") || ($type == "image/png"))
-			{
-				if ($size < 200000)
-			
-				{
-					echo "inside restriction";
-					echo $_FILES['profilePicture']['name'];
-					echo $_FILES['profilePicture']['size'];
-			
-					$updateUser = SERVICE_URL.'?section=user&request=updateavatar&username='.$userName.'&profilePicture='.$_FILES['profilePicture'];
-					echo "Web service call initiated for picture";
-				}
-				else
-					echo "File size too big!</ br>";
-			}
-			else 
-			{
-				echo "Incorrect file type </ br>";
-			}
+			$temp1 = file_get_contents($updateUser,0,null,null);
+			$websiteChanged = json_decode($temp1, true);
+			if ($websiteChanged['websiteChanged'])
+				echo "Web service call initiated for website <br />";
+			else
+				echo $websiteChanged['websiteChanged'];
 		}
 		
 		
-	header("Location: profile.php"); 
+	// header("Location: profile.php");
 
 	
 ?>

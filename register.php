@@ -126,7 +126,7 @@
 				var parameters="user="+userName+"&pass="+password+"&cPass="+cPass+"&email="+email;
 				mypostrequest.open("POST", "register-ajax.php", true);
 				mypostrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-				mypostrequest.send(parameters)
+				mypostrequest.send(parameters);
 			}
 			</script>
 			<center><h2>Registration Form</h2></center>

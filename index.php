@@ -214,12 +214,6 @@ include('config.php');
 </div>
 </div>
 <aside>
-	<style type="text/css" >
-	.Login-section { font-size: 10px; } 
-	.inputs { font-size: 10px;
-		font-family: Verdana,Arial,Helvetica,Sans-serif;
-	}
-	</style>
 	<script type="text/javascript">
 	function ajaxRequest() {
 		var activexmodes=["Msxml2.XMLHTTP", "Microsoft.XMLHTTP"]; //activeX versions to check for in IE

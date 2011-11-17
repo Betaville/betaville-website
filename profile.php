@@ -33,18 +33,14 @@ include('config.php');
 		
 		?>
 		<div class='page-container'> 
-			<div class='project-container'>							<!--change-->
+			<div class='project-container'>
 				<h1> Hello <?php echo $userName; ?>! </h1>
 			<div class='projects'>
-				
-			<!--!!!!!!!!!!!! Display user info !!!!!!!!!!-->
 
 			<form name='userInfo' >
 			<?php
 		
 			$gravatarImage = $user['avatar'];
-		//	$gravatarImage = str_replace("\/", "/", $gravatarImage);
-		//	echo $gravatarImage;
 		
 			?>
 			<img src=<?php echo $gravatarImage;?> height='100' width='100' style='background-color: #383838'><br /><br />
@@ -56,7 +52,6 @@ include('config.php');
 			</form>
 	 	
 	 		<?php
-	 		//echo $userName;
 	 		if($userName==$_SESSION['username'])
 	 		{?>
 	 			
