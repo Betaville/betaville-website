@@ -32,7 +32,7 @@ $comments = $commentOutput['comments'];
 								Author&nbsp;
 							</strong> 
                             <a href="profile.php?uName=<?php echo $design['user']; ?>"><?php echo $design['user']; ?></a>
-							·
+							
 						</li> 
 						<li> 
 							<strong> 

@@ -2,7 +2,7 @@
 include('head.php');
 include('config.php');
 ?>
-	<?php
+	<!--<?php
 		if (!isset($_SESSION['logged']) && !$_SESSION['logged'] == true ) {
 	?>
 	<script type="text/javascript" >
@@ -10,7 +10,7 @@ include('config.php');
 	</script>
 	<?php
 		}
-	?>
+	?>-->
     <style>
 	.userInfo{
 		background-color:
@@ -18,8 +18,8 @@ include('config.php');
 	</style>
 <body> 
 <div class='master-container'> 
-		<?php
-		
+		<?php  
+		//Check if you retrieve uName or username
 		if(isset($_GET['uName']))
 			$userName = $_GET['uName'];
 		else
@@ -34,7 +34,8 @@ include('config.php');
 		?>
 		<div class='page-container'> 
 			<div class='project-container'>
-				<h1> Hello <?php echo $userName; ?>! </h1>
+				<br><br>
+
 			<div class='projects'>
 
 			<form name='userInfo' >
@@ -44,10 +45,10 @@ include('config.php');
 		
 			?>
 			<img src=<?php echo $gravatarImage;?> height='100' width='100' style='background-color: #383838'><br /><br />
-			<label>Name: </label> <div style=" display:inline; margin-left: 2px"><?php echo $user['displayName']?></div><br /><br />
-			<label>About Me: </label><div style=" display:inline; margin-left: 2px"><?php echo $user['bio']?></div><br /><br />
-			<label>Website: </label><div style=" display:inline; margin-left: 2px"><?php echo $user['website']?></div><br /><br />
-			<label>Profile: </label><div style="display:inline; margin-left: 2px"><?php echo $user['type']?></div><br /><br />
+			<label>Name: </label> <div style=" display:inline; margin-left: 2px"><?php if($user['userName']==null) echo '  --- '; else echo $user['userName'];?></div><br /><br />
+			<label>About Me: </label><div style=" display:inline; margin-left: 2px"><?php if($user['bio']==null) echo '  --- '; else echo $user['bio'];?></div><br /><br />
+			<label>Website: </label><div style=" display:inline; margin-left: 2px"><?php if($user['website']==null) echo '  --- '; else echo $user['website'];?></div><br /><br />
+			<label>Profile: </label><div style="display:inline; margin-left: 2px"><?php if($user['type']==null) echo '  --- '; else echo $user['type'];?></div><br /><br />
 			
 			</form>
 	 	
@@ -55,13 +56,12 @@ include('config.php');
 	 		if($userName==$_SESSION['username'])
 	 		{?>
 	 			
-	 			<form name='profileForm' action='editProfile.php' method="get">
+	 			<!--<form name='profileForm' action='editProfile.php' method="get">
 				<input type="submit" name="submit" value="Edit Profile" />
 				</form>
 				
-	 			<?php
+	 			--><?php
 	 		}?>
-				
 				<br />
 				
 		
@@ -71,7 +71,6 @@ include('config.php');
 			$designJSON = file_get_contents($designRequest,0,null,null);
 			$designOutput = json_decode($designJSON, true);
 			$designs = $designOutput['designs'];
-
 			/*For pagination, the idea is to determine a count of the no of proposals($pcount), calc the no of pages($pages), display page numbers 
 			at the bottom(along with their hyperlinks) and display only those 10 proposals of that particular page by passing the PageNo to be loaded.*/
 			
@@ -97,8 +96,26 @@ include('config.php');
 				$extrapage = $pcount%10>0?1:0;
 				$pages = $pages + $extrapage;
 			}
-			
-			echo "<h2>My Proposals</h2>";
+			//Check if you retrieve uName or username
+			if(isset($_GET['uName']))echo "<h2>Proposals</h2>";
+			else echo "<h2>My Proposals</h2>";
+			$designcount = 0;
+
+			foreach($designs as $design) {
+			$designcount++;
+			}
+			//Check if you retrieve uName or username
+			if(isset($_GET['uName']))$display = $designcount.' Proposals loaded ';
+			else $display = $designcount.' Proposals loaded by '.$userName;
+			if($designcount>0) {
+			echo '<strong>'.$display.'</strong><br><br>';
+			}
+			else {
+			if(isset($_GET['uName']))$display = 'No Proposals loaded ';
+			else $display = 'No Proposals by you';
+			echo '<strong>'.$display.'</strong><br><br>';
+			}
+
 			$counter=0;
 			for($i=$currentPage*10-10;$i<=$tpcount-1;$i++){
 				$design =  $designs[$i];
@@ -111,9 +128,11 @@ include('config.php');
 				<div class='f-1 project'>
 				<?php
 				echo "<a href='design.php?id=".$design['designID']."'>\n";
-				echo "<img src='".THUMBNAIL_URL.$design['designID'].".png' style='background-color: #383838'></a>";
-				?>
-
+				//Check if image exists on server
+				$image = checkimage(THUMBNAIL_URL.$design['designID'].'.png');
+				echo "<a href='design.php?id=".$design['designID']."'>\n"; ?>
+				<img src=<?php echo $image;?> style='background-color: #3e4b71'>
+			
 				<div class='project-info'> 
 					<h3> 
 						<?php echo '<a href="design.php?id='.$design['designID'].'">'.$design['name'].'<span class=\'icon\'>&nbsp;]</span></a>'; ?>
@@ -202,7 +221,8 @@ include('config.php');
 	
 			<aside> 
 				<?php 
-				$_GET['uName'] = $userName;
+				//Check if you retrieve uName or username
+				if(isset($_GET['uName']))$_GET['uName'] = $userName;
 				include('latest-user-activity.php'); ?>
 			</aside>
 		
