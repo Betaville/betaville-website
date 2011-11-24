@@ -67,7 +67,7 @@
 							}
 						}
 						
-						xmlhttp.open("GET","searches/user-search.php?query="+str,true);
+						xmlhttp.open("GET","searches/user-search.php?link=admin&query="+str,true);
 						xmlhttp.send();
 					}
 					</script>
