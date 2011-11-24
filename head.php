@@ -45,8 +45,6 @@ ob_start();
 						echo "username is " . $_SESSION['username'];
 						$_SESSION['token'] = $_COOKIE['token'];
 						$_SESSION['logged'] = true;
-						// this next line is for debugging only and should be removed
-						$_SESSION['size'] = sizeof($_SESSION);
 						$userRequest = SERVICE_URL.'?section=user&request=getlevel&username='.$check;
 						$userJSON = file_get_contents($userRequest,0,null,null);//download($userRequest);
 						$userOutput = json_decode($userJSON, true);
