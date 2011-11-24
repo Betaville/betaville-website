@@ -48,6 +48,37 @@
 			<div class='page-body container' id='content'>
 				<div id="users">
 					<h2>Users</h2>
+					<script type="text/javascript">
+					function showResult(str){
+						if (str.length==0){ 
+							document.getElementById("livesearch").innerHTML="";
+							document.getElementById("livesearch").style.border="0px";
+							return;
+						}
+						if (window.XMLHttpRequest)
+						{// code for IE7+, Firefox, Chrome, Opera, Safari
+							xmlhttp=new XMLHttpRequest();
+						}
+						else{// code for IE6, IE5
+							xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+						}
+						
+						xmlhttp.onreadystatechange=function(){
+							if (xmlhttp.readyState==4 && xmlhttp.status==200){
+								document.getElementById("livesearch").innerHTML=xmlhttp.responseText;
+								document.getElementById("livesearch").style.border="1px solid #A5ACB2";
+							}
+						}
+						
+						xmlhttp.open("GET","searches/user-search.php?query="+str,true);
+						xmlhttp.send();
+					}
+					</script>
+					<form>
+						<input type="text" size="30" onkeyup="showResult(this.value)" />
+						<div id="livesearch"></div>
+					</form>
+					
 					<p>
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur fermentum augue tristique mi ultricies a porta diam tincidunt. In hac habitasse platea dictumst. Nam eget ante id lorem dignissim adipiscing. Integer mattis, est a aliquam ultricies, nibh purus dictum neque, nec volutpat ipsum metus non diam. Nullam nec nibh quis elit semper dignissim sed ac dui. Maecenas a justo vitae nulla pretium consequat. In posuere turpis vel sapien convallis varius scelerisque ipsum sollicitudin. Donec laoreet lectus at dolor vestibulum et aliquam nisl rutrum. Suspendisse a mi non arcu ullamcorper ultricies. Etiam aliquet viverra magna sed volutpat. Mauris venenatis, massa vitae adipiscing volutpat, tellus est feugiat est, nec dapibus dolor justo vel metus. Nullam nisl leo, sollicitudin vel fermentum vitae, volutpat commodo nisi. Curabitur rutrum hendrerit suscipit. Phasellus sapien turpis, aliquet ac scelerisque eu, mattis in leo. Aenean vitae libero orci, sed tincidunt odio. Cras sed libero sed purus gravida elementum.
 
