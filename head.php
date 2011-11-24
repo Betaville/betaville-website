@@ -21,6 +21,7 @@ ob_start();
 	<?php
 		include("betaville-functions.php");
 		include("interact/curl.php");
+		include("config.php");
 	 ?>
 </head>
 <header>
@@ -37,17 +38,17 @@ ob_start();
 			<li><a class='' href='./contribute.php'>Contribute</a></li>
 			<?php
 				if ( isset($_COOKIE['token'])) {
-					include("config.php");
 					$check = SERVICE_URL.'?section=authcheck&request=authcheck&token='.$_COOKIE['token'];
 					if ( $check != false ){
 						$_SESSION['uid'] = session_id();
 						$_SESSION['username'] = file_get_contents($check, 0, null, null);
 						$_SESSION['token'] = $_COOKIE['token'];
 						$_SESSION['logged'] = true;
-						$userRequest = SERVICE_URL.'?section=user&request=getlevel&username='.$check;
+						$userRequest = SERVICE_URL.'?section=user&request=getlevel&username='.$_SESSION['username'];
 						$userJSON = file_get_contents($userRequest,0,null,null);//download($userRequest);
 						$userOutput = json_decode($userJSON, true);
 						$_SESSION['userType'] = $userOutput['userType'];
+						
 					}
 				}
 			?>
@@ -60,7 +61,7 @@ ob_start();
 			<?php echo "<li><a href=\"logout.php\">Log Out</a></li>";
 			
 			// if the user is a moderator or administrator, show the admin link
-				if($_SESSION['userType']=='moderator' || $_SESSION['userType']=='administrator'){
+				if($_SESSION['userType']==='moderator' || $_SESSION['userType']==='administrator'){
 					echo "<li><a href=\"admin.php\">Admin</a></li>";
 				}
 
