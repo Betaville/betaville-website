@@ -42,7 +42,6 @@ ob_start();
 					if ( $check != false ){
 						$_SESSION['uid'] = session_id();
 						$_SESSION['username'] = file_get_contents($check, 0, null, null);
-						echo "username is " . $_SESSION['username'];
 						$_SESSION['token'] = $_COOKIE['token'];
 						$_SESSION['logged'] = true;
 						$userRequest = SERVICE_URL.'?section=user&request=getlevel&username='.$check;
