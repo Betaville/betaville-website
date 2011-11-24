@@ -17,9 +17,6 @@
 	$userJSON = file_get_contents($userRequest,0,null,null);
 	$userOutput = json_decode($userJSON, true);
 	$userType = $userOutput['userType'];
-	//echo "user is a " . $userType;
- 
- //http://localhost/service/service.php?section=user&request=getlevel&username=sbook
 	
 ?>
 
