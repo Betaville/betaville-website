@@ -8,7 +8,7 @@ $users = $userOutput['users'];
 
 $linkToUser = "";
 if($_GET['link']=="admin"){
-	$linkToUser = WEB_URL."/admin.php#users?action=edituser&target=";
+	$linkToUser = WEB_URL."/admin.php?action=edituser&target=";
 }
 
 $userResults = "";

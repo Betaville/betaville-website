@@ -75,18 +75,28 @@
 						<input type="text" size="30" onkeyup="showResult(this.value)" />
 						<div id="livesearch"></div>
 					</form>
-					
-					<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur fermentum augue tristique mi ultricies a porta diam tincidunt. In hac habitasse platea dictumst. Nam eget ante id lorem dignissim adipiscing. Integer mattis, est a aliquam ultricies, nibh purus dictum neque, nec volutpat ipsum metus non diam. Nullam nec nibh quis elit semper dignissim sed ac dui. Maecenas a justo vitae nulla pretium consequat. In posuere turpis vel sapien convallis varius scelerisque ipsum sollicitudin. Donec laoreet lectus at dolor vestibulum et aliquam nisl rutrum. Suspendisse a mi non arcu ullamcorper ultricies. Etiam aliquet viverra magna sed volutpat. Mauris venenatis, massa vitae adipiscing volutpat, tellus est feugiat est, nec dapibus dolor justo vel metus. Nullam nisl leo, sollicitudin vel fermentum vitae, volutpat commodo nisi. Curabitur rutrum hendrerit suscipit. Phasellus sapien turpis, aliquet ac scelerisque eu, mattis in leo. Aenean vitae libero orci, sed tincidunt odio. Cras sed libero sed purus gravida elementum.
-
-Sed non mauris vitae justo interdum convallis. Donec vel turpis massa. Integer leo massa, convallis a ornare a, egestas vitae augue. Donec luctus elit nec ligula imperdiet laoreet. In hac habitasse platea dictumst. Vivamus libero tortor, condimentum a posuere ac, consequat mattis nibh. Morbi volutpat mollis purus, vitae blandit diam ornare vitae. Vivamus nec diam eu sem condimentum elementum. Suspendisse quis massa vel augue ultrices hendrerit. Ut sed arcu tellus. Cras adipiscing est non tellus sagittis mattis. Mauris eget felis ipsum. Sed eget congue libero. Donec euismod, leo at aliquet hendrerit, odio nisi pellentesque libero, a luctus turpis turpis nec ante. Maecenas mattis leo at sapien sodales posuere.
-
-Morbi iaculis felis vulputate diam suscipit varius. Nullam quis placerat turpis. Nulla quis lectus at ante cursus lacinia ac vel velit. Sed faucibus commodo leo ut cursus. Proin tincidunt rutrum lectus a venenatis. Cras aliquet, lacus eget tincidunt adipiscing, mi enim varius urna, non ullamcorper neque nunc in nibh. Ut rhoncus tempor scelerisque. Phasellus sollicitudin, ante ac pretium posuere, velit leo molestie sapien, id faucibus mi nisl non urna. Mauris nec tempus arcu. Nulla sagittis mi eu felis iaculis ullamcorper. Vivamus sollicitudin magna in ipsum egestas vel convallis neque luctus. Suspendisse risus augue, laoreet ut ullamcorper et, mollis quis eros. Suspendisse pharetra mattis pharetra. Proin porta lectus id justo elementum ultricies. Nulla libero metus, euismod ac fermentum lobortis, dictum sit amet odio. Integer in nibh vitae leo imperdiet consectetur.
-
-Morbi commodo, tellus at sagittis eleifend, nunc turpis pretium nisi, ut suscipit lorem erat nec dui. In gravida pharetra purus et consequat. Nullam adipiscing rhoncus magna sed feugiat. Suspendisse lacus odio, faucibus sit amet lobortis porta, ornare non eros. In in faucibus nisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam imperdiet eleifend tortor quis fermentum. Sed nec libero non nibh blandit blandit id nec tellus. In at risus sapien, non consequat mauris. Quisque dolor velit, convallis et tempus vitae, rutrum vel tortor. Nulla quis lorem at odio tempor tincidunt a vitae elit. Aliquam in semper tortor.
-
-Sed tincidunt hendrerit risus nec suscipit. Quisque est nunc, ullamcorper sed convallis quis, congue sit amet eros. Vestibulum vitae purus iaculis massa consequat dictum ac eget purus. Donec eros turpis, porttitor ac rhoncus in, iaculis commodo massa. Phasellus elementum quam turpis. Donec eu nibh lacus, quis molestie diam. Etiam nec tellus neque. Phasellus rhoncus nisl ac velit faucibus suscipit.
-					</p>
+					<?php
+						if($_GET['action']=='edituser'){
+						echo $_SESSION['token'];
+						$actionURL = SERVICE_URL.'?section=user&request=changetype&username='.$GET['target'].'&token='.$_SESSION['token'];
+						echo $actionURL;
+						echo '<form name="usertype-selection" action="'.$actionURL.'" method="POST">';?>
+						<form>
+							<div>
+								<select name="type">
+									<?php
+									echo '<option value="'.$_SESSION['userType'].'">'.$_SESSION['userType'].'</option>';
+									if($_SESSION['userType']!="member") echo '<option value="member">member</option>';
+									if($_SESSION['userType']!="base_committer") echo '<option value="base_committer">base_committer</option>';
+									if($_SESSION['userType']!="moderator") echo '<option value="moderator">moderator</option>';
+									if($_SESSION['userType']!="admin") echo '<option value="admin">admin</option>';
+									?>
+								</select>
+							</div>
+						</form>
+						<?php
+						}
+					?>
 				</div>
 				
 				
