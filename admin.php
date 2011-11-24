@@ -77,11 +77,7 @@
 					</form>
 					<?php
 						if($_GET['action']=='edituser'){
-						echo $_SESSION['token'];
-						$actionURL = SERVICE_URL.'?section=user&request=changetype&username='.$GET['target'].'&token='.$_SESSION['token'];
-						echo $actionURL;
-						echo '<form name="usertype-selection" action="'.$actionURL.'" method="POST">';?>
-						<form>
+						echo '<form name="usertype-selection" action="interact/admin-actions.php" method="POST">';?>
 							<div>
 								<select name="type">
 									<?php
@@ -92,6 +88,9 @@
 									if($_SESSION['userType']!="admin") echo '<option value="admin">admin</option>';
 									?>
 								</select>
+								<?php echo '<input type="hidden" name="target" value="'.$_GET['target'].'" />'; ?>
+								<input type="hidden" name="action" value="changeusertype" />
+								<input type="submit" value="Update" />
 							</div>
 						</form>
 						<?php
