@@ -9,7 +9,7 @@ $users = $userOutput['users'];
 $userResults = "";
 
 foreach($users as $user){
-	$userResults = $userResults.'<a href="http://localhost/">user!</a></br>';
+	$userResults = $userResults.'<a href="http://localhost/">'.$user.'</a></br>';
 }
 
 echo $userResults;
