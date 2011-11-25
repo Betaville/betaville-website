@@ -76,7 +76,7 @@
 						<div id="livesearch"></div>
 					</form>
 					<?php
-						if($_GET['action']=='edituser'){
+						if($_GET['action']=='edituser' && isset($_GET['target'])){
 						echo '<form name="usertype-selection" action="interact/admin-actions.php" method="POST">';?>
 							<div>
 								<select name="type">
