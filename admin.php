@@ -81,11 +81,17 @@
 							<div>
 								<select name="type">
 									<?php
-									echo '<option value="'.$_SESSION['userType'].'">'.$_SESSION['userType'].'</option>';
-									if($_SESSION['userType']!="member") echo '<option value="member">member</option>';
-									if($_SESSION['userType']!="base_committer") echo '<option value="base_committer">base_committer</option>';
-									if($_SESSION['userType']!="moderator") echo '<option value="moderator">moderator</option>';
-									if($_SESSION['userType']!="admin") echo '<option value="admin">admin</option>';
+									// get the user type of the target user firstChild// grab the user's type
+									$targetUserRequest = SERVICE_URL.'?section=user&request=getlevel&username='.$_GET['target'];
+									$targetUserJSON = file_get_contents($targetUserRequest,0,null,null);
+									$targetUserOutput = json_decode($targetUserJSON, true);
+									$targetUserType = $targetUserOutput['userType'];
+									
+									echo '<option value="'.$targetUserType.'">'.$targetUserType.'</option>';
+									if($targetUserType!="member") echo '<option value="member">member</option>';
+									if($targetUserType!="base_committer") echo '<option value="base_committer">base_committer</option>';
+									if($targetUserType!="moderator") echo '<option value="moderator">moderator</option>';
+									if($targetUserType!="admin") echo '<option value="admin">admin</option>';
 									?>
 								</select>
 								<?php echo '<input type="hidden" name="target" value="'.$_GET['target'].'" />'; ?>
