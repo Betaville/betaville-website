@@ -170,12 +170,6 @@ error_reporting(E_ALL);
 			?>
 			<center><div class="search">
 			<h1>Search</h1>
-			<form id="searchForm" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-			<input type="text"  name="searchField" size="29"><input type="submit" value="search"><br>
-			<input type="radio" name="searchType" value="0" checked="true">Display Name
-			<input type="radio" name="searchType" value="1">Projects
-			<input type="radio" name="searchType" value="2">ID
-			</form>
 			<div id="result" style="display:block"><?php searchCheck(); ?></div></center>
 			</div>
 <?php
