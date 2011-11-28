@@ -163,7 +163,7 @@ include('config.php');
 						</a>
 						<div class='project-info'>
 							<h3>
-								<a href=<?php echo 'design.php?id='.$proposal['designID']; ?>><?php echo $proposal['name']; ?><span class='icon'>&nbsp;]</span></a>
+								<a href=<?php echo 'design.php?id='.$proposal['designID']; ?>><?php echo $proposal['name']; ?><span class='icon'>&nbsp;</span></a>
 							</h3>
 							<div class='project-meta'>
 								<ul>
