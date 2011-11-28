@@ -135,7 +135,7 @@ include('config.php');
 			
 				<div class='project-info'> 
 					<h3> 
-						<?php echo '<a href="design.php?id='.$design['designID'].'">'.$design['name'].'<span class=\'icon\'>&nbsp;]</span></a>'; ?>
+						<?php echo '<a href="design.php?id='.$design['designID'].'">'.$design['name'].'<span class=\'icon\'>&nbsp;</span></a>'; ?>
 					</h3> 
 					<div class='project-meta'> 
 						<ul> 
