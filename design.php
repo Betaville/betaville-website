@@ -109,7 +109,7 @@ $comments = $commentOutput['comments'];
 					?>
 					<li> 
 						<div class='discussion-meta column span-3'> 
-							<a href='profile.php?uName=<?php echo $comment['user']; ?> class='author'><?php echo $comment['user']; ?></a> 
+							<?php echo '<a href="profile.php?uName='.$comment['user'].'" class="author">'.$comment['user'].'</a>'; ?>
 							<div class='timestamp'>
 								<?php echo $comment['date'] ?>
 							</div> 

@@ -8,8 +8,8 @@ ob_start();
 <title>Betaville</title> 
 	<link href='./stylesheets/reset.css' rel='stylesheet'> 
 	<link href='./stylesheets/screen.css' rel='stylesheet'> 
-	<script src='./js/jquery-1.4.2.min.js'></script> 
-	<script src='./js/jquery.jcarousel.min.js'></script> 
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
+	<script src='./js/jquery.jcarousel.min.js'></script>
 	<script src='./js/betaville.home.js'></script> 
 	<script src='./js/jquery.easing.1.3.js'></script> 
 	<script src='./fancybox/jquery.mousewheel-3.0.4.pack.js' type='text/javascript'></script> 
@@ -21,6 +21,7 @@ ob_start();
 	<?php
 		include("betaville-functions.php");
 		include("interact/curl.php");
+		include("config.php");
 	 ?>
 </head>
 <header>
@@ -37,20 +38,17 @@ ob_start();
 			<li><a class='' href='./contribute.php'>Contribute</a></li>
 			<?php
 				if ( isset($_COOKIE['token'])) {
-					include("config.php");
 					$check = SERVICE_URL.'?section=authcheck&request=authcheck&token='.$_COOKIE['token'];
 					if ( $check != false ){
 						$_SESSION['uid'] = session_id();
 						$_SESSION['username'] = file_get_contents($check, 0, null, null);
-						echo "username is " . $_SESSION['username'];
 						$_SESSION['token'] = $_COOKIE['token'];
 						$_SESSION['logged'] = true;
-						// this next line is for debugging only and should be removed
-						$_SESSION['size'] = sizeof($_SESSION);
-						$userRequest = SERVICE_URL.'?section=user&request=getlevel&username='.$check;
+						$userRequest = SERVICE_URL.'?section=user&request=getlevel&username='.$_SESSION['username'];
 						$userJSON = file_get_contents($userRequest,0,null,null);//download($userRequest);
 						$userOutput = json_decode($userJSON, true);
 						$_SESSION['userType'] = $userOutput['userType'];
+						
 					}
 				}
 			?>
@@ -63,7 +61,7 @@ ob_start();
 			<?php echo "<li><a href=\"logout.php\">Log Out</a></li>";
 			
 			// if the user is a moderator or administrator, show the admin link
-				if($_SESSION['userType']=='moderator' || $_SESSION['userType']=='administrator'){
+				if($_SESSION['userType']==='moderator' || $_SESSION['userType']==='administrator'){
 					echo "<li><a href=\"admin.php\">Admin</a></li>";
 				}
 

@@ -12,10 +12,10 @@ if ( $_POST['pass'] == " " || $_POST['pass'] == NULL ) {
 	$count = $count + 1;
 }
 if ( $count > 0 ) exit();
-$temp = SERVICE_URL. '?section=user&request=activated&username='.$_POST['user'];
+$temp = SERVICE_URL.'?section=user&request=activated&username='.$_POST['user'];
 $temp1 = file_get_contents($temp,0,null,null);
 $userActivated  = json_decode($temp1, true);
-if (!$userActivated){
+if (!$userActivated['userActivated']){
 	echo "Please activate your account before signing in <br />";
 	exit();
 }
@@ -29,7 +29,7 @@ $temp = file_get_contents($loginAuth, 0,null,null);//bv_download($loginAuth);
 
 $loginAuthOutput = json_decode($temp, true);
 if ( !($loginAuthOutput['authenticationSuccess'])  ){
-	echo $loginAuthOutput['authenticationSuccess'];
+//	echo $loginAuthOutput['authenticationSuccess'];
 	echo "Username or password is invalid, Please try again <br />";
 	exit();
 }

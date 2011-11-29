@@ -74,9 +74,19 @@ include('config.php');
 			</div>
 			<div class='page-container'>
 				<div class='page-body container' id='home'>
+					</div>
 					<div class='project-container'>
-						<h2>Featured Projects</h2>
-						
+						<div class="search">
+						<h2>Search</h2>
+						<form id="searchForm" method="post" action="search.php">
+							<input type="radio" name="searchType" value="0" checked="true">Display Name
+							<input type="radio" name="searchType" value="1">Projects
+							<input type="radio" name="searchType" value="2">ID<br>
+							<input type="text"  name="searchField" size="29"><input type="submit" value="search"><br>
+							</form>
+						</div>
+
+					<h2>Featured Projects</h2>
 						<?php
 					// get the featured proposals
 					// swap to request=proposals or request=versions
@@ -92,7 +102,6 @@ include('config.php');
 						if($i==0){
 							?>
 							<div class='project-featured'>
-
 								<div class='f-10 project'>
 									<a href=<?php echo 'design.php?id='.$proposal['designID']; ?>>
 										<?php
@@ -102,7 +111,7 @@ include('config.php');
 									</a>
 									<div class='project-info'>
 										<h3>
-											<a href=<?php echo 'design.php?id='.$proposal['designID']; ?>><?php echo $proposal['name']; ?><span class='icon'>&nbsp;]</span></a>
+											<a href=<?php echo 'design.php?id='.$proposal['designID']; ?>><?php echo $proposal['name']; ?><span class='icon'>&nbsp;</span></a>
 										</h3>
 										<div class='project-meta'>
 											<ul>
@@ -146,7 +155,6 @@ include('config.php');
 
 							</div>
 						</div>
-
 					</div>
 					<div class='projects'>
 						<?php
@@ -163,7 +171,7 @@ include('config.php');
 						</a>
 						<div class='project-info'>
 							<h3>
-								<a href=<?php echo 'design.php?id='.$proposal['designID']; ?>><?php echo $proposal['name']; ?><span class='icon'>&nbsp;]</span></a>
+								<a href=<?php echo 'design.php?id='.$proposal['designID']; ?>><?php echo $proposal['name']; ?><span class='icon'>&nbsp;</span></a>
 							</h3>
 							<div class='project-meta'>
 								<ul>
