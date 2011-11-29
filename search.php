@@ -168,10 +168,21 @@ error_reporting(E_ALL);
 					}
 				}
 			?>
-			<center><div class="search">
-			<h1>Search</h1>
-			<div id="result" style="display:block"><?php searchCheck(); ?></div></center>
-			</div>
+			<?php
+				function display(){
+					if ( isset($_POST['searchField']))
+						echo "display:block";
+					else echo "display:none";
+				}
+			?>
+			<div class='page-container'>
+				<div class='page-body container' id='home'>
+					<center><div class="search">
+					<h1>Search Results</h1>
+					<a href="index.php" >Home</a>
+					<div id="result" style="<?php echo display(); ?>"><center><?php searchCheck(); ?></center></div></center>
+					</div>
+				</div>
 <?php
 	include("footer.php");
 ?>
