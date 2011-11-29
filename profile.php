@@ -56,11 +56,13 @@ include('config.php');
 	 		if($userName==$_SESSION['username'])
 	 		{?>
 	 			
-	 			<!--<form name='profileForm' action='editProfile.php' method="get">
+	 			<!--
+	 			<form name='profileForm' action='editProfile.php' method="get">
 				<input type="submit" name="submit" value="Edit Profile" />
 				</form>
-				
-	 			--><?php
+	 			-->
+	 			
+	 			<?php
 	 		}?>
 				<br />
 				
