@@ -91,7 +91,7 @@ error_reporting(E_ALL);
 			
 							echo "<div class='project-info'>"; 
 							echo "<h3>"; 
-						   echo '<a href="design.php?id='.$results[$i]['designID'].'">'.$results[$i]['name'].'<span class=\'icon\'>&nbsp;]</span></a>';
+						   echo '<a href="design.php?id='.$results[$i]['designID'].'">'.$results[$i]['name'].'<span class=\'icon\'>&nbsp;</span></a>';
 							echo "</h3>"; 
 							echo "<div class='project-meta'>"; 
 						   echo "<ul>"; 
@@ -123,7 +123,7 @@ error_reporting(E_ALL);
 			
 							echo "<div class='project-info'>"; 
 							echo "<h3>"; 
-						   echo '<a href="design.php?id='.$results[$i]['designID'].'">'.$results[$i]['name'].'<span class=\'icon\'>&nbsp;]</span></a>';
+						   echo '<a href="design.php?id='.$results[$i]['designID'].'">'.$results[$i]['name'].'<span class=\'icon\'>&nbsp;</span></a>';
 							echo "</h3>"; 
 							echo "<div class='project-meta'>"; 
 						   echo "<ul>"; 
