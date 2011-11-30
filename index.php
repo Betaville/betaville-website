@@ -8,9 +8,6 @@ include('config.php');
 	<div class='master-container'>
 		<div class='tagline'>
 			<div class='tagline-body'>
-				<div class='tagline-close' onclick="$('.tagline').slideUp()">
-					<span class='icon'>D</span>
-				</div>
 				<div class='tagline-text'>
 					<div class='text-body'>
 						<p class='p1'>A <strong>collaborative online platform</strong> for</p>
@@ -332,5 +329,3 @@ include('footer.php'); ?>
 </div>
 </body>
 </html>
-
-
