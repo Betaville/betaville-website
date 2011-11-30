@@ -18,7 +18,7 @@ include('config.php');
 	</style>
 <body> 
 <div class='master-container'> 
-		<?php  
+		<?php
 		//Check if you retrieve uName or username
 		if(isset($_GET['uName']))
 			$userName = $_GET['uName'];
@@ -55,8 +55,7 @@ include('config.php');
 	 		<?php
 	 		if($userName==$_SESSION['username'])
 	 		{?>
-	 			
-	 			<!--
+	 			<!--		
 	 			<form name='profileForm' action='editProfile.php' method="get">
 				<input type="submit" name="submit" value="Edit Profile" />
 				</form>
@@ -209,10 +208,19 @@ include('config.php');
 			{
 				for($i=1; $i<=$pages; $i++)
 					if ($currentPage!=$i)
-					{
-					?>
-						<a href='./profile.php?page=<?php echo $i;?>'><?php echo $i;?></a>
-					<?php
+					{ 
+						if($userName == $_SESSION['username'])
+						{
+						?>
+							<a href='./profile.php?page=<?php echo $i;?>'><?php echo $i;?></a>						
+						<?php
+						}
+						else
+						{
+						?>
+							<a href='./profile.php?page=<?php echo $i;?>&uName=<?php echo $userName;?>'><?php echo $i;?></a>	
+						<?php
+						}
 					}
 					else
 					 	echo $i; 
@@ -224,7 +232,8 @@ include('config.php');
 			<aside> 
 				<?php 
 				//Check if you retrieve uName or username
-				if(isset($_GET['uName']))$_GET['uName'] = $userName;
+				if(isset($_GET['uName']))
+					$_GET['uName'] = $userName;
 				include('latest-user-activity.php'); ?>
 			</aside>
 		
