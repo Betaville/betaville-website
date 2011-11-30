@@ -11,14 +11,14 @@ if(isset($_GET['uName']))
 else
 	$userName = $_SESSION['username'];
 
-
-//Check if you retrieve uName or username
-if(isset($_GET['uName']))
-echo "<h2>Latest Activities</h2><br>";
+//Check its the logged-in user or other user
+if($userName == $_SESSION['username'])
+	echo "<h2>My Latest Activities</h2><br>";
 else
-echo "<h2>My Latest Activities</h2><br>";
+	echo "<h2>Latest Activities</h2><br>";
+
 // swap to request=proposals or request=versions
-// Fetching designs now findbyuser, keep in mind, a huge number of users will be returned with an empty array if you not uploaded anything
+// Fetching designs now findbyuser, keep in mind, a huge number of users will be returned with an empty array if you have not uploaded anything
 $designRequest = SERVICE_URL.'?section=design&request=findbyuser&user='.$userName.'&excludeempty=1';
 $designJSON = file_get_contents($designRequest,0,null,null);
 $designOutput = json_decode($designJSON, true);
@@ -32,17 +32,41 @@ $counter = 0;
 foreach($designs as $design) {
 	$count++;
 }
-	//Check if you retrieve uName or username
-if(isset($_GET['uName']))$display = $count.' Models loaded by '.$userName;
-			else $display = $count.' Models loaded by you';	
-if($count>0) {
+
+/*//Check if you retrieve uName or username
+if($userName = $_SESSION['username'])
+	$display = $count.' Models loaded by you';
+else 
+	$display = $count.' Models loaded by '.$userName;
+	
+if($count>0)
 	echo '<strong>'.$display.'</strong><br><br>';
-}
-else {
+else
+{
 	//Check if you retrieve uName or username
-	if(isset($_GET['uName'])) $display = 'No Models uploaded by '.$userName;
-	echo '<strong>'.$display.'</strong><br><br>';
+	if(isset($_GET['uName'])) 
+		$display = 'No Models uploaded by '.$userName;
+		echo '<strong>'.$display.'</strong><br><br>';
 }
+*/
+
+if($count>0)
+{
+	//Check its the logged-in user or other user
+	if($userName == $_SESSION['username'])
+		$display = $count.' Models loaded by you';
+	else 
+		$display = $count.' Models loaded by '.$userName;
+}	
+else
+{
+	//Check its the logged-in user or other user
+	if($userName == $_SESSION['username'])
+		$display = 'No Models loaded by you';
+	else 
+		$display = 'No Models loaded by '.$userName;
+}
+echo '<strong>'.$display.'</strong><br><br>';
 
 foreach($designs as $design){
 	/* Im not sure if this check is to be done, it is a separate file now
@@ -83,13 +107,12 @@ foreach($designs as $design){
 <br><br>
 <?php
 // retrieving comments by passing $userName in section activity request myactivity and user = $userName
-//Check if you retrieve uName or username
-if(isset($_GET['uName'])) {
-$commentRequest = SERVICE_URL.'?section=activity&request=peruseractivity&user='.$userName;
-}
-else{
-$commentRequest = SERVICE_URL.'?section=activity&request=myactivity&user='.$userName;
-}
+//Check its the logged-in user or other user
+if($userName == $_SESSION['username']) 
+	$commentRequest = SERVICE_URL.'?section=activity&request=myactivity&user='.$userName;
+else
+	$commentRequest = SERVICE_URL.'?section=activity&request=peruseractivity&user='.$userName;
+	
 $commentJSON = file_get_contents($commentRequest,0,null,null);
 $commentOutput = json_decode($commentJSON, true);
 $comments = $commentOutput['comments'];
