@@ -6,6 +6,7 @@
 		$userName = $_SESSION['username'];
 		
 		include('config.php');
+		$changedPass=$_GET['passChanged'];
 		
 		// get user information
 		$userRequest = SERVICE_URL.'?section=user&request=getpublicinfo&username='.$userName;
@@ -27,7 +28,7 @@
                 <input type="hidden" name="username" value="<?php echo $userName ?>">
                 <table border="0">
 				<tr><td><img src=<?php echo $gravatarImage;?> height='100' width='100' style='background-color: #383838'></td>
-                <tr><td><label>Name: </label></td><td><input type="text" name="displayName" value="<?php echo $user['displayName']; ?>" /></td></tr>
+                <tr><td><label>Name: </label></td><td><label><?php echo $user['userName'];?></label></td></tr>
 				<tr><td><label>About me: </label></td><td><input type="text" name="bio" value="<?php echo $user['bio']; ?>" /></td></tr>
 				<tr><td><label>Website: </label></td><td><input type="text" name="website" value="<?php echo $user['website']; ?>" /></td></tr>
 				<tr><td><label>Profile: </label></td><td><label><?php echo $user['type'];?></label></td></tr>
@@ -42,6 +43,7 @@
 			</div>
 				<aside>
 					<?php
+					$_GET['passChanged']=$changedPass;
 					include('changePass.php');
 					?>
 				</aside>

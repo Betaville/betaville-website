@@ -24,8 +24,8 @@
 			else
 				echo $passChanged['passChanged'];
 		}		
-		
-	 header("Location: profile.php");
 
-	
+	$changedPass=$passChanged['passChanged'];	
+	header("Location: editProfile.php?&passChanged=$changedPass");
+
 ?>

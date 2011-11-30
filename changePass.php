@@ -2,19 +2,23 @@
 	
 <?php
 include_once('config.php');
-echo "<br/><br/><br/><br/><br/><br/>";
+$changedPass=$_GET['passChanged'];
+echo "<br/><br/><br/>";
+if($changedPass=='true')
+	echo "Password Changed Successfully !";
+echo "<br/><br/><br/>";
 echo "<h2>Change Password?</h2>";
 echo "<br/><br/>";
 ?>
 
-	<form name='changePass' method='post'>
+	<form name='changePass' id='idChangePass' method='post' action='updatePass.php'>
 	<input type="hidden" name="username" value="<?php echo $userName ?>">
 	<table class="ChangePass-section" border="0" >
-		<tr><td><label>Old Password: </label></td><td><input type="password" name="oldPass" onkeypress="if (event.keyCode==13) document.getElementById('submit').click()"/></td></tr>
-		<tr><td><label>New Password: </label></td><td><input type="password" name="newPass" onkeypress="if (event.keyCode==13) document.getElementById('submit').click()"/></td></tr>
-		<tr><td><label>Confirm New Password: </label></td><td><input type="password" name="confirmPass" onkeypress="if (event.keyCode==13) document.getElementById('submit').click()"/></td></tr>
+		<tr><td><label>Old Password: </label></td><td><input type="password" name="oldPass" onkeypress="if (event.keyCode==13) document.getElementById('button').click()"/></td></tr>
+		<tr><td><label>New Password: </label></td><td><input type="password" name="newPass" onkeypress="if (event.keyCode==13) document.getElementById('button').click()"/></td></tr>
+		<tr><td><label>Confirm New Password: </label></td><td><input type="password" name="confirmPass" onkeypress="if (event.keyCode==13) document.getElementById('button').click()"/></td></tr>
 		<tr><td></td><td></td></tr>
-		<tr><td><input type="button" id="submit" value="Change Password" onclick="verifyNewPass()"/></td></tr>
+		<tr><td><input type="button" id="button" value="Change Password" onclick="verifyNewPass()"/></td></tr>
 	</table>
 	</form>
 
@@ -34,19 +38,13 @@ echo "<br/><br/>";
 		var oldPass = document.forms['changePass']['oldPass'].value;
 		var newPass = document.forms['changePass']['newPass'].value;
 		var confirmPass = document.forms['changePass']['confirmPass'].value;
-	//	alert("newPass is "+newPass);
-	//	alert("confirmPass is "+confirmPass);
 		if(oldPass=='' || newPass=='' || confirmPass=='')
 			document.getElementById('passMsg').style.display="block";
 		else
 			if(newPass==confirmPass)
 			{	
-			//	alert("Yippy!!");
-				var parameters="oldPass="+oldPass+"&newPass="+newPass;
-				var mypostrequest=new ajaxRequest();
-				mypostrequest.open("POST", "updatePass.php", true);
-				mypostrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-				mypostrequest.send(parameters);
+				var formId = document.getElementById('idChangePass');
+				formId.submit();
 			}
 			else
 				document.getElementById('verifyMsg').style.display="block";
