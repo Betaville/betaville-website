@@ -23,7 +23,7 @@
 				echo "Web service call initiated for passChange <br />";
 			else
 				echo $passChanged['passChanged'];
-		}		
+		}
 
 	$changedPass=$passChanged['passChanged'];	
 	header("Location: editProfile.php?&passChanged=$changedPass");

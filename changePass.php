@@ -6,6 +6,12 @@ $changedPass=$_GET['passChanged'];
 echo "<br/><br/><br/>";
 if($changedPass=='true')
 	echo "Password Changed Successfully !";
+else
+if($changedPass=='false')
+{
+	echo "Oops! Something went wrong. ";
+	echo "Please try again.";
+}	
 echo "<br/><br/><br/>";
 echo "<h2>Change Password?</h2>";
 echo "<br/><br/>";
