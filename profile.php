@@ -2,7 +2,7 @@
 include('head.php');
 include('config.php');
 ?>
-	<!--<?php
+	<?php
 		if (!isset($_SESSION['logged']) && !$_SESSION['logged'] == true ) {
 	?>
 	<script type="text/javascript" >
@@ -10,7 +10,7 @@ include('config.php');
 	</script>
 	<?php
 		}
-	?>-->
+	?>
     <style>
 	.userInfo{
 		background-color:
@@ -55,11 +55,11 @@ include('config.php');
 	 		<?php
 	 		if($userName==$_SESSION['username'])
 	 		{?>
-	 			<!--		
+	 					
 	 			<form name='profileForm' action='editProfile.php' method="get">
 				<input type="submit" name="submit" value="Edit Profile" />
 				</form>
-	 			-->
+	 			
 	 			
 	 			<?php
 	 		}?>
