@@ -19,6 +19,59 @@ $commentJSON = file_get_contents($commentRequest,0,null,null);
 $commentOutput = json_decode($commentJSON, true);
 $comments = $commentOutput['comments'];
 
+
+// check if the user has write access
+if(isset($_SESSION['token'])){
+	$accessRequest = SERVICE_URL.'?section=design&request=userhaswriteaccess&token='.$_SESSION['token'].'&id='.$designID;
+	$accessJSON = file_get_contents($accessRequest,0,null,null);
+	$accessOutput = json_decode($accessJSON, true);
+	$access = $accessOutput['userhaswriteaccess'];
+	if($access === true){
+		// the user has write access, include jQuery functionality
+		?>
+		<script>
+			$(document).ready(function(){
+				setClickable();
+			});
+			
+			function setClickable(){
+				$('#project-description').click(function(){
+					var textarea = '<div><textarea rows="10" cols="60">'+$(this).html()+'</textarea>';
+					var button = '<div><input type="button" value="Save" class="saveButton" /> OR <input type="button" value="Cancel" class="cancelButton" /></div></div>';
+					var revert = $(this).html();
+					$(this).after(textarea+button).remove();
+					$('.saveButton').click(function(){saveChanges(this, false);});
+					$('.cancelButton').click(function(){saveChanges(this, revert);});
+				}).mouseover(function(){
+					$(this).addClass("editable");
+				}).mouseout(function(){
+					$(this).removeClass("editable");
+				});
+				
+				/*
+				$('#project-description').mouseOver(function(){
+					$(this).addClass("editable");
+				});
+				$('#project-description').mouseOut(function(){
+					$(this).addClass("editable");
+				});
+				*/
+			};
+			
+			function saveChanges(obj, cancel){
+				if(!cancel){
+					var t = $(obj).parent().siblings(0).val();
+					// send the data to the web service
+				}
+				else{
+					window.location.reload();
+				}
+			};
+		</script>
+		<?php
+	}
+}
+
 ?>
 <div class='master-container'>
 	<div class='page-container'>
@@ -81,12 +134,10 @@ $comments = $commentOutput['comments'];
 						<span class='icon i-share'>☀</span> 
 					</a> 
 				</div> 
-			</div> 
-			<div class='project-description'>
-				<?php echo $design['description']; ?>
-				<br />
-				<br />	
 			</div>
+			<div id='project-description' class='project-description'><?php echo $design['description']; ?></div>
+			<br />
+			<br />	
 			<div>
 				<?php include('map.php'); ?>
 				<script type="text/javascript">

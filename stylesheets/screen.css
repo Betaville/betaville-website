@@ -1559,6 +1559,9 @@ aside {
 * html .projects {
     overflow-x: hidden;
 }
+.editable{
+	background: #CCFFB8;
+}
 .project {
     overflow: hidden;
     *zoom: 1;
