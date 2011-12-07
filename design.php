@@ -36,7 +36,7 @@ if(isset($_SESSION['token'])){
 			
 			function setClickable(){
 				$('#project-description').click(function(){
-					var textarea = '<div><textarea rows="10" cols="60">'+$(this).html()+'</textarea>';
+					var textarea = '<div><textarea placeholder="test" id="descriptionUpdateArea" rows="10" cols="60">'+$(this).html()+'</textarea>';
 					var button = '<div><input type="button" value="Save" class="saveButton" /> OR <input type="button" value="Cancel" class="cancelButton" /></div></div>';
 					var revert = $(this).html();
 					$(this).after(textarea+button).remove();
@@ -60,8 +60,21 @@ if(isset($_SESSION['token'])){
 			
 			function saveChanges(obj, cancel){
 				if(!cancel){
-					var t = $(obj).parent().siblings(0).val();
-					// send the data to the web service
+					var updatedText = $('#descriptionUpdateArea').val();
+					var updateString = 'interact/update-design.php?action=update&id=<?php echo $designID; ?>&description='+updatedText;
+					
+					
+					if (window.XMLHttpRequest)
+						{// code for IE7+, Firefox, Chrome, Opera, Safari
+							xmlhttp=new XMLHttpRequest();
+						}
+						else{// code for IE6, IE5
+							xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+						}
+						
+						xmlhttp.open("GET",updateString,true);
+						xmlhttp.send();
+						window.location.reload();
 				}
 				else{
 					window.location.reload();
