@@ -78,8 +78,8 @@ include('config.php');
 						<form id="searchForm" method="post" action="search.php">
 							<input type="radio" name="searchType" value="0" checked="true">Display Name
 							<input type="radio" name="searchType" value="1">Projects
-							<input type="radio" name="searchType" value="2">ID<br>
-							<input type="text"  name="searchField" size="29"><input type="submit" value="search"><br>
+							<input type="radio" name="searchType" value="2">ID
+							<input type="text"  name="searchField" size="29"> <input type="submit" value="search"><br><br>
 							</form>
 						</div>
 
