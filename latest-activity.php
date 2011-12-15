@@ -1,4 +1,10 @@
 <div class='activity-section'>
+
+<script>
+	$('lol').mouseover(function(){
+		$(this).addClass("editable");
+});
+</script>
 	
 <?php
 include_once('config.php');
@@ -10,7 +16,13 @@ $designJSON = file_get_contents($designRequest,0,null,null);
 $designOutput = json_decode($designJSON, true);
 $designs = $designOutput['designs'];
 
-foreach($designs as $design){?>
+foreach($designs as $design){
+	//Checking length of string, adjust length if it is more than a limit	
+	$length_of_string = $design['description'];
+	$leng = strlen($length_of_string);
+		if($leng>1000) {
+			$design['description'] = substr($design['description'],0,200).'<div id="lol"><bold>....(click to read more)</bold></div>';
+		}?>
 	<div class='activity'>
 	<?php
 		echo "<a href='design.php?id=".$design['designID']."'>\n";
@@ -49,12 +61,16 @@ $counter = 0;
 foreach($comments as $comment){
 	
 	$counter++;
-//	echo $counter;
 	$commentDesignRequest = SERVICE_URL.'?section=design&request=findbyid&id='.$comment['designid'];
 	$commentDesignJSON = file_get_contents($commentDesignRequest,0,null,null);
 	$commentDesignOutput = json_decode($commentDesignJSON, true);
 	$commentDesign = $commentDesignOutput['design'];
-
+	//Checking length of string, adjust length if it is more than a limit		
+	$length_of_string = $comment['comment'];
+	$leng = strlen($length_of_string);
+		if($leng>1000) {
+			$comment['comment'] = substr($comment['comment'],0,200).'<div id="lol"><bold>....(click to read more)</bold></div>';
+		}	
 	?>
 	<div class='activity'>
 	<?php 
@@ -82,10 +98,10 @@ foreach($comments as $comment){
 	</div>
 	</div>
 	</div>
-<?php
-if($counter>=5)
-	break;
-}
-?>
+	<?php
+		if($counter>=5)
+			break;
+		}
+	?>
 
 </div>
