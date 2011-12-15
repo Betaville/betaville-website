@@ -27,6 +27,10 @@ th, td, caption {
     font-weight: normal;
     vertical-align: middle;
 }
+
+#lol:hover{color:green;}
+
+
 table {
     border-collapse: separate;
     border-spacing: 0;
