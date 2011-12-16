@@ -78,6 +78,9 @@
 					<?php
 						if($_GET['action']=='edituser' && isset($_GET['target'])){
 						echo '<h3>'.$_GET['target'].'</h3>';
+						
+						// User update functionality
+						
 						echo '<form name="usertype-selection" action="interact/admin-actions.php" method="POST">';?>
 							<div>
 								<select name="type">
@@ -100,7 +103,21 @@
 								<input type="submit" value="Update" />
 							</div>
 						</form>
+						<br />
+						<br />
+						<!-- Password Change Section -->
+						<form name="change-password" action="interact/admin-actions.php" method="POST">
+							<div>
+								<?php echo '<input type="hidden" name="target" value="'.$_GET['target'].'"/>';?>
+								<input type="password" name="oldPass" onkeypress="if (event.keyCode==13) document.getElementById('button').click()"/>
+								<input type="password" name="newPass" onkeypress="if (event.keyCode==13) document.getElementById('button').click()"/>
+								<input type="password" name="confirmPass" onkeypress="if (event.keyCode==13) document.getElementById('button').click()"/>
+								<input type="button" id="button" value="Change Password" onclick="verifyNewPass()"/>
+							</div>
+						</form>
+						<!-- End Password Change Section-->
 						<?php
+						// end of user update functionality
 						}
 					?>
 				</div>
