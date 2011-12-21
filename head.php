@@ -5,19 +5,17 @@ ob_start();
 <!doctype html>
 <html>
 <head>
-<title>Betaville</title> 
-	<link href='./stylesheets/reset.css' rel='stylesheet'> 
-	<link href='./stylesheets/screen.css' rel='stylesheet'> 
+	<title>Betaville</title>
+	<link href='./stylesheets/reset.css' rel='stylesheet'>
+	<link href='./stylesheets/screen.css' rel='stylesheet'>
+	<link href='./fancybox/jquery.fancybox-1.3.4.css' media='screen' rel='stylesheet' type='text/css'>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
 	<script src='./js/jquery.jcarousel.min.js'></script>
-	<script src='./js/betaville.home.js'></script> 
-	<script src='./js/jquery.easing.1.3.js'></script> 
-	<script src='./fancybox/jquery.mousewheel-3.0.4.pack.js' type='text/javascript'></script> 
-	<script src='./fancybox/jquery.fancybox-1.3.4.pack.js' type='text/javascript'></script> 
-	<link href='./fancybox/jquery.fancybox-1.3.4.css' media='screen' rel='stylesheet' type='text/css'> 
-	<meta content='text/html;charset=utf-8' http-equiv='Content-Type'> 
-	<meta name="csrf-param" content="authenticity_token"/> 
-	<meta name="csrf-token" content="kg1Klytrjq1CyeFy3G1cujAERmXA69mxelZXrv9FcFc="/>
+	<script src='./js/betaville.home.js'></script>
+	<script src='./js/jquery.easing.1.3.js'></script>
+	<script src='./fancybox/jquery.mousewheel-3.0.4.pack.js' type='text/javascript'></script>
+	<script src='./fancybox/jquery.fancybox-1.3.4.pack.js' type='text/javascript'></script>
+	<meta content='text/html;charset=utf-8' http-equiv='Content-Type'>
 	<?php
 		include("betaville-functions.php");
 		include("interact/curl.php");
