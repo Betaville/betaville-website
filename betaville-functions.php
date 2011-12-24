@@ -153,5 +153,64 @@ function timediff($a)
 						}
 						}
 			}
+
+function DeleteUser($designid,$deletename) { 
+						$userRequest = SERVICE_URL.'?section=user&request=getusergroup&designid='.$designid;
+						$userTestRequestJSON = file_get_contents($userRequest,0,null,null);
+						$userTestOutput = json_decode($userTestRequestJSON, true);
+						$users = $userTestOutput['users'];
+						$count=0;
+							foreach($users as $musy) {
+									$gushy = explode(",",$musy['groupName']);
+										if($gushy[0]!='') {
+											foreach($gushy as $key => $userToDelete) {
+												if($userToDelete == $deletename) {
+													$a = $key;
+													$count++;
+												}
+											}
+											if($count>1||$count==1) {
+												array_splice($gushy,$a,1);
+												$comma = implode(",",$gushy);
+												$comma = urlencode($comma);
+												$userRequest = SERVICE_URL.'?section=user&request=deleteuserfromgroup&entry='.$comma.'&designid='.$designid;
+												$userTestRequestJSON = file_get_contents($userRequest,0,null,null);
+												$userTestOutput = json_decode($userTestRequestJSON, true);
+												if($userTestOutput) {
+													echo '<strong> User deleted from group </strong>';
+													}
+									
+											}
+											else {
+												$comma = implode(",",$gushy);
+												echo $comma;
+											}						
+										}									
+										else {
+											echo '<b> No Users in this group at the moment </b>';
+										}
+				   }
+}
+																
+function checkUserInGroup($checkname,$designid) {
+						$userRequest = SERVICE_URL.'?section=user&request=getusergroup&designid='.$designid;
+						$userTestRequestJSON = file_get_contents($userRequest,0,null,null);
+						$userTestOutput = json_decode($userTestRequestJSON, true);
+						$users = $userTestOutput['users'];
+							foreach($users as $musy) {
+									$gushy = explode(",",$musy['groupName']);
+										if($gushy[0]!='') {
+											foreach($gushy as $key => $userToDelete) {
+												if($userToDelete == $checkname) {
+													return true;
+												}
+											}
+										}
+										else return false;
+							}
+						
+
+						}
+
 ?>
 						
