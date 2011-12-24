@@ -10,7 +10,9 @@ $linkToUser = "";
 if($_GET['link']=="admin"){
 	$linkToUser = WEB_URL."/admin.php?action=edituser&target=";
 }
-
+if($_GET['link']=="userequest"){
+	$linkToUser = WEB_URL."/AddUser.php?id=2404&action=edituser&target=";
+}
 $userResults = "";
 
 foreach($users as $user){
