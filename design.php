@@ -25,8 +25,9 @@ if(isset($_SESSION['token'])){
 	$accessRequest = SERVICE_URL.'?section=design&request=userhaswriteaccess&token='.$_SESSION['token'].'&id='.$designID;
 	$accessJSON = file_get_contents($accessRequest,0,null,null);
 	$accessOutput = json_decode($accessJSON, true);
-	$access = $accessOutput['userhaswriteaccess'];
-	if($access === true){
+	$access = $accessOutput['userhaswriteaccess'];	
+	
+	if($access === true || checkUserInGroup($_SESSION['username'],$design['designID']) == true){
 		// the user has write access, include jQuery functionality
 		?>
 		<script>
@@ -61,7 +62,7 @@ if(isset($_SESSION['token'])){
 			function saveChanges(obj, cancel){
 				if(!cancel){
 					var updatedText = $('#descriptionUpdateArea').val();
-					var updateString = 'interact/update-design.php?action=update&id=<?php echo $designID; ?>&description='+updatedText;
+					var updateString = 'interact/update-design.php?groupy=<?php echo $_SESSION['username']; ?>&action=update&id=<?php echo $designID; ?>&description='+updatedText;
 					
 					
 					if (window.XMLHttpRequest)
@@ -84,8 +85,12 @@ if(isset($_SESSION['token'])){
 		<?php
 	}
 }
-
+if($_SESSION['username']==$design['user']) {?>
+<h4> Add User Functionality for </h4><a href = "AddUser.php?id=<?php echo $design['designID'];?>"><?php echo $design['name'];?></a>
+<?php
+}
 ?>
+
 <div class='master-container'>
 	<div class='page-container'>
 		<div class='page-body container project' id='project'> 
