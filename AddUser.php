@@ -1,39 +1,47 @@
 <html>
 
-<?php include('head.php');
+<?php 
+	include('head.php');
 	include_once('betaville-functions.php');
-include('config.php');?>
+	include('config.php');
+?>
 
 <body>
 
 <?php
 
 	if(isset($_GET['deleteuser'])) {
-	$deletename=$_GET['deleteuser'];
-	$designid=$_GET['id'];
-	DeleteUser($designid,$deletename);
-	echo '<strong>....redirecting... </strong>';
-        header('Refresh: 2;url='.WEB_URL.'/AddUser.php?id='.$designid); 
-	}
+		$deletename=$_GET['deleteuser'];
+		$designid=$_GET['id'];
+		DeleteUser($designid,$deletename);
+		echo '<strong>....redirecting... </strong>';
+	        header('Refresh: 2;url='.WEB_URL.'/AddUser.php?id='.$designid); 
+		}
+
 	if(isset($_GET['adduser'])) {
-	
-	$userToAdd=$_GET['adduser'];
-	$designid=$_GET['id'];
-	$userToAdd=urlencode($userToAdd.',');
-	$addRequest = SERVICE_URL.'?section=user&request=addusertogroup&addname='.$userToAdd.'&designid='.$designid;
-	$addJSON = file_get_contents($addRequest,0,null,null);
-	$addOutput = json_decode($addJSON, true);
-	echo '<strong>User added to your group....redirecting... </strong>';
-        header('Refresh: 2;url='.WEB_URL.'/AddUser.php?id='.$designid); 
-
+		if(checkUserInGroup($_GET['adduser'],$_GET['id']) != true) {
+			$userToAdd=$_GET['adduser'];
+			$designid=$_GET['id'];
+			$userToAdd=urlencode($userToAdd.',');
+			$addRequest = SERVICE_URL.'?section=user&request=addusertogroup&addname='.$userToAdd.'&designid='.$designid;
+			$addJSON = file_get_contents($addRequest,0,null,null);
+			$addOutput = json_decode($addJSON, true);
+			echo '<strong>User added to your group....redirecting... </strong>';
+		        header('Refresh: 2;url='.WEB_URL.'/AddUser.php?id='.$designid); 
+		}
+		else {
+			$designid = $_GET['id'];
+			echo '<strong>User exists in group....redirecting... </strong>';
+		        header('Refresh: 2;url='.WEB_URL.'/AddUser.php?id='.$designid); 	
+		}
 	}
-	$designid = $_GET['id'];
-	$designRequest = SERVICE_URL.'?section=design&request=findbyid&id='.$designid;
-	$designJSON = file_get_contents($designRequest,0,null,null);
-	$designOutput = json_decode($designJSON, true);
-	$design = $designOutput['design'];
 
-		if($_SESSION['username']==$design['user']) {
+		$designid = $_GET['id'];
+		$designRequest = SERVICE_URL.'?section=design&request=findbyid&id='.$designid;
+		$designJSON = file_get_contents($designRequest,0,null,null);
+		$designOutput = json_decode($designJSON, true);
+		$design = $designOutput['design'];
+			if($_SESSION['username']==$design['user']) {
 	
 		?>
 	<h2> User Add Functionality </h2>
