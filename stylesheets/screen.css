@@ -912,7 +912,6 @@ form.inline p {
 body {
     font-size: 13px;
     line-height: 1.33;
-    background: white url(../images/bg22.png) repeat -1px 2px;
 }
 a, a:link, a:visited, a:hover, a:active {
     color: #383838;
@@ -1283,7 +1282,6 @@ footer a, footer a:link, footer a:visited, footer a:hover, footer a:active {
     *zoom: 1;
     padding: 20px;
     position: relative;
-    background: white url(../images/blueprint.png) fixed top center;
     border-bottom: 1px solid #ddd;
     margin-bottom: 20px;
 }
