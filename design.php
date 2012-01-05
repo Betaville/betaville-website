@@ -85,9 +85,17 @@ if(isset($_SESSION['token'])){
 		<?php
 	}
 }
-if($_SESSION['username']==$design['user']) {?>
-<h4> Add User Functionality for </h4><a href = "AddUser.php?id=<?php echo $design['designID'];?>"><?php echo $design['name'];?></a>
+//Add USer Functionality implemented o nthe design.php page, check if the design user is the user logged in.
+if($_SESSION['username']==$design['user']) {
+	//Web service request to check if the design is a proposal , if not do not implement the AddUser functionality.
+	$proposalRequest = SERVICE_URL.'?section=design&request=checkproposal&id='.$designID;
+	$proposalJSON = file_get_contents($proposalRequest,0,null,null);
+	$proposalOutput = json_decode($proposalJSON, true);
+	$proposal = $proposalOutput['checkdesign'];
+		if($proposal == true) { ?>
+			<h4> Add User Functionality for </h4><a href = "AddUser.php?id=<?php echo $design['designID'];?>"><?php echo $design['name'];?></a>
 <?php
+		}
 }
 ?>
 
