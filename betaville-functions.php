@@ -161,7 +161,7 @@ function DeleteUser($designid,$deletename) {
 						$users = $userTestOutput['users'];
 						$count=0;
 							foreach($users as $musy) {
-									$gushy = explode(",",$musy['groupName']);
+									$gushy = explode(",",$musy['user_group']);
 										if($gushy[0]!='') {
 											foreach($gushy as $key => $userToDelete) {
 												if($userToDelete == $deletename) {
@@ -198,7 +198,7 @@ function checkUserInGroup($checkname,$designid) {
 						$userTestOutput = json_decode($userTestRequestJSON, true);
 						$users = $userTestOutput['users'];
 							foreach($users as $musy) {
-									$gushy = explode(",",$musy['groupName']);
+									$gushy = explode(",",$musy['user_group']);
 										if($gushy[0]!='') {
 											foreach($gushy as $key => $userToDelete) {
 												if($userToDelete == $checkname) {
