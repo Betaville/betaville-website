@@ -103,14 +103,14 @@
 	<h2> User Delete Functionality </h2>
 
 							<?php
-								$count=0;
+								
 								$userRequest = SERVICE_URL.'?section=user&request=getusergroup&designid='.$designid;
 								$userJSON = file_get_contents($userRequest,0,null,null);
 								$userOutput = json_decode($userJSON, true);
 								$users = $userOutput['users'];
 								echo '<br><br><h3> Current Users in Group:  </h3>';
 									foreach($users as $musy) {
-										$gushy = explode(",",$musy['groupName']);
+										$gushy = explode(",",$musy['user_group']);
 											if($gushy[0]!='') {
 												foreach($gushy as $userToDelete) {
 													echo '<a href="AddUser.php?deleteuser='.$userToDelete.'&id='.$design['designID'].'" <strong>'.$userToDelete.'<br></strong></a>';
