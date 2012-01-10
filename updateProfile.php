@@ -12,6 +12,7 @@
 ?>
 
 <?php
+		/* NOT SURE IF THIS IS NEEDED RIGHT NOW
 		if(isset($_POST['displayName']))
 		{
 			echo "inside displayName";
@@ -22,33 +23,26 @@
 				echo "Web service call initiated for displayName <br />";
 			else
 				echo $dNameChanged['dNameChanged']; // make sure that the web service has the same name when u code it.
-		}
+		}*/
+		
+
+		//Service call to change bio for a user/ urlencode string before passing through service	
 		if(isset($_POST['bio']))
 		{
-			echo "inside bio";
-			$updateUser = SERVICE_URL.'?section=user&request=changebio&token='.$_SESSION['token'].'&username='.$userName.'&bio='.$_POST['bio'];
-			$temp1 = file_get_contents($updateUser,0,null,null);
-			$bioChanged = json_decode($temp1, true);
-			if ($bioChanged['bioChanged'])
-				echo "Web service call initiated for bio <br />";
-			else
-				echo $bioChanged['bioChanged'];
+			$bio_encoded = urlencode($_POST['bio']);
+			$updatebioRequest = SERVICE_URL.'?section=user&request=changebio&token='.$_SESSION['token'].'&username='.$userName.'&bio='.$bio_encoded;
+			$updatebioJSON = file_get_contents($updatebioRequest,0,null,null);
+			$bio_changed = json_decode($updatebioJSON, true);
 		}
+		//Service call to change website for a user/ urlencode string before passing through service
 		if(isset($_POST['website']))
 		{
-			echo "inside website";
-			echo $_POST['website'];
-			$updateUser = SERVICE_URL.'?section=user&request=changewebsite&token='.$_SESSION['token'].'&username='.$userName.'&website='.$_POST['website'];
-			$temp1 = file_get_contents($updateUser,0,null,null);
-			$websiteChanged = json_decode($temp1, true);
-			if ($websiteChanged['websiteChanged'])
-				echo "Web service call initiated for website <br />";
-			else
-				echo $websiteChanged['websiteChanged'];
+			$website_encoded = urlencode($_POST['website']);
+			$updatewebsiteRequest = SERVICE_URL.'?section=user&request=changewebsite&token='.$_SESSION['token'].'&username='.$userName.'&website='.$website_encoded;
+			$updatewebsiteJSON = file_get_contents($updatewebsiteRequest,0,null,null);
+			$website_changed = json_decode($updatewebsiteJSON, true);
 		}
-		
-		
-	 header("Location: profile.php");
+	header("Location: profile.php");
 
 	
 ?>
