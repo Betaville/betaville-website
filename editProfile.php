@@ -2,16 +2,12 @@
 <body> 
 <div class='master-container'> 
 		<?php 
-		//$userName = 'scandgolden24';
 		$userName = $_SESSION['username'];
-		
 		include('config.php');
 		$changedPass=$_GET['passChanged'];
-		
 		// get user information
 		$userRequest = SERVICE_URL.'?section=user&request=getpublicinfo&username='.$userName;
 		$userJSON = file_get_contents($userRequest,0,null,null);
-	//	$userJSON = file_get_contents("userScandgolden24.txt");
 		$userOutput = json_decode($userJSON, true);
 		$user = $userOutput['userInfo'];
 		
@@ -35,8 +31,7 @@
 				<tr><td></td><td></td></tr>
 				<tr><td><input type="submit" name="submit" value="Update Profile" /></td></tr>
                 </table>
-				</form>
-				
+				</form>				
 				</div>
 			</div>
 			
