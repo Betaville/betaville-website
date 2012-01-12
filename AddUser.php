@@ -15,7 +15,7 @@
 		$designid=$_GET['id'];
 		DeleteUser($designid,$deletename);
 		//echo '<strong>....redirecting... </strong>';
-	    // header('Refresh: 2;url='.WEB_URL.'/AddUser.php?id='.$designid); 
+	    header('Refresh: 1;url='.WEB_URL.'/AddUser.php?id='.$designid); 
 		}
 
 	if(isset($_GET['adduser'])) {
@@ -27,12 +27,12 @@
 			$addJSON = file_get_contents($addRequest,0,null,null);
 			$addOutput = json_decode($addJSON, true);
 			echo '<strong>User added to your group.</strong>';
-		    //header('Refresh: 2;url='.WEB_URL.'/AddUser.php?id='.$designid); 
+		    header('Refresh: 1;url='.WEB_URL.'/AddUser.php?id='.$designid); 
 		}
 		else {
 			$designid = $_GET['id'];
 			echo '<strong>User exists in group.</strong>';
-		       // header('Refresh: 2;url='.WEB_URL.'/AddUser.php?id='.$designid); 	
+		       header('Refresh: 1;url='.WEB_URL.'/AddUser.php?id='.$designid); 	
 		}
 	}
 
@@ -68,8 +68,8 @@
 									document.getElementById("livesearch").style.border="1px solid #A5ACB2";
 								}
 							}
-							
-							xmlhttp.open("GET","searches/user-search.php?link=userequest&query="+str,true);
+							var id = <?php echo $designid; ?>;
+							xmlhttp.open("GET","searches/user-search.php?link=userequest&designid="+id+"&query="+str,true);
 							xmlhttp.send();
 						}
 	
