@@ -5,13 +5,13 @@ $userRequest = SERVICE_URL.'?section=user&request=finduser&username='.$_GET['que
 $userJSON = file_get_contents($userRequest,0,null,null);
 $userOutput = json_decode($userJSON, true);
 $users = $userOutput['users'];
-
+$did = $_GET['designid'];
 $linkToUser = "";
 if($_GET['link']=="admin"){
 	$linkToUser = WEB_URL."/admin.php?action=edituser&target=";
 }
 if($_GET['link']=="userequest"){
-	$linkToUser = WEB_URL."/AddUser.php?id=2404&action=edituser&target=";
+	$linkToUser = WEB_URL."/AddUser.php?id=".$did."&action=edituser&target=";
 }
 $userResults = "";
 
