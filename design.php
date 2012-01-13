@@ -20,14 +20,13 @@ $commentOutput = json_decode($commentJSON, true);
 $comments = $commentOutput['comments'];
 
 
-// check if the user has write access
+// check if the user has write access, includes users who are in group!
 if(isset($_SESSION['token'])){
 	$accessRequest = SERVICE_URL.'?section=design&request=userhaswriteaccess&token='.$_SESSION['token'].'&id='.$designID;
 	$accessJSON = file_get_contents($accessRequest,0,null,null);
 	$accessOutput = json_decode($accessJSON, true);
 	$access = $accessOutput['userhaswriteaccess'];	
-	
-	if($access === true || checkUserInGroup($_SESSION['username'],$design['designID']) == true){
+	if($access === true){
 		// the user has write access, include jQuery functionality
 		?>
 		<script>
