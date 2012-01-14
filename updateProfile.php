@@ -42,7 +42,10 @@
 			$updatewebsiteJSON = file_get_contents($updatewebsiteRequest,0,null,null);
 			$website_changed = json_decode($updatewebsiteJSON, true);
 		}
-	header("Location: profile.php");
+	//header("Location: profile.php");
 
 	
 ?>
+<script type="text/javascript" >
+	window.location=<?php echo "\"".WEB_URL."/profile.php\""; ?>;
+</script>
