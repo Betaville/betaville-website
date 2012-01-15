@@ -1,11 +1,8 @@
-<html>
-
 <?php 
 	include('head.php');
 	include_once('betaville-functions.php');
 	include('config.php');
 ?>
-
 <body>
 
 <?php
