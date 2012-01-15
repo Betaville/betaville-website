@@ -11,8 +11,8 @@
 		$deletename=$_GET['deleteuser'];
 		$designid=$_GET['id'];
 		DeleteUser($designid,$deletename);
-		//echo '<strong>....redirecting... </strong>';
-	    header('Refresh: 1;url='.WEB_URL.'/AddUser.php?id='.$designid); 
+		
+	    header('url='.WEB_URL.'/AddUser.php?id='.$designid); 
 		}
 
 	if(isset($_GET['adduser'])) {
@@ -23,13 +23,13 @@
 			$addRequest = SERVICE_URL.'?section=user&request=addusertogroup&addname='.$userToAdd.'&designid='.$designid;
 			$addJSON = file_get_contents($addRequest,0,null,null);
 			$addOutput = json_decode($addJSON, true);
-			echo '<strong>User added to your group.</strong>';
-		    header('Refresh: 1;url='.WEB_URL.'/AddUser.php?id='.$designid); 
+			
+		    header('url='.WEB_URL.'/AddUser.php?id='.$designid); 
 		}
 		else {
 			$designid = $_GET['id'];
 			echo '<strong>User exists in group.</strong>';
-		       header('Refresh: 1;url='.WEB_URL.'/AddUser.php?id='.$designid); 	
+		       header('Refresh: 2;url='.WEB_URL.'/AddUser.php?id='.$designid); 	
 		}
 	}
 
