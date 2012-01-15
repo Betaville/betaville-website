@@ -154,62 +154,60 @@ function timediff($a)
 						}
 			}
 
+//Frigging complicated....
 function DeleteUser($designid,$deletename) { 
-						$userRequest = SERVICE_URL.'?section=user&request=getusergroup&designid='.$designid;
+						$userRequest = SERVICE_URL.'?section=user&request=getallusersingroup&id='.$designid;
 						$userTestRequestJSON = file_get_contents($userRequest,0,null,null);
 						$userTestOutput = json_decode($userTestRequestJSON, true);
 						$users = $userTestOutput['users'];
 						$count=0;
-							foreach($users as $musy) {
-									$gushy = explode(",",$musy['user_group']);
-										if($gushy[0]!='') {
-											foreach($gushy as $key => $userToDelete) {
-												if($userToDelete == $deletename) {
-													$a = $key;
-													$count++;
-												}
-											}
-											if($count>1||$count==1) {
-												array_splice($gushy,$a,1);
-												$comma = implode(",",$gushy);
-												$comma = urlencode($comma);
-												$userRequest = SERVICE_URL.'?section=user&request=deleteuserfromgroup&entry='.$comma.'&designid='.$designid;
-												$userTestRequestJSON = file_get_contents($userRequest,0,null,null);
-												$userTestOutput = json_decode($userTestRequestJSON, true);
-												if($userTestOutput) {
-													echo '<strong> User deleted from group </strong>';
-													}
-									
-											}
-											else {
-												$comma = implode(",",$gushy);
-												echo $comma;
-											}						
-										}									
-										else {
-											echo '<b> No Users in this group at the moment </b>';
+						$userTest1 = implode(",",$users);
+						$userTest = explode(",",$userTest1);
+								if($userTest[0]!='') {
+									foreach($userTest as $key => $userToDelete) {
+										if($userToDelete == $deletename) {
+											$a = $key;
+											$count++;
 										}
-				   }
-}
-																
+									}
+										if($count==1) { 
+				
+											$len_of_array = count($userTest);
+												if($len_of_array==1) {
+														$comma = ',';	
+														$comma = urlencode($comma);
+														$userRequest = SERVICE_URL.'?section=user&request=deleteuserfromgroup&entry='.$comma.'&designid='.$designid;
+														$userTestRequestJSON = file_get_contents($userRequest,0,null,null);
+														$userTestOutput = json_decode($userTestRequestJSON, true);
+												}
+												else {
+														array_splice($userTest,$a,1);
+														$comma = implode(",",$userTest);
+														$comma = ','.$comma.',';	
+														$comma = urlencode($comma);
+														$userRequest = SERVICE_URL.'?section=user&request=deleteuserfromgroup&entry='.$comma.'&designid='.$designid;
+														$userTestRequestJSON = file_get_contents($userRequest,0,null,null);
+														$userTestOutput = json_decode($userTestRequestJSON, true);
+												}
+										}
+										else {
+											$comma = implode(",",$userTest);
+										}
+									}
+					}
+
+//Users returned as array, traverse and check													
 function checkUserInGroup($checkname,$designid) {
-						$userRequest = SERVICE_URL.'?section=user&request=getusergroup&designid='.$designid;
+						$userRequest = SERVICE_URL.'?section=user&request=getallusersingroup&id='.$designid;
 						$userTestRequestJSON = file_get_contents($userRequest,0,null,null);
 						$userTestOutput = json_decode($userTestRequestJSON, true);
 						$users = $userTestOutput['users'];
 							foreach($users as $musy) {
-									$gushy = explode(",",$musy['user_group']);
-										if($gushy[0]!='') {
-											foreach($gushy as $key => $userToDelete) {
-												if($userToDelete == $checkname) {
-													return true;
-												}
-											}
-										}
-										else return false;
+									if($checkname == $musy) {
+										return true;
+									}
 							}
-						
-
+						return false;
 						}
 
 ?>
