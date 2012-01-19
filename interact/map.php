@@ -1,7 +1,6 @@
 <?php
 // integrates the mapping functionality
 include("../config.php");
-echo "WEB URL IS ".WEB_URL;
 ?>
 
 
