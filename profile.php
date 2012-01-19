@@ -38,7 +38,7 @@ include('config.php');
 			<img src=<?php echo $gravatarImage;?> height='100' width='100' style='background-color: #383838'><br /><br />
 			<label>Name: </label> <div style=" display:inline; margin-left: 2px"><?php if($user['userName']==null) echo '  --- '; else echo $user['userName'];?></div><br /><br />
 			<label>About Me: </label><div style=" display:inline; margin-left: 2px"><?php if($user['bio']==null) echo '  --- '; else echo $user['bio'];?></div><br /><br />
-			<label>Website: </label><div style=" display:inline; margin-left: 2px"><?php if($user['website']==null) echo '  --- '; else echo $user['website'];?></div><br /><br />
+			<label>Website: </label><div style=" display:inline; margin-left: 2px"><?php if($user['website']==null) echo '  --- '; else echo '<a href="http://'.$user['website'].'">'.$user['website'].'</a>';?></div><br /><br />
 			<label>Profile: </label><div style="display:inline; margin-left: 2px"><?php if($user['type']==null) echo '  --- '; else echo $user['type'];?></div><br /><br />
 			
 			</form>
