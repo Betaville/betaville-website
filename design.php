@@ -92,7 +92,7 @@ if($_SESSION['username']==$design['user']) {
 	$proposalOutput = json_decode($proposalJSON, true);
 	$proposal = $proposalOutput['checkdesign'];
 		if($proposal == true) { ?>
-			<h4> Add User Functionality for </h4><a href = "AddUser.php?id=<?php echo $design['designID'];?>"><?php echo $design['name'];?></a>
+			<h4> Add User Functionality for </h4><a href = "edit-proposal-group.php?id=<?php echo $design['designID'];?>"><?php echo $design['name'];?></a>
 <?php
 		}
 }

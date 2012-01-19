@@ -12,7 +12,7 @@
 		$designid=$_GET['id'];
 		DeleteUser($designid,$deletename);
 		
-	    header('url='.WEB_URL.'/AddUser.php?id='.$designid); 
+	    header('url='.WEB_URL.'/edit-proposal-group.php?id='.$designid); 
 		}
 
 	if(isset($_GET['adduser'])) {
@@ -24,12 +24,12 @@
 			$addJSON = file_get_contents($addRequest,0,null,null);
 			$addOutput = json_decode($addJSON, true);
 			
-		    header('url='.WEB_URL.'/AddUser.php?id='.$designid); 
+		    header('url='.WEB_URL.'/edit-proposal-group.php?id='.$designid); 
 		}
 		else {
 			$designid = $_GET['id'];
 			echo '<strong>User exists in group.</strong>';
-		       header('Refresh: 2;url='.WEB_URL.'/AddUser.php?id='.$designid); 	
+		       header('Refresh: 2;url='.WEB_URL.'/edit-proposal-group.php?id='.$designid); 	
 		}
 	}
 
@@ -90,7 +90,7 @@
 								if($_GET['action']=='edituser'){
 									$myuser = $_GET['target'];
 									echo '<b> Add </bold>'.$myuser.' ?</b>';
-									$url = WEB_URL."/AddUser.php?&adduser=".$myuser."&id=".$design['designID'];
+									$url = WEB_URL."/edit-proposal-group.php?&adduser=".$myuser."&id=".$design['designID'];
 									echo '<nr><form name="userInput" action ="'.$url.'" method="post">
 									<input type="submit" name="submit" value="Add" onClick="return confirmPost()" /></form>';}
 								}
@@ -106,7 +106,7 @@
 								$users = $userOutput['users'];
 								echo '<br><br><h3> Current Users in Group:  </h3>';
 								foreach($users as $musy) {
-									echo '<a href="AddUser.php?deleteuser='.$musy.'&id='.$design['designID'].'" <strong>'.$musy.'<br></strong></a>';
+									echo '<a href="edit-proposal-group.php?deleteuser='.$musy.'&id='.$design['designID'].'" <strong>'.$musy.'<br></strong></a>';
 								}
 							?>
 
