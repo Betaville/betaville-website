@@ -11,7 +11,7 @@ if($_GET['link']=="admin"){
 	$linkToUser = WEB_URL."/admin.php?action=edituser&target=";
 }
 if($_GET['link']=="userequest"){
-	$linkToUser = WEB_URL."/AddUser.php?id=".$did."&action=edituser&target=";
+	$linkToUser = WEB_URL."/edit-proposal-group.php?id=".$did."&action=edituser&target=";
 }
 $userResults = "";
 

@@ -92,7 +92,7 @@ if($_SESSION['username']==$design['user']) {
 	$proposalOutput = json_decode($proposalJSON, true);
 	$proposal = $proposalOutput['checkdesign'];
 		if($proposal == true) { ?>
-			<h4> Add User Functionality for </h4><a href = "AddUser.php?id=<?php echo $design['designID'];?>"><?php echo $design['name'];?></a>
+			<h4> Add User Functionality for </h4><a href = "edit-proposal-group.php?id=<?php echo $design['designID'];?>"><?php echo $design['name'];?></a>
 <?php
 		}
 }
@@ -164,7 +164,7 @@ if($_SESSION['username']==$design['user']) {
 			<br />
 			<br />	
 			<div>
-				<?php include('map.php'); ?>
+				<?php include('interact/map.php'); ?>
 				<script type="text/javascript">
 					$(document.getElementById('smallmapdiv')).ready(function() {
 						var lat = <?php echo $design['coordinate']['lat']; ?>;

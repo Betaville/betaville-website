@@ -10,8 +10,6 @@
 	
 	setcookie("token",$_SESSION['token'],time() - 3600 );
 	
-	
-	
 	//echo "You have successfully logged out";
 ?>
 <script type="text/javascript" >
