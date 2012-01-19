@@ -33,8 +33,8 @@ foreach($designs as $design){
 	
 	<div class='activity-body'>
 	<?php
-		echo '<a href="design.php?id='.$design['designID'].'"><strong>'.$design['user'].'</strong> uploaded ';
-		echo '<strong>'.$design['name'].'</strong>:';
+		echo '<a href="profile.php?uName='.$design['user'].'"><strong>'.$design['user'].'</a>'.'</strong> uploaded ';
+		echo '<a href="design.php?id='.$design['designID'].'"><strong>'.$design['name'].'</a>'.'</strong>:';
 	?>
 	<span class='content'><?php echo $design['description'] ?></span>
 		</a>
