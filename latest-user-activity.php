@@ -84,11 +84,11 @@ foreach($designs as $design){
 	
 	<div class='activity-body'>
 	<?php
-		echo '<a href="design.php?id='.$design['designID'].'"><strong>'.$design['user'].'</strong> uploaded ';
-		echo '<strong>'.$design['name'].'</strong>:';
+		echo '<a href="profile.php?uName='.$design['user'].'"><strong>'.$design['user'].'</a>'.'</strong> uploaded ';
+		echo '<a href="design.php?id='.$design['designID'].'"><strong>'.$design['name'].'</a>'.'</strong>:';
 	?>
 	<span class='content'><?php echo $design['description'] ?></span>
-		</a>
+		
 	<div class='activity-meta'>
 	<?php
 		$updatedtime = fd($design['date']);
@@ -147,13 +147,11 @@ foreach($comments as $comment){
 		<img src=<?php echo $image;?> style='background-color: #3e4b71'> </a>
 	
 	<div class='activity-body'>
-	<?php
-		echo '<a href="design.php?id='.$commentDesign['designID'].'"><strong>'.$comment['user'].'</strong>';
+		<?php
+		echo '<a href="profile.php?uName='.$commentDesign['user'].'"><strong>'.$commentDesign['user'].'</a>'.'</strong> commented on ';
+		echo '<a href="design.php?id='.$commentDesign['designID'].'"><strong>'.$commentDesign['name'].'</a>'.'</strong>:';
 	?>
-		commented on
-		<strong><?php echo $commentDesign['name'] ?></strong>:
 		<span class='content'><?php echo $comment['comment'] ?></span>
-		</a>
 	<div class='activity-meta'>
 	<?php
 		$updatedtime = fd($comment['date']);
