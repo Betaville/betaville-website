@@ -164,7 +164,7 @@ if($_SESSION['username']==$design['user']) {
 			<br />
 			<br />	
 			<div>
-				<?php include('map.php'); ?>
+				<?php include('interact/map.php'); ?>
 				<script type="text/javascript">
 					$(document.getElementById('smallmapdiv')).ready(function() {
 						var lat = <?php echo $design['coordinate']['lat']; ?>;
