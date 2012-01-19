@@ -16,7 +16,7 @@
 		}
 
 	if(isset($_GET['adduser'])) {
-		if(checkUserInGroup($_GET['adduser'],$_GET['id']) != true) {
+		if(checkUserInGroup($_GET['adduser'],$_GET['id']) != true && $_SESSION['username'] != $_GET['adduser']) {
 			$userToAdd=$_GET['adduser'];
 			$designid=$_GET['id'];
 			$userToAdd=urlencode($userToAdd.',');
@@ -27,9 +27,14 @@
 		    header('url='.WEB_URL.'/edit-proposal-group.php?id='.$designid); 
 		}
 		else {
+			if($_GET['adduser'] == $_SESSION['username']) {
+				echo '<strong>Cannot Add yourself...</strong>';
+			}
+			else {
 			$designid = $_GET['id'];
-			echo '<strong>User exists in group.</strong>';
+			echo '<strong>'.$_GET['adduser'].' exists in group.</strong>';
 		       header('Refresh: 2;url='.WEB_URL.'/edit-proposal-group.php?id='.$designid); 	
+			}
 		}
 	}
 
