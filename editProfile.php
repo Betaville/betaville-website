@@ -39,7 +39,7 @@
 				<aside>
 					<?php
 					$_GET['passChanged']=$changedPass;
-					include('changePass.php');
+					//include('changePass.php');
 					?>
 				</aside>
 		<?php include('footer.php'); ?>
