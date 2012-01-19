@@ -10,7 +10,7 @@
  if(!isset($_SESSION['token'])){
  	header('Location: ./');
  }
- 
+ //testing push
 	// check the user's type:
 	include('config.php');
 	$userRequest = SERVICE_URL.'?section=user&request=getlevel&username='.$_SESSION['username'];
@@ -72,7 +72,7 @@
 					}
 					</script>
 					<form>
-						<input type="text" size="30" onkeyup="showResult(this.value)" />
+						<input type="text" size="30" onKeyUp="showResult(this.value)" />
 						<div id="livesearch"></div>
 					</form>
 					<?php
@@ -109,10 +109,10 @@
 						<form name="change-password" action="interact/admin-actions.php" method="POST">
 							<div>
 								<?php echo '<input type="hidden" name="target" value="'.$_GET['target'].'"/>';?>
-								<input type="password" name="oldPass" onkeypress="if (event.keyCode==13) document.getElementById('button').click()"/>
-								<input type="password" name="newPass" onkeypress="if (event.keyCode==13) document.getElementById('button').click()"/>
-								<input type="password" name="confirmPass" onkeypress="if (event.keyCode==13) document.getElementById('button').click()"/>
-								<input type="button" id="button" value="Change Password" onclick="verifyNewPass()"/>
+								<input type="password" name="oldPass" onKeyPress="if (event.keyCode==13) document.getElementById('button').click()"/>
+								<input type="password" name="newPass" onKeyPress="if (event.keyCode==13) document.getElementById('button').click()"/>
+								<input type="password" name="confirmPass" onKeyPress="if (event.keyCode==13) document.getElementById('button').click()"/>
+								<input type="button" id="button" value="Change Password" onClick="verifyNewPass()"/>
 							</div>
 						</form>
 						<!-- End Password Change Section-->
