@@ -37,7 +37,7 @@ foreach($designs as $design){
 		echo '<a href="design.php?id='.$design['designID'].'"><strong>'.$design['name'].'</a>'.'</strong>:';
 	?>
 	<span class='content'><?php echo $design['description'] ?></span>
-		</a>
+		
 	<div class='activity-meta'>
 	<?php
 		include_once('betaville-functions.php');
@@ -82,12 +82,11 @@ foreach($comments as $comment){
 	
 	<div class='activity-body'>
 	<?php
-		echo '<a href="design.php?id='.$commentDesign['designID'].'"><strong>'.$comment['user'].'</strong>';
+		echo '<a href="profile.php?uName='.$commentDesign['user'].'"><strong>'.$commentDesign['user'].'</a>'.'</strong> commented on ';
+		echo '<a href="design.php?id='.$commentDesign['designID'].'"><strong>'.$commentDesign['name'].'</a>'.'</strong>:';
 	?>
-		commented on
-		<strong><?php echo $commentDesign['name'] ?></strong>:
 		<span class='content'><?php echo $comment['comment'] ?></span>
-		</a>
+		
 	<div class='activity-meta'>
 	<?php
 		//this is already called above as include_once, cannot call again
