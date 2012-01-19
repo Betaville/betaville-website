@@ -56,7 +56,7 @@ ob_start();
 			?>
 			<li><a href="profile.php"><?php echo $_SESSION['username']; ?></a></li>
 			
-			<?php echo "<li><a href=\"logout.php\">Log Out</a></li>";
+			<?php echo "<li><a href=\"interact/logout.php\">Log Out</a></li>";
 			
 			// if the user is a moderator or administrator, show the admin link
 				if($_SESSION['userType']==='moderator' || $_SESSION['userType']==='administrator'){
