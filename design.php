@@ -3,8 +3,6 @@
 
 <?php
 // setup the basics
-
-include('config.php');
 $designID = $_GET['id'];
 
 // get the project information
@@ -86,16 +84,7 @@ if(isset($_SESSION['token'])){
 }
 
 
-
-
-
-
-
-
-
-
-
-//Add USer Functionality implemented o nthe design.php page, check if the design user is the user logged in.
+//Add User Functionality implemented on the design.php page, check if the design user is the user logged in.
 if($_SESSION['username'] == $design['user']) {
 	//Web service request to check if the design is a proposal , if not do not implement the AddUser functionality.
 	$proposalRequest = SERVICE_URL.'?section=design&request=checkproposal&id='.$designID;
@@ -108,33 +97,6 @@ if($_SESSION['username'] == $design['user']) {
 		}
 }
 ?>
-
-
-<script type="text/javascript">
-function confirmPost()
-			{
-				var agree=confirm("Are you sure you want to Delete This Design?");
-					if (agree)
-						return true ;
-					else
-						return false ;
-			}
-</script>
-
-<!-- Delete Design Functionality for Users -->
-<?php 
-if($_SESSION['username'] == $design['user']) {
-echo '<br><br><br><br><br>';
-
-
-	echo '<form name="deleteDesign" id="DeleteDesign" action="profile.php?designDeleted=true&id='.$design['designID'].'&designName='.urlencode($design['name']).'" method="post" enctype="multipart/form-data">
-              <input type="submit" name="Delete" value="Delete This Design" onClick="return confirmPost()">
-              </form>';				
-}
-?>
-
-
-
 
 <!-- Displaying Design Specific stuff -->
 <div class='master-container'>
@@ -196,7 +158,23 @@ echo '<br><br><br><br><br>';
 					<a class='uberbutton' href=''> 
 						Share
 						<span class='icon i-share'>☀</span> 
-					</a> 
+					</a>
+					<!-- Delete Design Functionality for Users -->
+					<?php if($_SESSION['username'] == $design['user']) {?>
+						<script type="text/javascript">
+							function confirmPost(){
+								var agree=confirm("Are you sure you want to Delete This Design?");
+								if (agree)
+									return true ;
+								else
+									return false ;
+							}
+						</script>
+						<?php echo '<form name="deleteDesign" id="DeleteDesign" action="profile.php?designDeleted=true&id='.$design['designID'].'&designName='.urlencode($design['name']).'" method="post" enctype="multipart/form-data">
+							<input type="submit" class="uberbutton" name="Delete" value="Delete" onClick="return confirmPost()">
+						</form>';
+						
+					}?>
 				</div> 
 			</div>
 			<div id='project-description' class='project-description'><?php echo $design['description']; ?></div>
