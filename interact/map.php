@@ -1,6 +1,5 @@
 <?php
 // integrates the mapping functionality
-include("../config.php");
 ?>
 
 
