@@ -15,7 +15,7 @@ error_reporting(E_ALL);
 		if(isset($_GET['designDeleted'])) {
 		$designID = $_GET['id'];
 		$designName = $_GET['designName'];
-		$deleteDesign = SERVICE_URL.'?section=design&request=deletedesign&id='.$designID;
+		$deleteDesign = SERVICE_URL.'?section=design&request=deletedesign&id='.$designID."&token=".$_SESSION['token'];
 		$deleteDesignJSON = file_get_contents($deleteDesign,0,null,null);
 		$deleteDesignOutput = json_decode($deleteDesignJSON, true);
 		$deleted = $deleteDesignOutput['design'];
