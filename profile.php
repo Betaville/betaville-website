@@ -1,6 +1,5 @@
 <?php
 include('head.php');
-include('config.php');
 error_reporting(E_ALL);
 ?>
 <style>
