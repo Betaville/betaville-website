@@ -1,7 +1,6 @@
 <?php 
 ob_start(); 
-include('head.php'); 
-include('config.php');
+include('head.php');
 ?>
 
 <body>
