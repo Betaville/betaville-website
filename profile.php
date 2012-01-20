@@ -1,6 +1,7 @@
 <?php
 include('head.php');
 include('config.php');
+error_reporting(E_ALL);
 ?>
 <style>
 	.userInfo{
@@ -10,6 +11,20 @@ include('config.php');
 <body> 
 <div class='master-container'> 
 		<?php
+		
+		//Delete The Design For the User -- Change isAlive = 0
+		if(isset($_GET['designDeleted'])) {
+		$designID = $_GET['id'];
+		$designName = $_GET['designName'];
+		$deleteDesign = SERVICE_URL.'?section=design&request=deletedesign&id='.$designID;
+		$deleteDesignJSON = file_get_contents($deleteDesign,0,null,null);
+		$deleteDesignOutput = json_decode($deleteDesignJSON, true);
+		$deleted = $deleteDesignOutput['design'];
+		
+		echo '<strong>'.$designName.' deleted.</strong>';
+		header('Refresh: 1;url='.WEB_URL.'/profile.php');
+		}
+
 		//Check if you retrieve uName or username
 		if(isset($_GET['uName']))
 			$userName = $_GET['uName'];
