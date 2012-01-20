@@ -3,7 +3,6 @@
 <div class='master-container'> 
 		<?php 
 		$userName = $_SESSION['username'];
-		include('config.php');
 		$changedPass=$_GET['passChanged'];
 		// get user information
 		$userRequest = SERVICE_URL.'?section=user&request=getpublicinfo&username='.$userName;
