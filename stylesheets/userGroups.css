@@ -1,0 +1,25 @@
+@charset "UTF-8";
+/* CSS Document */
+
+h1{color:#383838}
+
+h3{color:#A4A091}
+
+.page{
+	padding-top:20px;
+	padding-left:80px; 
+	padding-right:80px
+	}
+.user{
+	float: left; 
+	width:540px
+	}
+	
+.proposal-image{
+	float:right;
+	width:310px}
+
+
+	
+
+	

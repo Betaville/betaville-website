@@ -4,7 +4,7 @@
 	include('config.php');
 ?>
 <body>
-
+<link rel="stylesheet" type="text/css" href="stylesheets/userGroups.css" />
 <?php
 
 	if(isset($_GET['deleteuser'])) {
@@ -43,13 +43,19 @@
 		$designJSON = file_get_contents($designRequest,0,null,null);
 		$designOutput = json_decode($designJSON, true);
 		$design = $designOutput['design'];
+		
 			if($_SESSION['username']==$design['user']) {
 	
 		?>
-	<h2> User Add Functionality </h2>
-	<h4> Type User name into the search bar to search for users to add to the group </h4>
+        
+        <div class="page">
+        <div class="user">
+        	<h1><?php echo $design['name']; ?> </h1> <br>
+            <h3>  Add User </h3>
+            
+			<h4> Type User name into the search bar to search for users to add to the group </h4>
 	
-	<script type="text/javascript">
+			<script type="text/javascript">
 						function showResult(str){
 							if (str.length==0){ 
 								document.getElementById("livesearch").innerHTML="";
@@ -75,23 +81,23 @@
 							xmlhttp.send();
 						}
 	
-		function confirmPost()
-			{
-				var agree=confirm("Are you sure you want to Add This User?");
-					if (agree)
-						return true ;
-					else
-						return false ;
-			}
+				function confirmPost()
+				{
+					var agree=confirm("Are you sure you want to Add This User?");
+						if (agree)
+							return true ;
+						else
+							return false ;
+				}
 	
 
 
-</script>
+			</script>
 						<form>
-							<input type="text" size="30" onkeyup="showResult(this.value)" />
+							<input type="text" size="30" onKeyUp="showResult(this.value)" />
 							<div id="livesearch"></div>
-							</form>
-							<?php
+						</form>
+						<?php
 								if($_GET['action']=='edituser'){
 									$myuser = $_GET['target'];
 									echo '<b> Add </bold>'.$myuser.' ?</b>';
@@ -100,25 +106,31 @@
 									<input type="submit" name="submit" value="Add" onClick="return confirmPost()" /></form>';}
 								}
 
-								echo '<br><br><br>';
+								echo '<br><br>';
+						?>
+			<h3> Delete User </h3>
+
+						<?php
+							$userRequest = SERVICE_URL.'?section=user&request=getallusersingroup&id='.$designid;
+							$userJSON = file_get_contents($userRequest,0,null,null);
+							$userOutput = json_decode($userJSON, true);
+							$users = $userOutput['users'];
+							echo '<br><br><h4> Current Users in Group:  </h4>';
+							foreach($users as $musy) {
+								echo '<a href="edit-proposal-group.php?deleteuser='.$musy.'&id='.$design['designID'].'" <strong>'.$musy.'<br></strong></a>';
+							}
 							?>
-	<h2> User Delete Functionality </h2>
+		</div>
 
-							<?php
-								$userRequest = SERVICE_URL.'?section=user&request=getallusersingroup&id='.$designid;
-								$userJSON = file_get_contents($userRequest,0,null,null);
-								$userOutput = json_decode($userJSON, true);
-								$users = $userOutput['users'];
-								echo '<br><br><h3> Current Users in Group:  </h3>';
-								foreach($users as $musy) {
-									echo '<a href="edit-proposal-group.php?deleteuser='.$musy.'&id='.$design['designID'].'" <strong>'.$musy.'<br></strong></a>';
-								}
-							?>
-
-
-
-	</body>
-
+		<div class= "proposal-image">
+                <?php
+                        //Check if image exists on server
+                        $image = checkimage(THUMBNAIL_URL.$design['designID'].'.png');
+                        echo "<a href='design.php?id=".$design['designID']."'>\n"; ?>
+                        <img src=<?php echo $image;?> style='background-color: #3e4b71'>
+        </div> 
+	
+	</div>
 	<?php include('footer.php');?>
-
-	</html>
+</body>
+</html>
