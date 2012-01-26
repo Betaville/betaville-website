@@ -6,13 +6,17 @@ $page='profile';
 include_once('config.php');
 include_once('betaville-functions.php');
 
+$loggedInUser = false;
+
 if(isset($_GET['uName']))
 	$userName = $_GET['uName'];
-else
+else{
 	$userName = $_SESSION['username'];
+	$loggedInUser = true;
+}
 
 //Check its the logged-in user or other user
-if($userName == $_SESSION['username'])
+if($loggedInUser)
 	echo "<h2>My Latest Activities</h2><br>";
 else
 	echo "<h2>Latest Activities</h2><br>";
@@ -53,7 +57,7 @@ else
 if($count>0)
 {
 	//Check its the logged-in user or other user
-	if($userName == $_SESSION['username'])
+	if($loggedInUser)
 		$display = $count.' Models loaded by you';
 	else 
 		$display = $count.' Models loaded by '.$userName;
@@ -108,7 +112,7 @@ foreach($designs as $design){
 <?php
 // retrieving comments by passing $userName in section activity request myactivity and user = $userName
 //Check its the logged-in user or other user
-if($userName == $_SESSION['username']) 
+if($loggedInUser) 
 	$commentRequest = SERVICE_URL.'?section=activity&request=myactivity&user='.$userName;
 else
 	$commentRequest = SERVICE_URL.'?section=activity&request=peruseractivity&user='.$userName;
