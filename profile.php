@@ -21,15 +21,18 @@ error_reporting(E_ALL);
 		$deleted = $deleteDesignOutput['design'];
 		
 		echo '<strong>'.$designName.' deleted.</strong>';
-		header('Refresh: 1;url='.WEB_URL.'/profile.php');
+		header('url='.WEB_URL.'/index.php');
 		}
 
 		//Check if you retrieve uName or username
 		if(isset($_GET['uName']))
 			$userName = $_GET['uName'];
-		else
+		else if(isset($_SESSION['username'])) {
 			$userName = $_SESSION['username'];
-		
+		}
+		else {
+			header("Location: index.php");		
+		}
 		// Get user's information
 		$userRequest = SERVICE_URL.'?section=user&request=getpublicinfo&username='.$userName;
 		$userJSON = file_get_contents($userRequest,0,null,null);
