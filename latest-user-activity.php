@@ -10,12 +10,12 @@ $loggedInUser = false;
 
 if(isset($_GET['uName']))
 	$userName = $_GET['uName'];
-else if(isset($_SESSION['username']){
+else if(isset($_SESSION['username'])){
 	$userName = $_SESSION['username'];
 	$loggedInUser = true;
 }
 else{
-	// redirect to index
+	header("Location: index.php");
 	
 }
 
