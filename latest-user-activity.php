@@ -10,9 +10,13 @@ $loggedInUser = false;
 
 if(isset($_GET['uName']))
 	$userName = $_GET['uName'];
-else{
+else if(isset($_SESSION['username']){
 	$userName = $_SESSION['username'];
 	$loggedInUser = true;
+}
+else{
+	// redirect to index
+	
 }
 
 //Check its the logged-in user or other user
