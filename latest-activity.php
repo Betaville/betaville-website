@@ -21,7 +21,7 @@ foreach($designs as $design){
 	$length_of_string = $design['description'];
 	$leng = strlen($length_of_string);
 		if($leng>1000) {
-			$design['description'] = substr($design['description'],0,200).'<div id="lol"><bold>....(click to read more)</bold></div>';
+			$design['description'] = substr($design['description'],0,200).'<bold><a href="design.php?id='.$design['designID'].'"><div id="lol">....(click to read more)</div></bold></a>';
 		}?>
 	<div class='activity'>
 	<?php
@@ -69,7 +69,7 @@ foreach($comments as $comment){
 	$length_of_string = $comment['comment'];
 	$leng = strlen($length_of_string);
 		if($leng>1000) {
-			$comment['comment'] = substr($comment['comment'],0,200).'<div id="lol"><bold>....(click to read more)</bold></div>';
+			$comment['comment'] = substr($comment['comment'],0,200).'<bold><a href="design.php?id='.$commentDesign['designID'].'"><div id="lol">....(click to read more)</div></bold></a>';
 		}	
 	?>
 	<div class='activity'>
