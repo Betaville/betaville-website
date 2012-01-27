@@ -47,7 +47,7 @@
 			if($_SESSION['username']==$design['user']) {
 	
 		?>
-        
+        <a class="fancyButton" href="design.php?id=<?php echo $designid;?>"><span>Go Back</span></a>
         <div class="page">
         <div class="user">
         	<h1><?php echo $design['name']; ?> </h1> <br>
