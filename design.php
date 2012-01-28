@@ -16,8 +16,21 @@ $commentRequest = SERVICE_URL.'?section=comment&request=getforid&id='.$designID;
 $commentJSON = file_get_contents($commentRequest,0,null,null);
 $commentOutput = json_decode($commentJSON, true);
 $comments = $commentOutput['comments'];
+if(isset($_GET['unlike'])) {
+DeletefaveListUser($design['designID'],$_SESSION['username']);
+header('url='.WEB_URL.'/design.php?id='.$designID); 
+}
+if(isset($_GET['like'])) {
+if(checkUserInfaveListGroup($_SESSION['username'],$design['designID'])==true) {
 
-
+}
+else {
+$likeRequest = SERVICE_URL.'?section=fave&request=add&id='.$designID.'&name='.$_SESSION['username'];
+$likeRequestJSON = file_get_contents($likeRequest,0,null,null);
+$likeOutput = json_decode($likeRequestJSON, true);
+header('url='.WEB_URL.'/design.php?id='.$designID); 
+}
+}
 // check if the user has write access, includes users who are in group!
 if(isset($_SESSION['token'])){
 	$accessRequest = SERVICE_URL.'?section=design&request=userhaswriteaccess&token='.$_SESSION['token'].'&id='.$designID;
@@ -139,7 +152,11 @@ if($_SESSION['username'] == $design['user']) {
 								</span> 
 								comments,
 								<span class='count'> 
-									0
+									<?php
+									// count the number of comments
+									$likeCount = countLikes($design['designID']);
+									echo $likeCount;									
+									?>
 								</span> 
 								likes
 							
@@ -151,10 +168,20 @@ if($_SESSION['username'] == $design['user']) {
 						Launch
 						<span class='icon i-play'>►</span> 
 					</a> 
-					<a class='uberbutton' href=''> 
-						Like
-						<span class='icon'>♥</span> 
-					</a> 
+						<?php if (isset($_SESSION['logged'])) {
+								if(checkUserInfaveListGroup($_SESSION['username'],$design['designID'])==true) {
+									echo '<a class="uberbutton" href="design.php?id='.$design['designID'].'&unlike=true" method = "post"> 
+									Unlike
+									<span class="icon">♥</span> 
+									</a>';
+								} else {
+									echo '<a class="uberbutton" href="design.php?id='.$design['designID'].'&like=true" method = "post"> 
+									Like
+									<span class="icon">♥</span> 
+									</a>';
+								}
+							}
+						?>
 					<a class='uberbutton' href=''> 
 						Share
 						<span class='icon i-share'>☀</span> 
