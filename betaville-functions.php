@@ -34,12 +34,12 @@ function displayComments($commentRequest) {
 
 		if($commentCount==1) {
 		
-			echo $commentCount." comment 0 likes"; 
+			echo $commentCount." comment"; 
 				     }
 
 		else {
 
-			echo $commentCount." comments 0 likes";
+			echo $commentCount." comments";
 
 		}
 
@@ -155,7 +155,7 @@ function timediff($a)
 			}
 
 //Frigging complicated....
-function DeleteUser($designid,$deletename) { 
+function DeleteProposalGroupUser($designid,$deletename) { 
 						$userRequest = SERVICE_URL.'?section=user&request=getallusersingroup&id='.$designid;
 						$userTestRequestJSON = file_get_contents($userRequest,0,null,null);
 						$userTestOutput = json_decode($userTestRequestJSON, true);
@@ -197,7 +197,7 @@ function DeleteUser($designid,$deletename) {
 					}
 
 //Users returned as array, traverse and check													
-function checkUserInGroup($checkname,$designid) {
+function checkUserInProposalGroup($checkname,$designid) {
 						$userRequest = SERVICE_URL.'?section=user&request=getallusersingroup&id='.$designid;
 						$userTestRequestJSON = file_get_contents($userRequest,0,null,null);
 						$userTestOutput = json_decode($userTestRequestJSON, true);
@@ -209,6 +209,83 @@ function checkUserInGroup($checkname,$designid) {
 							}
 						return false;
 						}
+
+//Delete a User from the Fave List
+function DeletefaveListUser($designid,$deletename) {
+						$userRequest = SERVICE_URL.'?section=fave&request=designfaveList&id='.$designid;
+						$userTestRequestJSON = file_get_contents($userRequest,0,null,null);
+						$userTestOutput = json_decode($userTestRequestJSON, true);
+						$users = $userTestOutput['users'];
+						$count=0;
+						$userTest1 = implode(",",$users);
+						$userTest = explode(",",$userTest1);
+								if($userTest[0]!='') {
+									foreach($userTest as $key => $userToDelete) {
+										if($userToDelete == $deletename) {
+											$a = $key;
+											$count++;
+										}
+									}
+										if($count==1) { 
+				
+											$len_of_array = count($userTest);
+												if($len_of_array==1) {
+														$comma = ',';	
+														$comma = urlencode($comma);
+														$userRequest = SERVICE_URL.'?section=fave&request=remove&name='.$comma.'&id='.$designid;
+														$userTestRequestJSON = file_get_contents($userRequest,0,null,null);
+														$userTestOutput = json_decode($userTestRequestJSON, true);
+												}
+												else {
+														array_splice($userTest,$a,1);
+														$comma = implode(",",$userTest);
+														$comma = ','.$comma.',';	
+														$comma = urlencode($comma);
+														$userRequest = SERVICE_URL.'?section=fave&request=remove&name='.$comma.'&id='.$designid;
+														$userTestRequestJSON = file_get_contents($userRequest,0,null,null);
+														$userTestOutput = json_decode($userTestRequestJSON, true);
+												}
+										}
+										else {
+											$comma = implode(",",$userTest);
+										}
+									}
+
+
+}
+
+
+
+//Check if a user is in the Design Fave List
+function checkUserInfaveListGroup($checkname,$designid) {
+						$userRequest = SERVICE_URL.'?section=fave&request=designfaveList&id='.$designid;
+						$userTestRequestJSON = file_get_contents($userRequest,0,null,null);
+						$userTestOutput = json_decode($userTestRequestJSON, true);
+						$users = $userTestOutput['users'];
+							foreach($users as $musy) {
+									if($checkname == $musy) {
+										return true;
+									}
+							}
+						return false;
+						}
+
+
+//Count the number of likes for a Design
+
+function countLikes($designID) {
+						$userRequest = SERVICE_URL.'?section=fave&request=designfaveList&id='.$designID;
+						$count=0;
+						$userTestRequestJSON = file_get_contents($userRequest,0,null,null);
+						$userTestOutput = json_decode($userTestRequestJSON, true);
+						$users = $userTestOutput['users'];
+							foreach($users as $musy) {
+									$count++;
+							}
+						return $count;
+				}
+
+
 
 ?>
 						
