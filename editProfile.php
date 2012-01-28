@@ -67,7 +67,7 @@
 			<script type="text/javascript" >
 				window.location=<?php echo "\"".WEB_URL."/profile.php\""; ?>;
 			</script>
-			<?
+			<?php
 			}
 
 
@@ -83,7 +83,11 @@
 				$passChanged = json_decode($temp1, true);
 				$changedPass = $passChanged['passChanged'];
 				if($changedPass == 'true') {
-					header("Location: profile.php");
+			?>
+			<script type="text/javascript" >
+				window.location=<?php echo "\"".WEB_URL."/profile.php\""; ?>;
+			</script>
+			<?php		
 			
 				}
 				else {
