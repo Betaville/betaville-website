@@ -94,7 +94,11 @@
 									</span> 
 									comments,
 									<span class='count'> 
-										0
+										<?php
+									// count the number of comments
+									$likeCount = countLikes($design['designID']);
+									echo $likeCount;									
+									?>
 									</span> 
 									likes
 								
