@@ -133,7 +133,11 @@ include('head.php');
 												</span>
 
 												<span class='count'>
-
+													<?php
+													// count the number of comments
+													$likeCount = countLikes($proposal['designID']);
+													echo $likeCount." likes";									
+													?>
 												</span>
 
 
@@ -193,7 +197,11 @@ include('head.php');
 									</span>
 
 									<span class='count'>
-
+										<?php
+									// count the number of comments
+									$likeCount = countLikes($proposal['designID']);
+									echo $likeCount." likes";									
+									?>
 									</span>
 
 
