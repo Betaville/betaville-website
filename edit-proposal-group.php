@@ -10,13 +10,13 @@
 	if(isset($_GET['deleteuser'])) {
 		$deletename=$_GET['deleteuser'];
 		$designid=$_GET['id'];
-		DeleteUser($designid,$deletename);
+		DeleteProposalGroupUser($designid,$deletename);
 		
 	    header('url='.WEB_URL.'/edit-proposal-group.php?id='.$designid); 
 		}
 
 	if(isset($_GET['adduser'])) {
-		if(checkUserInGroup($_GET['adduser'],$_GET['id']) != true && $_SESSION['username'] != $_GET['adduser']) {
+		if(checkUserInProposalGroup($_GET['adduser'],$_GET['id']) != true && $_SESSION['username'] != $_GET['adduser']) {
 			$userToAdd=$_GET['adduser'];
 			$designid=$_GET['id'];
 			$userToAdd=urlencode($userToAdd.',');
