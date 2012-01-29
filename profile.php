@@ -1,6 +1,6 @@
 <?php
 include('head.php');
-error_reporting(E_ALL);
+//error_reporting(E_ALL);
 ?>
 <style>
 	.userInfo{
@@ -10,7 +10,7 @@ error_reporting(E_ALL);
 <body> 
 <div class='master-container'> 
 		<?php
-		
+		include_once('betaville-functions.php');
 		//Delete The Design For the User -- Change isAlive = 0
 		if(isset($_GET['designDeleted'])) {
 		$designID = $_GET['id'];
@@ -176,16 +176,18 @@ error_reporting(E_ALL);
 									$commentCount++;
 								}?>
 								
-								<a href=''> 
-									<span class='count'> 
+								<span class='count'> 
+										<!--Displaying number of comments-->
 										<?php echo $commentCount; ?>
 									</span> 
 									comments,
 									<span class='count'> 
-										0
+										<?php
+										// count the number of likes
+										$likeCount = countLikes($design['designID']);
+										echo $likeCount." likes";
+										?>
 									</span> 
-									likes
-								</a> 
 								</span> 
 								
 							</li> 
