@@ -1,83 +1,88 @@
 <?php include('head.php'); ?>
 <body> 
 
-<?php
-// setup the basics
-$designID = $_GET['id'];
 
-// get the project information
-//Display Project specific stuff
-$designRequest = SERVICE_URL.'?section=design&request=findbyid&id='.$designID;
-$designJSON = file_get_contents($designRequest,0,null,null);
-$designOutput = json_decode($designJSON, true);
-$design = $designOutput['design'];
+	<?php
+	// setup the basics
+	$designID = $_GET['id'];
+	
+	// get the project information
+	//Display Project specific stuff
+	$designRequest = SERVICE_URL.'?section=design&request=findbyid&id='.$designID;
+	$designJSON = file_get_contents($designRequest,0,null,null);
+	$designOutput = json_decode($designJSON, true);
+	$design = $designOutput['design'];
 
-$commentRequest = SERVICE_URL.'?section=comment&request=getforid&id='.$designID;
-$commentJSON = file_get_contents($commentRequest,0,null,null);
-$commentOutput = json_decode($commentJSON, true);
-$comments = $commentOutput['comments'];
-if(isset($_GET['unlike'])) {
-DeletefaveListUser($design['designID'],$_SESSION['username']);
-header('url='.WEB_URL.'/design.php?id='.$designID); 
-}
-if(isset($_GET['like'])) {
-if(checkUserInfaveListGroup($_SESSION['username'],$design['designID'])==true) {
+	$commentRequest = SERVICE_URL.'?section=comment&request=getforid&id='.$designID;
+	$commentJSON = file_get_contents($commentRequest,0,null,null);
+	$commentOutput = json_decode($commentJSON, true);
+	$comments = $commentOutput['comments'];
+		
+	//Adding and deleting users in faveList
+	if(isset($_GET['unlike'])) {
+			DeletefaveListUser($design['designID'],$_SESSION['username']);
+			header('url='.WEB_URL.'/design.php?id='.$designID); 
+		}
+		if(isset($_GET['like'])) {
+			//Check if user is in group, if is don't add
+			if(checkUserInfaveListGroup($_SESSION['username'],$design['designID'])==true) {
+			}
+			else {	
+				$likeRequest = SERVICE_URL.'?section=fave&request=add&id='.$designID.'&name='.$_SESSION['username'];
+				$likeRequestJSON = file_get_contents($likeRequest,0,null,null);
+				$likeOutput = json_decode($likeRequestJSON, true);
+				header('url='.WEB_URL.'/design.php?id='.$designID); 
+			}
+		}
 
-}
-else {
-$likeRequest = SERVICE_URL.'?section=fave&request=add&id='.$designID.'&name='.$_SESSION['username'];
-$likeRequestJSON = file_get_contents($likeRequest,0,null,null);
-$likeOutput = json_decode($likeRequestJSON, true);
-header('url='.WEB_URL.'/design.php?id='.$designID); 
-}
-}
-// check if the user has write access, includes users who are in group!
-if(isset($_SESSION['token'])){
-	$accessRequest = SERVICE_URL.'?section=design&request=userhaswriteaccess&token='.$_SESSION['token'].'&id='.$designID;
-	$accessJSON = file_get_contents($accessRequest,0,null,null);
-	$accessOutput = json_decode($accessJSON, true);
-	$access = $accessOutput['userhaswriteaccess'];	
-	if($access === true){
-		// the user has write access, include jQuery functionality
-		?>
-		<script>
-			$(document).ready(function(){
-				setClickable();
-			});
-			
-			function setClickable(){
-				$('#project-description').click(function(){
-					var textarea = '<div><textarea placeholder="test" id="descriptionUpdateArea" rows="10" cols="60">'+$(this).html()+'</textarea>';
-					var button = '<div><input type="button" value="Save" class="saveButton" /> OR <input type="button" value="Cancel" class="cancelButton" /></div></div>';
-					var revert = $(this).html();
-					$(this).after(textarea+button).remove();
-					$('.saveButton').click(function(){saveChanges(this, false);});
-					$('.cancelButton').click(function(){saveChanges(this, revert);});
-				}).mouseover(function(){
-					$(this).addClass("editable");
-				}).mouseout(function(){
-					$(this).removeClass("editable");
+	
+	// check if the user has write access, includes users who are in group!
+	if(isset($_SESSION['token'])){
+		$accessRequest = SERVICE_URL.'?section=design&request=userhaswriteaccess&token='.$_SESSION['token'].'&id='.$designID;
+		$accessJSON = file_get_contents($accessRequest,0,null,null);
+		$accessOutput = json_decode($accessJSON, true);
+		$access = $accessOutput['userhaswriteaccess'];	
+			if($access === true){
+			// the user has write access, include jQuery functionality
+			?>
+			<script>
+				$(document).ready(function(){
+					setClickable();
 				});
+			
+				function setClickable(){
+					$('#project-description').click(function(){
+						var textarea = '<div><textarea placeholder="test" id="descriptionUpdateArea" rows="10" cols="60">'+$(this).html()+'</textarea>';
+						var button = '<div><input type="button" value="Save" class="saveButton" /> OR <input type="button" value="Cancel" class="cancelButton" /></div></div>';
+						var revert = $(this).html();
+						$(this).after(textarea+button).remove();
+						$('.saveButton').click(function(){saveChanges(this, false);});
+						$('.cancelButton').click(function(){saveChanges(this, revert);});
+						}).mouseover(function(){
+						$(this).addClass("editable");
+					}).mouseout(function(){
+							$(this).removeClass("editable");
+					});
+					
+					/*
+					$('#project-description').mouseOver(function(){
+							$(this).addClass("editable");
+					});
+					$('#project-description').mouseOut(function(){
+						$(this).addClass("editable");
+					});
+						*/
+				};
 				
-				/*
-				$('#project-description').mouseOver(function(){
-					$(this).addClass("editable");
-				});
-				$('#project-description').mouseOut(function(){
-					$(this).addClass("editable");
-				});
-				*/
-			};
-			
-			function saveChanges(obj, cancel){
-				if(!cancel){
-					var updatedText = $('#descriptionUpdateArea').val();
-					var updateString = 'interact/update-design.php?groupy=<?php echo $_SESSION['username']; ?>&action=update&id=<?php echo $designID; ?>&description='+updatedText;
-					
-					
-					if (window.XMLHttpRequest)
-						{// code for IE7+, Firefox, Chrome, Opera, Safari
-							xmlhttp=new XMLHttpRequest();
+				function saveChanges(obj, cancel){
+					if(!cancel){
+						var updatedText = $('#descriptionUpdateArea').val();
+							var updateString = 'interact/update-design.php?groupy=<?php echo $_SESSION['username']; ?>&action=update&id=<?php echo $designID; ?>&description='+updatedText;
+						
+							
+						if (window.XMLHttpRequest)
+								{// code for IE7+, Firefox, Chrome, Opera, Safari
+								xmlhttp=new XMLHttpRequest();
 						}
 						else{// code for IE6, IE5
 							xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
@@ -86,30 +91,33 @@ if(isset($_SESSION['token'])){
 						xmlhttp.open("GET",updateString,true);
 						xmlhttp.send();
 						window.location.reload();
-				}
-				else{
-					window.location.reload();
-				}
-			};
-		</script>
-		<?php
+					}
+					else{
+						window.location.reload();
+					}
+				};
+			</script>
+			<?php	
+			}
+		}	
+
+	
+	
+	//Add User Functionality implemented on the design.php page, check if the design user is the user logged in.
+	if($_SESSION['username'] == $design['user']) {
+		//Web service request to check if the design is a proposal , if not do not implement the AddUser functionality.
+		$proposalRequest = SERVICE_URL.'?section=design&request=checkproposal&id='.$designID;
+		$proposalJSON = file_get_contents($proposalRequest,0,null,null);
+		$proposalOutput = json_decode($proposalJSON, true);
+		$proposal = $proposalOutput['checkdesign'];
+			if($proposal == true) { ?>
+				<h4> Add User Functionality for </h4><a href = "edit-proposal-group.php?id=<?php echo $design['designID'];?>"><?php echo $design['name'];?></a>
+	<?php
+			}
 	}
-}
+	?>
 
 
-//Add User Functionality implemented on the design.php page, check if the design user is the user logged in.
-if($_SESSION['username'] == $design['user']) {
-	//Web service request to check if the design is a proposal , if not do not implement the AddUser functionality.
-	$proposalRequest = SERVICE_URL.'?section=design&request=checkproposal&id='.$designID;
-	$proposalJSON = file_get_contents($proposalRequest,0,null,null);
-	$proposalOutput = json_decode($proposalJSON, true);
-	$proposal = $proposalOutput['checkdesign'];
-		if($proposal == true) { ?>
-			<h4> Add User Functionality for </h4><a href = "edit-proposal-group.php?id=<?php echo $design['designID'];?>"><?php echo $design['name'];?></a>
-<?php
-		}
-}
-?>
 
 <!-- Displaying Design Specific stuff -->
 <div class='master-container'>
@@ -153,7 +161,7 @@ if($_SESSION['username'] == $design['user']) {
 								comments,
 								<span class='count'> 
 									<?php
-									// count the number of comments
+									//Count the number of likes
 									$likeCount = countLikes($design['designID']);
 									echo $likeCount;									
 									?>
@@ -168,40 +176,44 @@ if($_SESSION['username'] == $design['user']) {
 						Launch
 						<span class='icon i-play'>►</span> 
 					</a> 
+						
 						<?php if (isset($_SESSION['logged'])) {
-								if(checkUserInfaveListGroup($_SESSION['username'],$design['designID'])==true) {
-									echo '<a class="uberbutton" href="design.php?id='.$design['designID'].'&unlike=true" method = "post"> 
-									Unlike
-									<span class="icon">♥</span> 
-									</a>';
-								} else {
-									echo '<a class="uberbutton" href="design.php?id='.$design['designID'].'&like=true" method = "post"> 
-									Like
-									<span class="icon">♥</span> 
-									</a>';
-								}
+									if(checkUserInfaveListGroup($_SESSION['username'],$design['designID'])==true) {
+										echo '<a class="uberbutton" href="design.php?id='.$design['designID'].'&unlike=true" method = "post"> 
+										Unlike
+										<span class="icon">♥</span> 
+										</a>';
+									} else {
+										echo '<a class="uberbutton" href="design.php?id='.$design['designID'].'&like=true" method = "post"> 
+										Like
+										<span class="icon">♥</span> 
+										</a>';
+									}
 							}
 						?>
+	
 					<a class='uberbutton' href=''> 
 						Share
 						<span class='icon i-share'>☀</span> 
 					</a>
+
 					<!-- Delete Design Functionality for Users -->
-					<?php if($_SESSION['username'] == $design['user']) {?>
-						<script type="text/javascript">
-							function confirmPost(){
-								var agree=confirm("Are you sure you want to Delete This Design?");
-								if (agree)
-									return true ;
-								else
-									return false ;
-							}
-						</script>
-						<?php echo '<form name="deleteDesign" id="DeleteDesign" action="profile.php?designDeleted=true&id='.$design['designID'].'&designName='.urlencode($design['name']).'" method="post" enctype="multipart/form-data">
-							<input type="submit" class="uberbutton" name="Delete" value="Delete" onClick="return confirmPost()">
-						</form>';
-						
-					}?>
+						<?php if($_SESSION['username'] == $design['user']) {?>
+							<script type="text/javascript">
+								function confirmPost(){
+									var agree=confirm("Are you sure you want to Delete This Design?");
+									if (agree)
+										return true ;
+									else
+										return false ;
+								}
+							</script>
+							<?php echo '<form name="deleteDesign" id="DeleteDesign" action="profile.php?designDeleted=true&id='.$design['designID'].'&designName='.urlencode($design['name']).'" 									    method="post" enctype="multipart/form-data">
+	       							<input type="submit" class="uberbutton" name="Delete" value="Delete" onClick="return confirmPost()">
+								</form>';
+							
+							}?>
+
 				</div> 
 			</div>
 			<div id='project-description' class='project-description'><?php echo $design['description']; ?></div>
@@ -209,6 +221,7 @@ if($_SESSION['username'] == $design['user']) {
 			<br />	
 			<div>
 				<?php include('interact/map.php'); ?>
+
 				<script type="text/javascript">
 					$(document.getElementById('smallmapdiv')).ready(function() {
 						var lat = <?php echo $design['coordinate']['lat']; ?>;
@@ -227,7 +240,7 @@ if($_SESSION['username'] == $design['user']) {
 				<ul> 
 
 					<?php
-				foreach($comments as $comment){
+					foreach($comments as $comment){
 					?>
 					<li> 
 						<div class='discussion-meta column span-3'> 
