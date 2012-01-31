@@ -82,7 +82,7 @@ foreach($comments as $comment){
 	
 	<div class='activity-body'>
 	<?php
-		echo '<a href="profile.php?uName='.$commentDesign['user'].'"><strong>'.$commentDesign['user'].'</a>'.'</strong> commented on ';
+		echo '<a href="profile.php?uName='.$comment['user'].'"><strong>'.$comment['user'].'</a>'.'</strong> commented on ';
 		echo '<a href="design.php?id='.$commentDesign['designID'].'"><strong>'.$commentDesign['name'].'</a>'.'</strong>:';
 	?>
 		<span class='content'><?php echo $comment['comment'] ?></span>
