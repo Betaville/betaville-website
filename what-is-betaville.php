@@ -64,9 +64,9 @@
                             <ul>
                                 <li> Skye Book (Lead Developer) </li>
                                 <li> Caroline Bouchat (Developer)</li>
-                                <li> Ibrahim Jumkhawala (QA)</li>
-                                <li> Mithilesh Ramaswamy (QA)</li>
-                               
+                                <li> Ibrahim Jumkhawala (Developer)</li>
+                                <li> Megh Vora (Developer) </li>
+                                <li> Ojas Gosar (Developer) </li>
                             </ul>
                         </li>
                         <li class="folder">
@@ -84,7 +84,6 @@
                       <li class="folder">
                             <a href="#" class="submenu"> Research Team</a>
                             <ul>
-                                <li> Joel Wein (Comp Sci Researcher)</li>
                                 <li> Mark Skwarek (3-D Researcher)</li>
                                 <li> Martin Koplin (Scientist in Residence)</li>
                             </ul>
