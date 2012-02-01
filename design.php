@@ -28,7 +28,7 @@
 			if(checkUserInfaveListGroup($_SESSION['username'],$design['designID'])==true) {
 			}
 			else {	
-				$likeRequest = SERVICE_URL.'?section=fave&request=add&id='.$designID.'&name='.$_SESSION['username'];
+				$likeRequest = SERVICE_URL.'?section=fave&request=add&id='.$designID.'&name='.$_SESSION['username'].'&token='.$_SESSION['token'];
 				$likeRequestJSON = file_get_contents($likeRequest,0,null,null);
 				$likeOutput = json_decode($likeRequestJSON, true);
 				header('url='.WEB_URL.'/design.php?id='.$designID); 
