@@ -232,7 +232,7 @@ function DeletefaveListUser($designid,$deletename) {
 												if($len_of_array==1) {
 														$comma = ',';	
 														$comma = urlencode($comma);
-														$userRequest = SERVICE_URL.'?section=fave&request=remove&name='.$comma.'&id='.$designid;
+														$userRequest = SERVICE_URL.'?section=fave&request=remove&name='.$comma.'&id='.$designid.'&token='.$_SESSION['token'];
 														$userTestRequestJSON = file_get_contents($userRequest,0,null,null);
 														$userTestOutput = json_decode($userTestRequestJSON, true);
 												}
@@ -241,7 +241,7 @@ function DeletefaveListUser($designid,$deletename) {
 														$comma = implode(",",$userTest);
 														$comma = ','.$comma.',';	
 														$comma = urlencode($comma);
-														$userRequest = SERVICE_URL.'?section=fave&request=remove&name='.$comma.'&id='.$designid;
+														$userRequest = SERVICE_URL.'?section=fave&request=remove&name='.$comma.'&id='.$designid.'&token='.$_SESSION['token'];
 														$userTestRequestJSON = file_get_contents($userRequest,0,null,null);
 														$userTestOutput = json_decode($userTestRequestJSON, true);
 												}
