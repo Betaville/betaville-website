@@ -1,7 +1,7 @@
 <?php include('head.php'); ?>
 <body> 
 
-
+	
 	<?php
 	// setup the basics
 	$designID = $_GET['id'];
@@ -100,23 +100,9 @@
 			<?php	
 			}
 		}	
-
+		?>
 	
 	
-	//Add User Functionality implemented on the design.php page, check if the design user is the user logged in.
-	if($_SESSION['username'] == $design['user']) {
-		//Web service request to check if the design is a proposal , if not do not implement the AddUser functionality.
-		$proposalRequest = SERVICE_URL.'?section=design&request=checkproposal&id='.$designID;
-		$proposalJSON = file_get_contents($proposalRequest,0,null,null);
-		$proposalOutput = json_decode($proposalJSON, true);
-		$proposal = $proposalOutput['checkdesign'];
-			if($proposal == true) { ?>
-				<h4> Add User Functionality for </h4><a href = "edit-proposal-group.php?id=<?php echo $design['designID'];?>"><?php echo $design['name'];?></a>
-	<?php
-			}
-	}
-	?>
-
 
 
 <!-- Displaying Design Specific stuff -->
@@ -125,6 +111,24 @@
 		<div class='page-body container project' id='project'> 
 			<div class='project-container'> 
 				<h1><?php echo $design['name']; ?></h1> 
+               
+               
+                <?php
+				//Add User Functionality implemented on the design.php page, check if the design user is the user logged in.
+				if($_SESSION['username'] == $design['user']) {
+					//Web service request to check if the design is a proposal , if not do not implement the AddUser functionality.
+					$proposalRequest = SERVICE_URL.'?section=design&request=checkproposal&id='.$designID;
+					$proposalJSON = file_get_contents($proposalRequest,0,null,null);
+					$proposalOutput = json_decode($proposalJSON, true);
+					$proposal = $proposalOutput['checkdesign'];
+						if($proposal == true) { ?>
+							<a href = "edit-proposal-group.php?id=<?php echo $design['designID'];?>"> Add Users to Group </a>
+				<?php
+						}
+				}
+				?>
+
+                
 				<div class='project-meta'> 
 					<ul> 
 						<li> 

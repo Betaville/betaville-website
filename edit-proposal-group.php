@@ -50,8 +50,8 @@
         
         <div class="page">
         <div class="user">
-        	<a class="fancyButton" href="design.php?id=<?php echo $designid;?>"><span>Back to Proposal</span></a>
-        	<h1><?php echo $design['name']; ?> </h1> <br>
+        	<a class="fancyButton" href="design.php?id=<?php echo $designid;?>"><span>Back to Proposal</span></a><br>
+        	<h1><?php echo $design['name']; ?> </h1>
             <h3>  Add User </h3>
             
 			<h4> Type User name into the search bar to search for users to add to the group </h4>
