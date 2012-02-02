@@ -47,9 +47,10 @@
 			if($_SESSION['username']==$design['user']) {
 	
 		?>
-        <a class="fancyButton" href="design.php?id=<?php echo $designid;?>"><span>Go Back</span></a>
+        
         <div class="page">
         <div class="user">
+        	<a class="fancyButton" href="design.php?id=<?php echo $designid;?>"><span>Back to Proposal</span></a>
         	<h1><?php echo $design['name']; ?> </h1> <br>
             <h3>  Add User </h3>
             
@@ -115,7 +116,7 @@
 							$userJSON = file_get_contents($userRequest,0,null,null);
 							$userOutput = json_decode($userJSON, true);
 							$users = $userOutput['users'];
-							echo '<br><br><h4> Current Users in Group:  </h4>';
+							echo '<h4> Current Users in Group:  </h4>';
 							foreach($users as $musy) {
 								echo '<a href="edit-proposal-group.php?deleteuser='.$musy.'&id='.$design['designID'].'" <strong>'.$musy.'<br></strong></a>';
 							}
