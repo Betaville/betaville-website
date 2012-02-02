@@ -31,7 +31,7 @@ ob_start();
 				</a>
 			</li>
 			<li><a href='http://betaville.net/webstart/betaville.jnlp'>Download</a></li>
-			<li><a class='' href='./what-is-betaville.php'>Info</a></li>
+			<li><a class='' href='./what-is-betaville.php'>About</a></li>
 			<li><a class='' href='./proposals.php'>Explore</a></li>
 			<li><a class='' href='./contribute.php'>Contribute</a></li>
 			<?php
