@@ -1275,7 +1275,7 @@ footer a, footer a:link, footer a:visited, footer a:hover, footer a:active {
     margin-top: 2em;
     width: 100%;
     height: 700px;
-    background: url(../images-content/d-v.jpg) fixed repeat 50% 0;
+    background: url(../images-content/d-v.jpg);
 }
 .tagline {
     overflow: hidden;
@@ -1477,8 +1477,8 @@ aside {
     overflow-x: hidden;
 }
 .activity .activity-body {
-    display: inline;
-    float: left;
+    display:inline;
+    float: left; 	
     margin-right: 0;
     width: 230px;
 }
@@ -1761,6 +1761,7 @@ aside {
     overflow: hidden;
     *zoom: 1;
     margin-bottom: 20px;
+	/*new*/
 }
 .activity .activity-meta {
     color: #a4a091;
@@ -1770,7 +1771,7 @@ aside {
     letter-spacing: 1px;
     text-transform: uppercase;
     font-style: normal;
-    line-height: 1em;
+    line-height:1em;
 }
 .activity h3 {
     font-size: 1em;
