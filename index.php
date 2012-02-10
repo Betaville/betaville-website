@@ -288,6 +288,7 @@ include('head.php');
 				<input type="checkbox" name="rememberMe" > Remember Me <br /><br />
 				<input type="button" id="submit" value="Log In" onClick="submitAjax()"> or <a href="register.php" > Register Now </a>
 			</form>
+				<a href="ForgotPassword.php?sendVeri=true">Forgot Password?</a>
 		</div>
 		<br /><br />
 		<?php } ?>
