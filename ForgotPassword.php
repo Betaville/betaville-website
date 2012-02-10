@@ -4,7 +4,8 @@ include('head.php');
 
 
 	if(isset($_GET['sentMail'])) {
-		$passChangeRequest = SERVICE_URL.'?section=user&request=changeCode&email='.urlencode($_POST['email']);
+		
+		$passChangeRequest = SERVICE_URL.'?section=user&request=changeCode&email='.urlencode($_POST['email']).'&websiteUrl='.WEB_URL.'/ForgotPassword.php?newCode=';
 		$changeJSON = file_get_contents($passChangeRequest,0,null,null);
 		$changeOutput = json_decode($changeJSON, true);
 		$newCode = $changeOutput['codeChangeSuccess'];
