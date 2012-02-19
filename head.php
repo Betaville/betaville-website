@@ -34,6 +34,7 @@ ob_start();
 			<li><a class='' href='./what-is-betaville.php'>About</a></li>
 			<li><a class='' href='./proposals.php'>Explore</a></li>
 			<li><a class='' href='./contribute.php'>Contribute</a></li>
+			<li><a class='' href='mailto:info@betaville.net?Subject=Betaville%20Inquiry'>Contact</a></li>
 			<?php
 				if ( isset($_COOKIE['token'])) {
 					$check = SERVICE_URL.'?section=authcheck&request=authcheck&token='.$_COOKIE['token'];
