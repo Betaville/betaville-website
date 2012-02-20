@@ -6,7 +6,18 @@
 <body>
 <link rel="stylesheet" type="text/css" href="stylesheets/userGroups.css" />
 <?php
-
+	//If user is not logged in Redirect....
+	if (!isset($_SESSION['logged']) && !$_SESSION['logged'] == true ) {
+			header("Location: ".WEB_URL);
+	}
+	
+	/*To be written soon
+	if(isset($_GET['view'])) {
+		if(isset($_POST['all'])) {echo "all";}
+		if(isset($_POST['me'])) {echo "me";}
+		if(isset($_POST['group'])) {echo "group";}
+	}*/
+	
 	if(isset($_GET['deleteuser'])) {
 		$deletename=$_GET['deleteuser'];
 		$designid=$_GET['id'];
@@ -50,11 +61,25 @@
         
         <div class="page">
         <div class="user">
+	
         	<a class="fancyButton" href="design.php?id=<?php echo $designid;?>"><span>Back to Proposal</span></a><br>
+
+		
+		<br>
+		<h3>Edit Viewability</h3>		
+	
+		<form name="userInput" action ="edit-proposal-group.php?id=<?php echo $designid;?>&view=changed" method="post">
+			<input type="checkbox" name="all" value="all" /> Open to all<br />
+			<input type="checkbox" name="me" value="me" /> Only I can view <br />
+			<input type="checkbox" name="group" value="group" /> Me and Group<br /><br />
+			<input type="submit" value="Submit" />
+		</form> 
+
+
         	<h1><?php echo $design['name']; ?> </h1>
             <h3>  Add User </h3>
-            
-			<h4> Type User name into the search bar to search for users to add to the group </h4>
+			
+		<h4> Type User name into the search bar to search for users to add to the group </h4>
 	
 			<script type="text/javascript">
 						function showResult(str){
@@ -119,8 +144,7 @@
 							echo '<h4> Current Users in Group:  </h4>';
 							foreach($users as $musy) {
 								echo '<a href="edit-proposal-group.php?deleteuser='.$musy.'&id='.$design['designID'].'" <strong>'.$musy.'<br></strong></a>';
-							}
-							?>
+							}?>
 		</div>
 
 		<div class= "proposal-image">
@@ -133,5 +157,6 @@
 	
 	</div>
 	<?php include('footer.php');?>
+
 </body>
 </html>
