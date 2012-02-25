@@ -12,28 +12,10 @@
 	}
 	
 	if(isset($_GET['view'])) {
-		if(isset($_POST['all'])) {
+		if(isset($_POST['button'])) {
 			echo "Design permission changed";
 			$designID = $_GET['id'];
-			$permission = $_POST['all'];
-			$addPermission = SERVICE_URL.'?section=design&request=setpermission&id='.$designID.'&token='.$_SESSION['token'].'&permission='.$permission;
-			$addPermissionJSON = file_get_contents($addPermission,0,null,null);
-			$addPermissionOutput = json_decode($addPermissionJSON, true);
-		}
-		
-		if(isset($_POST['me'])) {
-			echo "Design permission changed";
-			$designID = $_GET['id'];
-			$permission = $_POST['me'];
-			$addPermission = SERVICE_URL.'?section=design&request=setpermission&id='.$designID.'&token='.$_SESSION['token'].'&permission='.$permission;
-			$addPermissionJSON = file_get_contents($addPermission,0,null,null);
-			$addPermissionOutput = json_decode($addPermissionJSON, true);
-		}
-
-		if(isset($_POST['group'])) {
-			echo "Design permission changed";
-			$designID = $_GET['id'];
-			$permission = $_POST['group'];
+			$permission = $_POST['button'];
 			$addPermission = SERVICE_URL.'?section=design&request=setpermission&id='.$designID.'&token='.$_SESSION['token'].'&permission='.$permission;
 			$addPermissionJSON = file_get_contents($addPermission,0,null,null);
 			$addPermissionOutput = json_decode($addPermissionJSON, true);
@@ -91,9 +73,9 @@
 		<h3>Edit Viewability</h3>		
 	
 		<form name="userInput" action ="edit-proposal-group.php?id=<?php echo $designid;?>&view=changed" method="post">
-			<input type="checkbox" name="all" value="all" /> Open to all<br />
-			<input type="checkbox" name="me" value="user_only" /> Only I can view <br />
-			<input type="checkbox" name="group" value="user_group" /> Me and Group<br /><br />
+			<input type="radio" name="button" value="all" /> Open to all<br />
+			<input type="radio" name="button" value="user_only" /> Only I can view <br />
+			<input type="radio" name="button" value="user_group" /> Me and Group<br /><br />
 			<input type="submit" value="Submit" />
 		</form> 
 
