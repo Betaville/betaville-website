@@ -86,7 +86,12 @@ include('head.php');
 						<?php
 					// get the featured proposals
 					// swap to request=proposals or request=versions
-					$proposalRequest = SERVICE_URL.'?section=proposal&request=getfeatured&quantity=7';
+					if(isset($_SESSION['username'])) {
+					$proposalRequest = SERVICE_URL."?section=proposal&request=getfeatured&quantity=7&token=".$_SESSION['token']."&username=".$_SESSION['username'];
+					}
+					else {
+					$proposalRequest = SERVICE_URL."?section=proposal&request=getfeatured&quantity=7&token=".$_SESSION['token'];
+					}
 					$proposalJSON = file_get_contents($proposalRequest,0,null,null);
 					$proposalOutput = json_decode($proposalJSON, true);
 					$proposals = $proposalOutput['designs'];
