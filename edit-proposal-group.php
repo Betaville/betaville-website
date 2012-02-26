@@ -13,10 +13,10 @@
 	
 	if(isset($_GET['view'])) {
 		if(isset($_POST['button'])) {
-			echo "Design permission changed";
+			echo "Proposal permission changed";
 			$designID = $_GET['id'];
 			$permission = $_POST['button'];
-			$addPermission = SERVICE_URL.'?section=design&request=setpermission&id='.$designID.'&token='.$_SESSION['token'].'&permission='.$permission;
+			$addPermission = SERVICE_URL.'?section=proposal&request=setpermission&id='.$designID.'&token='.$_SESSION['token'].'&permission='.$permission;
 			$addPermissionJSON = file_get_contents($addPermission,0,null,null);
 			$addPermissionOutput = json_decode($addPermissionJSON, true);
 		}
@@ -71,10 +71,9 @@
 		
 		<br>
 		<h3>Edit Viewability</h3>		
-	
+		<!-- The owner of a proposal can choose to show proposal to all, or show proposal to only him and group, if proposal does not need to be shown to a group user then delete him from group-->
 		<form name="userInput" action ="edit-proposal-group.php?id=<?php echo $designid;?>&view=changed" method="post">
 			<input type="radio" name="button" value="all" /> Open to all<br />
-			<input type="radio" name="button" value="user_only" /> Only I can view <br />
 			<input type="radio" name="button" value="user_group" /> Me and Group<br /><br />
 			<input type="submit" value="Submit" />
 		</form> 
