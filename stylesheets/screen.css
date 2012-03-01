@@ -1239,7 +1239,7 @@ footer a, footer a:link, footer a:visited, footer a:hover, footer a:active {
 }
 .decoration {
     height: 100px;
-    background: url(../images-content/d-horizon.jpg) fixed repeat-x -20px -40px;
+    background: url(../images-content/d-horizon.jpg) center;
     -moz-box-shadow: inset 0 -10px 10px 0 rgba(0,  0,  0,  0.2);
     -webkit-box-shadow: inset 0 -10px 10px 0 rgba(0,  0,  0,  0.2);
     -o-box-shadow: inset 0 -10px 10px 0 rgba(0,  0,  0,  0.2);
