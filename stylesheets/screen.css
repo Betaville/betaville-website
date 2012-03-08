@@ -1275,7 +1275,7 @@ footer a, footer a:link, footer a:visited, footer a:hover, footer a:active {
     margin-top: 2em;
     width: 100%;
     height: 700px;
-    background: url(../images-content/d-v.jpg);
+    background: url(../images-content/d-v.jpg) center;
 }
 .tagline {
     overflow: hidden;
