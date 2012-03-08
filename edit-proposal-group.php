@@ -70,19 +70,21 @@
 
 		
 		<br>
-		<h3>Edit Viewability</h3>		
+
+        	
+        <h1><?php echo $design['name']; ?> </h1>
+        	
+            <h3>Edit Viewability</h3>		
 		<!-- The owner of a proposal can choose to show proposal to all, or show proposal to only him and group, if proposal does not need to be shown to a group user then delete him from group-->
-		<form name="userInput" action ="edit-proposal-group.php?id=<?php echo $designid;?>&view=changed" method="post">
-			<input type="radio" name="button" value="all" /> Open to all<br />
-			<input type="radio" name="button" value="user_group" /> Me and Group<br /><br />
-			<input type="submit" value="Submit" />
-		</form> 
-
-
-        	<h1><?php echo $design['name']; ?> </h1>
-            <h3>  Add User </h3>
+            <form name="userInput" action ="edit-proposal-group.php?id=<?php echo $designid;?>&view=changed" method="post">
+                <input type="radio" name="button" value="all" /> Open to all<br>
+                <input type="radio" name="button" value="user_group" /> Me and Group<br>
+                <input type="submit" value="Submit" />
+             </form> 
+            <br>
+         	<h3>  Add User to Group</h3>
 			
-		<h4> Type User name into the search bar to search for users to add to the group </h4>
+			<h4> Search for Users </h4>
 	
 			<script type="text/javascript">
 						function showResult(str){
@@ -135,9 +137,9 @@
 									<input type="submit" name="submit" value="Add" onClick="return confirmPost()" /></form>';}
 								}
 
-								echo '<br><br>';
+								echo '<br>';
 						?>
-			<h3> Delete User </h3>
+			<h3> Delete User from Group</h3>
 
 						<?php
 							$userRequest = SERVICE_URL.'?section=user&request=getallusersingroup&id='.$designid;
