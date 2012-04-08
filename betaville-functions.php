@@ -60,7 +60,7 @@ function fd($value)
 			{ 
 			    array($datetime = explode(" ",$value));
 				array($date = explode("-",$datetime[0]));
-					array($date1 = explode(":",$datetime[1]));
+				array($date1 = explode(":",$datetime[1]));
 			    $final = date("Y-m-d H:i:s", mktime($date1[0],$date1[1],$date1[2],$date[1],$date[2],$date[0])); 
 		      	return $final;
 
