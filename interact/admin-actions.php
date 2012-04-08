@@ -6,7 +6,7 @@ if(!isset($_SESSION['token'])){
 	die();
 }
 else{
-	include('../config.php');
+	include_once('../config.php');
 }
  
 $action = $_POST['action'];

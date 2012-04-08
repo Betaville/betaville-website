@@ -1,7 +1,7 @@
 <?php
 	session_start();
 
-	include("config.php");
+	include_once("config.php");
 	$logoutRequest = SERVICE_URL."?section=user&request=endsession&token=".$_SESSION['token'];
 	file_get_contents($logoutRequest, 0, null, null);
 

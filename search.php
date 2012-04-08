@@ -74,7 +74,6 @@ error_reporting(E_ALL);
 			<?php
 				function searchCheck() {
 					if ( isset( $_POST["searchField"]) && ($_POST['searchType'] == "0")){
-						//include("config.php");
 						$search = $_POST["searchField"];
 						$temp = SERVICE_URL.'?section=design&request=findbyuser&excludeempty=1&user='.$search;
 						$temp1 = file_get_contents($temp,0,null,null);
@@ -106,7 +105,6 @@ error_reporting(E_ALL);
 						}
 					}
 					else if ( isset( $_POST["searchField"]) && ($_POST['searchType'] == "1")){
-						//include("config.php");
 						$search = $_POST["searchField"];
 						$temp = SERVICE_URL.'?section=design&request=findbyname&name='.$search;
 						$temp1 = file_get_contents($temp,0,null,null);
@@ -138,7 +136,6 @@ error_reporting(E_ALL);
 						}
 					}
 					else if ( isset( $_POST["searchField"]) && ($_POST['searchType'] == "2")){
-						//include("config.php");
 						$search = $_POST["searchField"];
 						$temp = SERVICE_URL.'?section=design&request=findbyid&id='.$search;
 						$temp1 = file_get_contents($temp,0,null,null);

@@ -1,7 +1,7 @@
 <?php 
 	include('head.php');
 	include_once('betaville-functions.php');
-	include('config.php');
+	include_once('config.php');
 ?>
 <body>
 <link rel="stylesheet" type="text/css" href="stylesheets/userGroups.css" />

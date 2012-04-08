@@ -1,7 +1,7 @@
 <?php
 ini_set('display_errors',2); 
 error_reporting(E_ALL);
-include("config.php");
+include_once("config.php");
 $count = 0;
 if ( $_POST['user'] == " " || $_POST['user'] == NULL ) {
 	echo "Please enter a valid username <br />";

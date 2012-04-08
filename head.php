@@ -19,7 +19,7 @@ ob_start();
 	<?php
 		include("betaville-functions.php");
 		include("interact/curl.php");
-		include("config.php");
+		include_once("config.php");
 	 ?>
 </head>
 <header>

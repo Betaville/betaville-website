@@ -12,7 +12,7 @@ if(isset($_GET['action'])){
 			$description = urlencode($_GET['description']);
 			echo "data is ".$description;
 			$designID = $_GET['id'];
-			include('../config.php');
+			include_once('../config.php');
 			// http://localhost/service/service.php?section=design&request=changedescription&id=7616&description=hello
 			$updateRequest = SERVICE_URL.'?section=design&request=changedescription&id='.$designID.'&token='.$_SESSION['token'].'&description='.$description;
 			$updateJSON = file_get_contents($updateRequest, 0, null, null);
