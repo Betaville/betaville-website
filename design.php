@@ -1,11 +1,28 @@
-<?php include('head.php'); ?>
+<?php include('head.php'); 
+/**  
+ *  Design page - Show individual design features, users, comments, and can now be updated if the design is a proposal
+ *  Copyright (C) 2011-2012 Betaville
+ *  
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+?>
 <body> 
 
 	
 	<?php
 	// setup the basics
 	$designID = $_GET['id'];
-	
 	// get the project information
 	//Display Project specific stuff
 	$designRequest = SERVICE_URL.'?section=design&request=findbyid&id='.$designID;
@@ -20,20 +37,21 @@
 		
 	//Adding and deleting users in faveList
 	if(isset($_GET['unlike'])) {
-			DeletefaveListUser($design['designID'],$_SESSION['username']);
+		//Service call is initiated from the function, need to first check if the user is in the list
+		DeletefaveListUser($design['designID'],$_SESSION['username']);
+		header('url='.WEB_URL.'/design.php?id='.$designID); 
+	}
+	if(isset($_GET['like'])) {
+		//Check if user is in group, if is don't add
+		if(checkUserInfaveListGroup($_SESSION['username'],$design['designID'])==true) {
+		}
+		else {	
+			$likeRequest = SERVICE_URL.'?section=fave&request=add&id='.$designID.'&name='.$_SESSION['username'].'&token='.$_SESSION['token'];
+			$likeRequestJSON = file_get_contents($likeRequest,0,null,null);
+			$likeOutput = json_decode($likeRequestJSON, true);
 			header('url='.WEB_URL.'/design.php?id='.$designID); 
 		}
-		if(isset($_GET['like'])) {
-			//Check if user is in group, if is don't add
-			if(checkUserInfaveListGroup($_SESSION['username'],$design['designID'])==true) {
-			}
-			else {	
-				$likeRequest = SERVICE_URL.'?section=fave&request=add&id='.$designID.'&name='.$_SESSION['username'].'&token='.$_SESSION['token'];
-				$likeRequestJSON = file_get_contents($likeRequest,0,null,null);
-				$likeOutput = json_decode($likeRequestJSON, true);
-				header('url='.WEB_URL.'/design.php?id='.$designID); 
-			}
-		}
+	}
 
 	
 	// check if the user has write access, includes users who are in group!
@@ -110,9 +128,7 @@
 	<div class='page-container'>
 		<div class='page-body container project' id='project'> 
 			<div class='project-container'> 
-				<h1><?php echo $design['name']; ?></h1> 
-               
-               
+				<h1><?php echo $design['name']; ?></h1>  
                 <?php
 				//Add User Functionality implemented on the design.php page, check if the design user is the user logged in.
 				if($_SESSION['username'] == $design['user']) {
@@ -176,31 +192,32 @@
 					</li> 
 				</ul> 
 				<div class='button-row'> 
-					<a class='uberbutton green' href='/webstart/betaville.jnlp'> 
-						Launch
-						<span class='icon i-play'>►</span> 
-					</a> 
-						
-						<?php if (isset($_SESSION['logged'])) {
+						<?php if(isset($_SESSION['logged'])) {
 									if(checkUserInfaveListGroup($_SESSION['username'],$design['designID'])==true) {
-										echo '<a class="uberbutton" href="design.php?id='.$design['designID'].'&unlike=true" method = "post"> 
+						?>
+										<a class='uberbutton green' href='<?php echo 'design.php?id='.$design['designID'].'&unlike=true';?>' method = 'post'>
 										Unlike
-										<span class="icon">♥</span> 
-										</a>';
-									} else {
-										echo '<a class="uberbutton" href="design.php?id='.$design['designID'].'&like=true" method = "post"> 
+										<span class='icon'>♥</span> 
+										</a>
+						<?php
+									}
+									else{
+						?>
+										<a class='uberbutton green' href='<?php echo 'design.php?id='.$design['designID'].'&like=true';?>' method = 'post'> 
 										Like
-										<span class="icon">♥</span> 
-										</a>';
+										<span class='icon'>♥</span> 
+										</a><?
 									}
 							}
 						?>
-	
-					<a class='uberbutton' href=''> 
-						Share
-						<span class='icon i-share'>☀</span> 
-					</a>
-
+					<!-- Not needed at the moment
+									<a class='uberbutton green' href=''> 
+									Share
+									<span class='icon i-share'>☀</span> 
+									</a>
+					-->
+					
+					
 					<!-- Delete Design Functionality for Users -->
 						<?php if($_SESSION['username'] == $design['user']) {?>
 							<script type="text/javascript">
@@ -212,12 +229,14 @@
 										return false ;
 								}
 							</script>
-							<?php echo '<form name="deleteDesign" id="DeleteDesign" action="profile.php?designDeleted=true&id='.$design['designID'].'&designName='.urlencode($design['name']).'" 									    method="post" enctype="multipart/form-data">
-	       							<input type="submit" class="uberbutton" name="Delete" value="Delete" onClick="return confirmPost()">
-								</form>';
-							
+							<!--Button does not look so good.......-->
+							<a class='uberbutton green'>
+							<form name='deleteDesign' id='DeleteDesign' action='<?php echo 'profile.php?designDeleted=true&id='.$design['designID'].'&designName='.urlencode($design['name']);?>'  method='post' enctype='multipart/form-data'>
+	       							<input type='submit' class='uberbutton' name='Delete' value='Delete' onClick='return confirmPost()'>
+							</form>
+							</a>
+							<?php
 							}?>
-
 				</div> 
 			</div>
 			<div id='project-description' class='project-description'><?php echo $design['description']; ?></div>
