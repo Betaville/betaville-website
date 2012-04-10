@@ -14,7 +14,8 @@
  *  GNU General Public License for more details.
  *  
  *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *  along with this program.  If not, see <http://www.gnu.org/licenses
+ */
 // Set the default timezone
 date_default_timezone_set('America/New_York');
 
