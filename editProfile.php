@@ -73,8 +73,8 @@ if(isset($_POST['bio'])||isset($_POST['website'])) {
 //Service call to Change password, merged into the same file......
 if(isset($_POST['oldPass']) && isset($_POST['newPass'])){
 	$updatePass = SERVICE_URL.'?section=user&request=changepass&token='.$_SESSION['token'].'&oldPass='.$_POST['oldPass'].'&newPass='.$_POST['newPass'];
-	$temp1 = file_get_contents($updatePass,0,null,null);
-	$passChanged = json_decode($temp1, true);
+	$updatePassJSON = file_get_contents($updatePass,0,null,null);
+	$passChanged = json_decode(updatePassJSON, true);
 	$changedPass = $passChanged['passChanged'];
 		if($changedPass == 'true') {
 ?>
