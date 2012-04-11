@@ -191,8 +191,33 @@
 						</span> 
 					</li> 
 				</ul> 
+				
+			<script type="text/javascript">
+				function showmenu(elmnt){
+					document.getElementById(elmnt).style.visibility="visible";
+				}
+				function hidemenu(elmnt){
+					document.getElementById(elmnt).style.visibility="hidden";
+				}
+			</script>
 				<div class='button-row'> 
 						<?php if(isset($_SESSION['logged'])) {
+							//Share the url on facebook or Twitter, grab the current page url......
+							$page_url=$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+						?>
+									<!-The button now shows a drop down widget, click either option to be redirected-->
+									<a class='uberbutton green' onmouseover="showmenu('share_widget')" onmouseout="hidemenu('share_widget')">
+										Share
+										<tr bgcolor="#568617" width="50px">
+											   <table class="share_menu" id="share_widget" width="15">
+											   <tr><td class="share_menu"><a href="http://www.facebook.com/share.php?u=<?php echo $page_url;?>">Share on Facebook</a></td></tr>
+											   <tr><td class="share_menu"><a href="http://twitter.com/home?status=<?php echo $page_url;?>">Share on Twitter</a></td></tr>
+											   </table>
+											  </td>
+									    </tr>
+									</table>
+									</a>
+						<?
 									if(checkUserInfaveListGroup($_SESSION['username'],$design['designID'])==true) {
 						?>
 										<a class='uberbutton green' href='<?php echo 'design.php?id='.$design['designID'].'&unlike=true';?>' method = 'post'>
@@ -210,12 +235,7 @@
 									}
 							}
 						?>
-					<!-- Not needed at the moment
-									<a class='uberbutton green' href=''> 
-									Share
-									<span class='icon i-share'>☀</span> 
-									</a>
-					-->
+				
 					
 					
 					<!-- Delete Design Functionality for Users -->
