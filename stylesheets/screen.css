@@ -1814,3 +1814,14 @@ aside {
 #contribute .contribute-comment .shot {
     background: url(../images-content/contribute.png) no-repeat 0 0px;
 }
+a:hover{color:#606060}
+td.share_menu{background:white}
+table.share_menu
+{
+height:10px;
+width:10px;
+font-size:100%;
+position:absolute;
+visibility:hidden;
+}
+
