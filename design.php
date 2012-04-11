@@ -250,10 +250,9 @@
 								}
 							</script>
 							<!--Button does not look so good.......-->
-							<a class='uberbutton green'>
-							<form name='deleteDesign' id='DeleteDesign' action='<?php echo 'profile.php?designDeleted=true&id='.$design['designID'].'&designName='.urlencode($design['name']);?>'  method='post' enctype='multipart/form-data'>
-	       							<input type='submit' class='uberbutton' name='Delete' value='Delete' onClick='return confirmPost()'>
-							</form>
+							<a class='uberbutton green'
+							 a href ='<?php echo 'profile.php?designDeleted=true&id='.$design['designID'].'&designName='.urlencode($design['name']);?>'  method='post' name='Delete' value='Delete' onClick='return confirmPost()'>
+							Delete
 							</a>
 							<?php
 							}?>
