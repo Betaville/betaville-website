@@ -1,3 +1,22 @@
+<?php
+/**  
+ *  latest Activity Page - Shows the latest activity, comments and models uploaded, showing only top 5 for each.
+ *  Copyright (C) 2011-2012 Betaville
+ *  
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+?>
 <div class='activity-section'>
 
 <script>
@@ -9,22 +28,21 @@
 <?php
 include_once('config.php');
 echo "<h2>Latest Activity</h2>";
-
 // swap to request=proposals or request=versions
 $designRequest = SERVICE_URL.'?section=activity&request=designs&quantity=5&excludeempty=1';
 $designJSON = file_get_contents($designRequest,0,null,null);
 $designOutput = json_decode($designJSON, true);
 $designs = $designOutput['designs'];
 
-foreach($designs as $design){
-	//Checking length of string, adjust length if it is more than a limit	
-	$length_of_string = $design['description'];
-	$leng = strlen($length_of_string);
-		if($leng>1000) {
-			$design['description'] = substr($design['description'],0,200).'<bold><a href="design.php?id='.$design['designID'].'"><div id="lol">....(click to read more)</div></bold></a>';
-		}?>
+	foreach($designs as $design){
+		//Checking length of string, adjust length if it is more than a limit	
+		$length_of_string = $design['description'];
+		$leng = strlen($length_of_string);
+			if($leng>1000) {
+				$design['description'] = substr($design['description'],0,200).'<bold><a href="design.php?id='.$design['designID'].'"><div id="lol">....(click to read more)</div></bold></a>';
+			}?>
 	<div class='activity'>
-	<?php
+<?php
 		echo "<a href='design.php?id=".$design['designID']."'>\n";
 		//Check if image exists on server
 		$image = checkimage(THUMBNAIL_URL.$design['designID'].'.png');
@@ -56,44 +74,42 @@ $commentRequest = SERVICE_URL.'?section=activity&request=comments&quantity=5';
 $commentJSON = file_get_contents($commentRequest,0,null,null);
 $commentOutput = json_decode($commentJSON, true);
 $comments = $commentOutput['comments'];
-
+//Counter used to count the comments
 $counter = 0;
-foreach($comments as $comment){
-	
-	$counter++;
-	$commentDesignRequest = SERVICE_URL.'?section=design&request=findbyid&id='.$comment['designid'];
-	$commentDesignJSON = file_get_contents($commentDesignRequest,0,null,null);
-	$commentDesignOutput = json_decode($commentDesignJSON, true);
-	$commentDesign = $commentDesignOutput['design'];
-	//Checking length of string, adjust length if it is more than a limit		
-	$length_of_string = $comment['comment'];
-	$leng = strlen($length_of_string);
-		if($leng>1000) {
-			$comment['comment'] = substr($comment['comment'],0,200).'<bold><a href="design.php?id='.$commentDesign['designID'].'"><div id="lol">....(click to read more)</div></bold></a>';
-		}	
-	?>
+	foreach($comments as $comment){
+		$counter++;
+		$commentDesignRequest = SERVICE_URL.'?section=design&request=findbyid&id='.$comment['designid'];
+		$commentDesignJSON = file_get_contents($commentDesignRequest,0,null,null);
+		$commentDesignOutput = json_decode($commentDesignJSON, true);
+		$commentDesign = $commentDesignOutput['design'];
+		//Checking length of string, adjust length if it is more than a limit		
+		$length_of_string = $comment['comment'];
+		$leng = strlen($length_of_string);
+			if($leng>1000) {
+				$comment['comment'] = substr($comment['comment'],0,200).'<bold><a href="design.php?id='.$commentDesign['designID'].'"><div id="lol">....(click to read more)</div></bold></a>';
+			}	
+?>
 	<div class='activity'>
 	<?php 
 		echo '<a href="design.php?id='.$commentDesign['designID'].'">';
 		//Check if image exists on server
 		$image = checkimage(THUMBNAIL_URL.$commentDesign['designID'].'.png');
 		echo "<a href='design.php?id=".$commentDesign['designID']."'>\n"; ?>
-		<img src=<?php echo $image;?> style='background-color: #3e4b71'> </a>
-	
+		<img src=<?php echo $image;?> style='background-color: #3e4b71'> </a>	
 	<div class='activity-body'>
-	<?php
+<?php
 		echo '<a href="profile.php?uName='.$comment['user'].'"><strong>'.$comment['user'].'</a>'.'</strong> commented on ';
 		echo '<a href="design.php?id='.$commentDesign['designID'].'"><strong>'.$commentDesign['name'].'</a>'.'</strong>:';
-	?>
+?>
 		<span class='content'><?php echo $comment['comment'] ?></span>
 		
 	<div class='activity-meta'>
-	<?php
+<?php
 		//this is already called above as include_once, cannot call again
 		// include_once('betaville-functions.php');
 		$updatedtime = fd($comment['date']);
 		timediff($updatedtime);
-	?>
+?>
 	</div>
 	</div>
 	</div>
