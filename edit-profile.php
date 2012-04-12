@@ -1,6 +1,6 @@
 <?php include('head.php'); 
 /**  
- *  edit-profile page - This page is for a user to change his password, change bio, information...redirect to userProfile.php
+ *  editProfile Page - This page is for a user to change his password, change bio, information...redirect to userProfile.php
  *  Copyright (C) 2011-2012 Betaville
  *  
  *  This program is free software: you can redistribute it and/or modify
@@ -74,17 +74,18 @@ if(isset($_POST['bio'])||isset($_POST['website'])) {
 if(isset($_POST['oldPass']) && isset($_POST['newPass'])){
 	$updatePass = SERVICE_URL.'?section=user&request=changepass&token='.$_SESSION['token'].'&oldPass='.$_POST['oldPass'].'&newPass='.$_POST['newPass'];
 	$updatePassJSON = file_get_contents($updatePass,0,null,null);
-	$passChanged = json_decode(updatePassJSON, true);
+	$passChanged = json_decode($updatePassJSON, true);
 	$changedPass = $passChanged['passChanged'];
-		if($changedPass == 'true') {
+		if($changedPass===true) {
 ?>
-			<script type="text/javascript" >
+	
+		<script type="text/javascript" >
 				window.location=<?php echo "\"".WEB_URL."/profile.php\""; ?>;
 			</script>
 <?php		
 		}
 		else {
-			header("Location: editProfile.php?changedPass=".$changedPass);				
+		header("Location: edit-profile.php?changedPass=".$changedPass);				
 		}					
 }
 
@@ -104,7 +105,7 @@ if(isset($_POST['oldPass']) && isset($_POST['newPass'])){
 				<h1> Hello <?php echo $userName; ?>! </h1>
 			<div class='projects'>
 				<div  class='project-description'>
-				<form name='editProfile' id='editProfile' action='editProfile.php' method='post' enctype="multipart/form-data">
+				<form name='edit-profile' id='edit-profile' action='edit-profile.php' method='post' enctype="multipart/form-data">
                 <input type="hidden" name="username" value="<?php echo $userName ?>">
                 <table border="0">
 				<tr><td><img src=<?php echo $gravatarImage;?> height='100' width='100' style='background-color: #383838'></td>
@@ -127,7 +128,7 @@ if(isset($_POST['oldPass']) && isset($_POST['newPass'])){
 		<!-- User Password Update form-->
 		<div class='activity-section'>
 
-		<form name='changePass' id='idChangePass' method='post' action='editProfile.php'>
+		<form name='changePass' id='idChangePass' method='post' action='edit-profile.php'>
 		<input type="hidden" name="username" value="<?php echo $userName; ?>">
 		<table class="ChangePass-section" border="0" >
 				<tr><td><label>Old Password: </label></td><td><input type="password" name="oldPass" onkeypress="if (event.keyCode==13) document.getElementById('button').click()"/></td></tr>
