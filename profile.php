@@ -64,7 +64,7 @@ include('head.php');
 	 		if($userName==$_SESSION['username'])
 	 		{?>
 	 					
-	 			<form name='profileForm' action='edit-profile.php' method="get">
+	 			<form name='profileForm' action='editProfile.php' method="get">
 				<input type="submit" name="submit" value="Edit Profile" />
 				</form>
 	 			
