@@ -1,4 +1,21 @@
 <?php
+/**  
+ *  profile.php - user profile page, user related info on proposals, his comments, his models and link to change personal info
+ *  Copyright (C) 2011-2012 Betaville
+ *  
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *  
+ *  This program is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *  
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 include('head.php');
 //error_reporting(E_ALL);
 ?>
@@ -11,7 +28,7 @@ include('head.php');
 <div class='master-container'> 
 		<?php
 		include_once('betaville-functions.php');
-		//Delete The Design For the User -- Change isAlive = 0
+		//Delete The Design For the User -- Change isAlive = 0, route user here after a design is deleted.
 		if(isset($_GET['designDeleted'])) {
 		$designID = $_GET['id'];
 		$designName = $_GET['designName'];
@@ -19,9 +36,7 @@ include('head.php');
 		$deleteDesignJSON = file_get_contents($deleteDesign,0,null,null);
 		$deleteDesignOutput = json_decode($deleteDesignJSON, true);
 		$deleted = $deleteDesignOutput['design'];
-		
 		echo '<strong>'.$designName.' deleted.</strong>';
-		header('url='.WEB_URL.'/index.php');
 		}
 
 		//Check if you retrieve uName or username
@@ -61,14 +76,12 @@ include('head.php');
 			</form>
 	 	
 	 		<?php
+	 		//Allow changing info only if session username matches the user's profile name.
 	 		if($userName==$_SESSION['username'])
-	 		{?>
-	 					
+	 		{?>	
 	 			<form name='profileForm' action='edit-profile.php' method="get">
 				<input type="submit" name="submit" value="Edit Profile" />
 				</form>
-	 			
-	 			
 	 			<?php
 	 		}?>
 				<br />
