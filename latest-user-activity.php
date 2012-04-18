@@ -170,7 +170,7 @@ $counter = 0;
 	<div class='activity-body'>
 		<?php
 		//echo '<a href="profile.php?uName='.$commentDesign['user'].'"><strong>'.$commentDesign['user'].'</a>'.'</strong> commented on ';
-		echo '<a href="profile.php?uName='.$_SESSION['username'].'"><strong>'.$_SESSION['username'].'</a>'.'</strong> commented on ';
+		echo '<a href="profile.php?uName='.$userName.'"><strong>'.$userName.'</a>'.'</strong> commented on ';
 		echo '<a href="design.php?id='.$commentDesign['designID'].'"><strong>'.$commentDesign['name'].'</a>'.'</strong>:';
 	?>
 		<span class='content'><?php echo $comment['comment'] ?></span>
