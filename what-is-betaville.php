@@ -61,49 +61,48 @@
 				<div class='column span-8 last about-who'> 
 					<h1 id='who'>Who is Betaville?</h1> 
 					<p> 
-						Betaville is developed within Brooklyn Experimental Media Center at
-						<a href=''>Polytechnic Institute of NYU</a> 
-						and the Media 2 Culture program at
+						Betaville is being developed by Carl Skelton and Skye Book in New York, and by faculty and students through the Media 2 Culture program at
 						<a href=''>Hochschule Bremen.</a> 
 					</p> 
 					<h1 id='partners'>Partners</h1> 
-					<p>Partners include the Municipal Art Society of New  York City, the Public Art Fund, the Museum of the Moving Image, and  Poly research faculty in the departments of Civil Engineering, Computer  Science, and Electrical and Computrer Engineering. We're happy to  announce that we also have the support of the Rockefeller Foundation,  through its Cultural Innovation Fund and also The Urban Studies Program of Columbia University along with Levien & Company, Inc.</p> 
+					<p>Partners include the Municipal Art Society of New  York City, the Public Art Fund, the Museum of the Moving Image, The New York Hall of Science, Louis Armstrong Middle School, the Urban Assembly Gateway School, the Centre for City Ecology (Toronto), the Centre for Landscape Research (University of Toronto), the Architecture Faculty of Istanbul Technical University, the White Box gallery (New York City), the Urban Studies Program of Columbia University, Cisco Systems, and the James Jay Dudley Luce foundation. We're happy to  announce that we also been supported by the Rockefeller Foundation through its Cultural Innovation Fund, along with Levien & Company, Inc. and Microsoft Research.</p> 
 					<h1 id='team'>The Team</h1>
                     
                     <ul id="menu">
                         <li class="folder">
-                        	<a href="#" class="submenu"> Director </a>
+                        	<a href="#" class="submenu"> Project Director </a>
                             <ul>
                                 <li> Carl Skelton </li>
                             </ul>
                         </li>		
                         <li class="folder">			
-                            <a href="#" class="submenu"> Development Team </a>
+                            <a href="#" class="submenu"> Development</a>
                             <ul>
-                                <li> Skye Book (Lead Developer) </li>
-                                <li> Caroline Bouchat (Developer)</li>
-                                <li> Ibrahim Jumkhawala (Developer)</li>
-                                <li> Megh Vora (Developer) </li>
-                                <li> Ojas Gosar (Developer) </li>
+                                <li> Skye Book (Lead Developer, New York) </li>
+                                <li> Caroline Bouchat (Developer, Strasbourg)</li>
+                                <li> Dr. Joel Wein (Software Engineer, New York) </li>
+                                <li> Ibrahim Jumkhawala (Developer, New York)</li>
+                                <li> Megh Vora (Developer, New York) </li>
+                                <li> Ojas Gosar (Developer, New York) </li>
+                                <li> Prof. Helmut Eirund (Software Engineer, Bremen) </li>
+                                <li> Prof. Thorsten Teschke (Software Engineer, Bremen) </li>
                             </ul>
                         </li>
                         <li class="folder">
-                            <a href="#" class="submenu"> Design Team</a>
+                            <a href="#" class="submenu"> Design</a>
                             <ul>
                                 <li> Cemre Gungor (UI, Website)</li>
-                                <li> Levis Reyes (Architect) </li>
+                                <li> Levis Reyes (Architectural Design, New York) </li>
                                 <li> Joseph Fattorini (Sound)</li>
-                                <li> Andres Pang (Sound)</li>
-                                <li> Ashwin Ramesh (3D)</li>
-                                <li> Arunram Kalaiselvan (3D)</li>
-                                <li> Sreshta Suresh (3D)</li>
+				<li> Jee Won Kim (Architectural Design, New York)
                             </ul>
                         </li>
                       <li class="folder">
-                            <a href="#" class="submenu"> Research Team</a>
+                            <a href="#" class="submenu"> Research</a>
                             <ul>
-                                <li> Mark Skwarek (3-D Researcher)</li>
-                                <li> Martin Koplin (Scientist in Residence)</li>
+                                <li> Mark Skwarek (3-D Research)</li>
+                                <li> Martin Koplin (Bremen project lead)</li>
+				<li> David Lieberman (Architect, Toronto)</li>
                             </ul>
                       </li>
                       
