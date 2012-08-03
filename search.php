@@ -21,7 +21,7 @@ error_reporting(E_ALL);
 								<span class='icon i-play'></span>
 							</a>
 							<a class='text' href='what-is-betaville.php'>Get info »</a>
-							<a class='text' href='http://www.youtube.com/watch?v=bZ6lN0Wtlb4&amp;autoplay=1' id='thevideo'>Watch a demo »</a>
+							<a class='text' href='http://vimeo.com/37300439' id='video'>Watch a demo »</a>
 						</div>
 					</div>
 				</div>
