@@ -1,6 +1,8 @@
 jQuery(document).ready(function() {
 	BV.Carousel.init();
-	
+
+/*
+// Only seems to work for YouTube
 $("#thevideo").click(function() {
 	$.fancybox({
 		'padding'             : 0,
@@ -17,6 +19,7 @@ $("#thevideo").click(function() {
 		return false;
 	}); 
 });
+*/
 
 BV = {};
 
