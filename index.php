@@ -31,7 +31,11 @@ include('head.php');
 						<p class='p1'><strong>proposals on urban design</strong></p>
 						<div class='button-row'>
 							<a class='uberbutton green' href='http://betaville.net/webstart/betaville.jnlp'>
-								Download now
+								Webstart
+								<span class='icon i-play'></span>
+							</a>
+							<a class='uberbutton green' href='http://betaville.net/webstart/betaville.app'>
+								Download for Mac
 								<span class='icon i-play'></span>
 							</a>
 							<a class='text' href='what-is-betaville.php'>Get info »</a>
