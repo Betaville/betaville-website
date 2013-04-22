@@ -34,7 +34,7 @@ include('head.php');
 								Webstart
 								<span class='icon i-play'></span>
 							</a>
-							<a class='uberbutton green' href='http://betaville.net/webstart/betaville.app'>
+							<a class='uberbutton green' href='http://betaville.net/webstart/betaville.zip'>
 								Download for Mac
 								<span class='icon i-play'></span>
 							</a>
