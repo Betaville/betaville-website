@@ -352,7 +352,7 @@ include('head.php');
 					avatars: false,
 					behavior: 'all'
 				}
-				}).render().setUser('betavillebxmc').start();
+				}).render().setUser('betavillenews').start();
 				</script>
 			</div>
 		</aside>
