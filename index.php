@@ -38,8 +38,8 @@ include('head.php');
 								Download for Mac
 								<span class='icon i-play'></span>
 							</a>
-							<a class='text' href='what-is-betaville.php'>Demo »</a>
-							<a class='text' href='http://vimeo.com/37300439' id='video'>Demo »</a>
+							<a class='text' href='what-is-betaville.php'>blurb »</a>
+							<a class='text' href='http://vimeo.com/37300439' id='video'>video »</a>
 						</div>
 					</div>
 				</div>
