@@ -312,7 +312,8 @@ include('head.php');
 				Username:<br><input type="text" name="user" size="29" class="inputs" onkeydown="if (event.keyCode == 13) document.getElementById('submit').click()"><br>
 				Password:<br><input type="password" name="pass" size="29" class="inputs" onkeydown="if (event.keyCode == 13) document.getElementById('submit').click()"><br>
 				<input type="checkbox" name="rememberMe" > Remember Me <br /><br />
-				<input type="button" id="submit" value="Log In" onClick="submitAjax()"> or <a href="register.php" > Register Now </a>
+				<input type="button" id="submit" value="Log In" onClick="submitAjax()"> 
+				<?php /*or <a href="register.php" > Register Now </a>*/?>
 			</form>
 				<a href="forgot-password.php?sendVeri=true">Forgot Password?</a>
 		</div>
